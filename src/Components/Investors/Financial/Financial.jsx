@@ -1,29 +1,46 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { client } from '../../../api/contentful.js';
 import { FaRegFileAlt } from 'react-icons/fa';
-import { FiArrowUpRight } from 'react-icons/fi';
+import { Link, useSearchParams } from 'react-router-dom';
+import {
+  FiArrowUpRight, FiArrowLeft, FiChevronLeft, FiChevronRight,
+  FiMonitor, FiUsers, FiPieChart, FiShield, FiBarChart2, FiFileText,
+  FiBookOpen, FiClipboard, FiCalendar, FiInfo, FiMail, FiBriefcase,
+  FiBell, FiCreditCard, FiGrid,
+} from 'react-icons/fi';
 import { groupFinancialReports } from './financialPeriods.js';
-import { categoryKey, getDocumentDate, getFinancialCategories, loadFinancialReports } from './financialData.js';
+import { categoryKey, getDocumentDate, loadFinancialReports } from './financialData.js';
+import { buildFinancialCatalog, resolveFinancialView } from './financialCatalog.js';
 import './Financial.css';
 
 const QUARTERS = ['Apr – Jun', 'Jul – Sep', 'Oct – Dec', 'Jan – Mar'];
+const CATEGORY_ICONS = {
+  disclosure: FiMonitor, governance: FiUsers, shareholding: FiPieChart,
+  compliance: FiShield, results: FiBarChart2, related: FiUsers,
+  annual: FiBookOpen, filing: FiClipboard, shareholders: FiInfo,
+  subsidiary: FiBriefcase, board: FiUsers, meeting: FiCalendar,
+  announcement: FiBell, policies: FiShield, deposit: FiCreditCard,
+  contact: FiMail, documents: FiFileText,
+};
+const categoryHref = (key) => `?category=${encodeURIComponent(key)}`;
+const renderCategoryIcon = (name) => {
+  const Icon = CATEGORY_ICONS[name] || FiFileText;
+  return <Icon aria-hidden="true" />;
+};
 
 const Financial = () => {
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [retry, setRetry] = useState(0);
-  const [category, setCategory] = useState('');
-  const resultsRef = useRef(null);
-
-  const selectCategory = (value) => {
-    setCategory(value);
-    // With many categories, take the reader straight to the chosen documents.
-    requestAnimationFrame(() => {
-      resultsRef.current?.focus({ preventScroll: true });
-      resultsRef.current?.scrollIntoView({ block: 'start', behavior: 'instant' });
-    });
-  };
+  const [searchParams] = useSearchParams();
+  const category = categoryKey(searchParams.get('category') || '');
+  const showAll = searchParams.get('view') === 'all';
+  const contentRef = useRef(null);
+  const navigationRef = useRef(null);
+  const previousView = useRef('directory');
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -39,11 +56,49 @@ const Financial = () => {
     return () => { active = false; };
   }, [retry]);
 
-  const categories = useMemo(() => getFinancialCategories(reports), [reports]);
-  const filteredReports = useMemo(() => reports.filter((report) => !category
-    || report.categories.some((value) => categoryKey(value) === category)), [reports, category]);
+  const catalog = useMemo(() => buildFinancialCatalog(reports), [reports]);
+  const view = useMemo(() => resolveFinancialView(catalog, reports, { category, all: showAll }), [catalog, reports, category, showAll]);
+  const filteredReports = view.reports;
   const groups = useMemo(() => groupFinancialReports(filteredReports), [filteredReports]);
-  const categoryLabel = categories.find((option) => option.key === category)?.label || 'All Documents';
+  const isDirectory = view.type === 'directory';
+  const viewKey = isDirectory ? 'directory' : category || 'all';
+
+  useEffect(() => {
+    if (loading || error || previousView.current === viewKey) return;
+    previousView.current = viewKey;
+    contentRef.current?.focus({ preventScroll: true });
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [viewKey, loading, error]);
+
+  useEffect(() => {
+    const navigation = navigationRef.current;
+    if (!navigation) return;
+    const update = () => {
+      setCanScrollLeft(navigation.scrollLeft > 2);
+      setCanScrollRight(navigation.scrollLeft + navigation.clientWidth < navigation.scrollWidth - 2);
+    };
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(navigation);
+    navigation.addEventListener('scroll', update, { passive: true });
+    return () => { observer.disconnect(); navigation.removeEventListener('scroll', update); };
+  }, [catalog]);
+
+  useEffect(() => {
+    // Keep the selected item visible after direct navigation or browser Back.
+    const navigation = navigationRef.current;
+    const selected = navigation?.querySelector('[aria-current="page"]');
+    if (!selected) return;
+    const left = selected.offsetLeft;
+    const right = left + selected.offsetWidth;
+    if (left < navigation.scrollLeft) navigation.scrollLeft = left;
+    else if (right > navigation.scrollLeft + navigation.clientWidth) navigation.scrollLeft = right - navigation.clientWidth;
+  }, [viewKey, catalog]);
+
+  const scrollCategories = (direction) => {
+    const navigation = navigationRef.current;
+    if (navigation) navigation.scrollBy({ left: direction * navigation.clientWidth * 0.75, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+  };
 
   const openHtmlDocument = (report) => {
     const newWindow = window.open('', '_blank');
@@ -82,7 +137,7 @@ const Financial = () => {
   const renderYearTable = (key, title, description, yearHeading) => groups[key].length > 0 && (
     <section className="fin-report-section" aria-labelledby={`fin-${key}-heading`} key={key}>
       <div className="fin-section-heading">
-        <h3 id={`fin-${key}-heading`}>{title}</h3>
+        <h2 id={`fin-${key}-heading`}>{title}</h2>
         <p>{description}</p>
       </div>
       <div className="fin-table-wrap">
@@ -99,65 +154,88 @@ const Financial = () => {
 
   return (
     <div className="financial-page">
-      <div className="text-center food-hero our-process financial-hero">
-        <h1 className="heading-top">Financial</h1>
-        <p className="firstDivParagraph">Our yearly reports</p>
-      </div>
       <main className="container fin-section">
-        <div className="fin-category-header">
-          <h2 id="fin-category-heading">Choose a category</h2>
-          <p>Select a category below, then open the document you need.</p>
-        </div>
-        <div className="fin-categories" role="group" aria-labelledby="fin-category-heading">
-          <button type="button" className={`fin-category-button ${!category ? 'is-active' : ''}`} aria-pressed={!category} aria-controls="fin-results" onClick={() => selectCategory('')}>All Documents</button>
-          {categories.map((option) => (
-            <button key={option.key} type="button" className={`fin-category-button ${category === option.key ? 'is-active' : ''}`} aria-pressed={category === option.key} aria-controls="fin-results" onClick={() => selectCategory(option.key)}>{option.label}</button>
-          ))}
-        </div>
-
-        <div id="fin-results" className="fin-results" ref={resultsRef} tabIndex={-1} role="region" aria-label="Financial documents" aria-busy={loading}>
-          {loading ? (
-            <div className="fin-state" role="status"><span className="fin-spinner" aria-hidden="true" /><p>Loading all financial documents…</p></div>
-          ) : error ? (
-            <div className="fin-state" role="alert">
-              <h2>Documents could not be loaded</h2>
-              <p>Please try again. No sample or incomplete documents are shown.</p>
-              <button type="button" className="fin-category-button" onClick={() => setRetry((value) => value + 1)}>Try Again</button>
+        {!loading && !error && catalog.length > 0 && (
+          <nav className="fin-category-navigation" aria-label="Investor categories">
+            <button className="fin-nav-scroll" type="button" aria-label="Previous categories" aria-controls="fin-category-links" disabled={!canScrollLeft} onClick={() => scrollCategories(-1)}><FiChevronLeft aria-hidden="true" /></button>
+            <div id="fin-category-links" className="fin-category-links" ref={navigationRef}>
+              <Link to="/investors/financial" className={`fin-category-button ${isDirectory ? 'is-active' : ''}`} aria-current={isDirectory ? 'page' : undefined}><FiGrid aria-hidden="true" /> Investor Home</Link>
+              <Link to="?view=all" className={`fin-category-button ${!category && showAll ? 'is-active' : ''}`} aria-current={!category && showAll ? 'page' : undefined}>All Documents</Link>
+              {catalog.map((option) => (
+                <Link key={option.key} to={categoryHref(option.key)} className={`fin-category-button ${category === option.key ? 'is-active' : ''}`} aria-current={category === option.key ? 'page' : undefined}>{option.label}</Link>
+              ))}
             </div>
-          ) : (
-            <>
-              <div className="fin-results-heading">
-                <h2>{categoryLabel}</h2>
-                <p role="status">{filteredReports.length} {filteredReports.length === 1 ? 'document' : 'documents'} · Documents open in a new tab</p>
+            <button className="fin-nav-scroll" type="button" aria-label="Next categories" aria-controls="fin-category-links" disabled={!canScrollRight} onClick={() => scrollCategories(1)}><FiChevronRight aria-hidden="true" /></button>
+          </nav>
+        )}
+
+        <div ref={contentRef} className="fin-content" tabIndex={-1}>
+          {!isDirectory && <Link to="/investors/financial" className="fin-back-link"><FiArrowLeft aria-hidden="true" /> Back to Categories</Link>}
+          <header className={`fin-page-heading ${isDirectory ? 'fin-directory-heading' : ''}`}>
+            <h1>{loading || error ? 'Investors' : view.label}</h1>
+            {isDirectory && <p>Select a category to view financial reports and shareholder documents.</p>}
+          </header>
+          <div id="fin-results" className="fin-results" role="region" aria-label="Financial documents" aria-busy={loading}>
+            {loading ? (
+              <div className="fin-state" role="status"><span className="fin-spinner" aria-hidden="true" /><p>Loading all financial documents…</p></div>
+            ) : error ? (
+              <div className="fin-state" role="alert">
+                <h2>Documents could not be loaded</h2>
+                <p>Please try again. No sample or incomplete documents are shown.</p>
+                <button type="button" className="fin-category-button" onClick={() => setRetry((value) => value + 1)}>Try Again</button>
               </div>
-              {filteredReports.length === 0 && <div className="fin-state"><h3>No documents available</h3><p>Documents will appear here when published.</p></div>}
-              {renderYearTable('annual', 'Annual Reports', 'Reports arranged by their stated financial year, newest first.', 'Financial Year')}
-              {renderYearTable('filings', 'Annual Returns / MGT Filings', 'MGT filings are listed separately from annual reports. Years are shown as stated in the document.', 'Year / Period')}
-              {groups.quarterly.length > 0 && (
-                <section className="fin-report-section" aria-labelledby="fin-quarterly-heading">
-                  <div className="fin-section-heading">
-                    <h3 id="fin-quarterly-heading">Quarterly Documents</h3>
-                    <p>Financial year: April to March. Select a date to open a document. A dash means no document is listed.</p>
-                    <p className="fin-date-note">Dates shown are document dates from our archive and may differ from quarter-end dates.</p>
-                  </div>
-                  <div className="fin-table-wrap fin-quarter-desktop" role="region" aria-label="Documents by financial year and quarter" tabIndex={0}>
-                    <table className="fin-table fin-quarter-table">
-                      <caption className="fin-sr-only">Quarterly documents, newest financial year first</caption>
-                      <thead><tr><th scope="col">Financial Year</th>{QUARTERS.map((months, index) => <th scope="col" key={months}>Q{index + 1}<span className="fin-quarter-months">{months}</span></th>)}</tr></thead>
-                      <tbody>{groups.quarterly.map((group) => <tr key={group.year}><th scope="row">{group.year}</th>{group.quarters.map((items, index) => <td key={index}>{renderDocuments(items)}</td>)}</tr>)}</tbody>
-                    </table>
-                  </div>
-                  <div className="fin-quarter-mobile">
-                    {groups.quarterly.map((group) => <div className="fin-quarter-year" key={group.year}>
-                      <h4>Financial Year {group.year}</h4>
-                      <dl>{group.quarters.map((items, index) => <div className="fin-quarter-entry" key={index}><dt>Q{index + 1}<span>{QUARTERS[index]}</span></dt><dd>{renderDocuments(items)}</dd></div>)}</dl>
-                    </div>)}
-                  </div>
+            ) : isDirectory ? (
+              <>
+                <div className="fin-category-grid" aria-label="Choose an investor category">
+                  {catalog.map((option) => (
+                    <Link key={option.key} className="fin-category-card" to={categoryHref(option.key)} aria-label={`${option.label} — ${option.reports.length} ${option.reports.length === 1 ? 'document' : 'documents'}`}>
+                      <span className="fin-category-icon">{renderCategoryIcon(option.icon)}</span>
+                      <span className="fin-category-name">{option.label}</span>
+                    </Link>
+                  ))}
+                </div>
+                {catalog.length === 0 && <div className="fin-state"><h2>No documents available</h2><p>Categories will appear here when documents are published.</p></div>}
+                <section className="fin-investor-information" aria-label="Investor information">
+                  <div><h2>Financial Information</h2><p>Explore Jagatjit Industries Limited’s financial reports, corporate disclosures and shareholder documents. Select a category above, or browse the complete archive.</p><Link to="?view=all" className="fin-information-link">View All Documents <FiArrowUpRight aria-hidden="true" /></Link></div>
+                  <div><h2>Need Assistance?</h2><p>For help with company information or shareholder enquiries, please get in touch with Jagatjit Industries Limited.</p><Link to="/contactus" className="fin-information-link">Contact Us <FiArrowUpRight aria-hidden="true" /></Link></div>
                 </section>
-              )}
-              {renderYearTable('documents', 'Other Documents', 'All remaining documents, including those without a clearly stated quarter. No documents are hidden.', 'Year / Period')}
-            </>
-          )}
+              </>
+            ) : view.type === 'not-found' ? (
+              <div className="fin-state"><h2>This category is not available</h2><p>Please choose a category from Investor Home to find your documents.</p><Link className="fin-category-button" to="/investors/financial">View Categories</Link></div>
+            ) : (
+              <>
+                <div className="fin-results-heading">
+                  <p role="status">{filteredReports.length} {filteredReports.length === 1 ? 'document' : 'documents'} · Documents open in a new tab</p>
+                </div>
+                {filteredReports.length === 0 && <div className="fin-state"><h3>No documents available</h3><p>Documents will appear here when published.</p></div>}
+                {renderYearTable('annual', 'Annual Reports', 'Reports arranged by their stated financial year, newest first.', 'Financial Year')}
+                {renderYearTable('filings', 'Annual Returns / MGT Filings', 'MGT filings are listed separately from annual reports. Years are shown as stated in the document.', 'Year / Period')}
+                {groups.quarterly.length > 0 && (
+                  <section className="fin-report-section" aria-labelledby="fin-quarterly-heading">
+                    <div className="fin-section-heading">
+                      <h2 id="fin-quarterly-heading">Quarterly Documents</h2>
+                      <p>Financial year: April to March. Select a date to open a document. A dash means no document is listed.</p>
+                      <p className="fin-date-note">Dates shown are document dates from our archive and may differ from quarter-end dates.</p>
+                    </div>
+                    <div className="fin-table-wrap fin-quarter-desktop" role="region" aria-label="Documents by financial year and quarter" tabIndex={0}>
+                      <table className="fin-table fin-quarter-table">
+                        <caption className="fin-sr-only">Quarterly documents, newest financial year first</caption>
+                        <thead><tr><th scope="col">Financial Year</th>{QUARTERS.map((months, index) => <th scope="col" key={months}>Q{index + 1}<span className="fin-quarter-months">{months}</span></th>)}</tr></thead>
+                        <tbody>{groups.quarterly.map((group) => <tr key={group.year}><th scope="row">{group.year}</th>{group.quarters.map((items, index) => <td key={index}>{renderDocuments(items)}</td>)}</tr>)}</tbody>
+                      </table>
+                    </div>
+                    <div className="fin-quarter-mobile">
+                      {groups.quarterly.map((group) => <div className="fin-quarter-year" key={group.year}>
+                        <h4>Financial Year {group.year}</h4>
+                        <dl>{group.quarters.map((items, index) => <div className="fin-quarter-entry" key={index}><dt>Q{index + 1}<span>{QUARTERS[index]}</span></dt><dd>{renderDocuments(items)}</dd></div>)}</dl>
+                      </div>)}
+                    </div>
+                  </section>
+                )}
+                {renderYearTable('documents', 'Other Documents', 'All remaining documents, including those without a clearly stated quarter. No documents are hidden.', 'Year / Period')}
+              </>
+            )}
+          </div>
         </div>
       </main>
     </div>
