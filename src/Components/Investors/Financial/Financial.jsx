@@ -3,7 +3,7 @@ import { client } from '../../../api/contentful.js';
 import { FaRegFileAlt } from 'react-icons/fa';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { groupFinancialReports } from './financialPeriods.js';
-import { categoryKey, getFinancialCategories, loadFinancialReports } from './financialData.js';
+import { categoryKey, getDocumentDate, getFinancialCategories, loadFinancialReports } from './financialData.js';
 import './Financial.css';
 
 const QUARTERS = ['Apr – Jun', 'Jul – Sep', 'Oct – Dec', 'Jan – Mar'];
@@ -56,13 +56,19 @@ const Financial = () => {
 
   const renderDocument = (report, index) => {
     const available = Boolean(report.file_url || report.html_content);
+    const date = getDocumentDate(report.file_date);
     const contents = <>
       <FaRegFileAlt className="fin-file-icon" aria-hidden="true" />
-      <span className="fin-document-name">{report.file_name}</span>
+      <span className="fin-document-meta">
+        <span className="fin-document-name">{report.file_name}</span>
+        <span className={`fin-document-date${date ? '' : ' fin-date-missing'}`}>
+          {date ? <><span className="fin-date-label">Document date: </span><time dateTime={date.dateTime}>{date.label}</time></> : 'Date not provided'}
+        </span>
+      </span>
       {available ? <span className="fin-open-label">View <FiArrowUpRight aria-hidden="true" /></span>
         : <span className="fin-missing-label">File unavailable</span>}
     </>;
-    const label = `Open ${report.file_name} (new tab)`;
+    const label = `Open ${report.file_name}, ${date ? `document date ${date.label}` : 'date not provided'} (new tab)`;
     const key = report.id || `${report.file_name}-${index}`;
     if (report.file_url) return <a key={key} className="fin-document-link" href={report.file_url} target="_blank" rel="noopener noreferrer" aria-label={label}>{contents}</a>;
     if (report.html_content) return <button key={key} className="fin-document-link" type="button" onClick={() => openHtmlDocument(report)} aria-label={label}>{contents}</button>;
@@ -131,7 +137,8 @@ const Financial = () => {
                 <section className="fin-report-section" aria-labelledby="fin-quarterly-heading">
                   <div className="fin-section-heading">
                     <h3 id="fin-quarterly-heading">Quarterly Documents</h3>
-                    <p>Financial year: April to March. A dash means no document is listed for that quarter.</p>
+                    <p>Financial year: April to March. Select a date to open a document. A dash means no document is listed.</p>
+                    <p className="fin-date-note">Dates shown are document dates from our archive and may differ from quarter-end dates.</p>
                   </div>
                   <div className="fin-table-wrap fin-quarter-desktop" role="region" aria-label="Documents by financial year and quarter" tabIndex={0}>
                     <table className="fin-table fin-quarter-table">

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { categoryKey, getFinancialCategories, loadFinancialReports, mapFinancialEntry } from './financialData.js';
+import { categoryKey, getDocumentDate, getFinancialCategories, loadFinancialReports, mapFinancialEntry } from './financialData.js';
 import { groupFinancialReports } from './financialPeriods.js';
 
 const entry = (index) => ({ sys: { id: `id-${index}`, createdAt: '2025-09-01' }, fields: { fileName: `Document ${index}`, categoryName: 'Annual Report' } });
@@ -54,4 +54,33 @@ test('asset, direct and HTML-only documents are preserved, including missing fil
   assert.equal(mapFinancialEntry({ fields: { htmlfield: '<h1>Notice</h1>' } }).html_content, '<h1>Notice</h1>');
   assert.equal(mapFinancialEntry({ fields: { htmlfield: { content: [{ nodeType: 'text', value: '<p>Notice</p>' }] } } }).html_content, '<p>Notice</p>');
   assert.equal(mapFinancialEntry({ fields: {} }).file_url, null);
+});
+
+
+test('document dates display in readable day-month-year format', () => {
+  assert.deepEqual(getDocumentDate('2025-06-30'), { dateTime: '2025-06-30', label: '30 Jun 2025' });
+  assert.deepEqual(getDocumentDate('2024-02-29'), { dateTime: '2024-02-29', label: '29 Feb 2024' });
+});
+
+test('timestamps keep the authored date across timezone boundaries', () => {
+  assert.equal(getDocumentDate('2025-06-30T23:30:00-05:00').dateTime, '2025-06-30');
+  assert.equal(getDocumentDate('2025-07-01T00:30:00+05:30').label, '01 Jul 2025');
+});
+
+test('missing, ambiguous or impossible dates are not guessed', () => {
+  for (const value of [null, undefined, '', 'not a date', '30/06/2025', '2025-02-29', '2025-02-30', '2025-13-01']) {
+    assert.equal(getDocumentDate(value), null);
+  }
+});
+
+test('document date remains distinct from reporting quarter and creation date', () => {
+  const mapped = mapFinancialEntry({
+    sys: { id: 'quarterly-report', createdAt: '2025-09-01T00:00:00Z' },
+    fields: { fileName: 'Quarterly Results - June 2025', categoryName: 'Quarterly Results', fileDate: '2025-08-10' },
+  });
+  const groups = groupFinancialReports([mapped]);
+  assert.equal(groups.quarterly[0].year, '2025-26');
+  assert.equal(groups.quarterly[0].quarters[0][0].id, 'quarterly-report');
+  assert.equal(getDocumentDate(mapped.file_date).label, '10 Aug 2025');
+  assert.equal(getDocumentDate(mapFinancialEntry({ sys: { createdAt: '2025-09-01' }, fields: {} }).file_date), null);
 });

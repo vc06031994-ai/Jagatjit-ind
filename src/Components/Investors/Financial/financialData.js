@@ -5,6 +5,22 @@ export function plainText(value) {
   return (value.content || []).map(plainText).join('');
 }
 
+// Contentful's fileDate is the document date, not necessarily the quarter end.
+// Keep its authored calendar date (no timezone shift or createdAt fallback).
+export function getDocumentDate(value) {
+  if (typeof value !== 'string') return null;
+  const source = value.trim();
+  const match = source.match(/^(\d{4})-(\d{2})-(\d{2})(?:T.+)?$/);
+  if (!match || Number.isNaN(Date.parse(source))) return null;
+  const [, year, month, day] = match.map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+  if (date.getUTCFullYear() !== year || date.getUTCMonth() !== month - 1 || date.getUTCDate() !== day) return null;
+  return {
+    dateTime: source.slice(0, 10),
+    label: new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(date),
+  };
+}
+
 export const categoryKey = (value) => value.trim().replace(/\s+/g, ' ').toLowerCase();
 
 export function mapFinancialEntry(item) {
