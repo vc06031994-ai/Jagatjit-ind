@@ -40,9 +40,26 @@ const CATEGORY_STYLES = [
   [/contact|grievance|odr/i, 'contact'],
 ];
 
+// Specific meanings take precedence over broad groups (e.g. Postal Ballot is
+// voting, not just a meeting; ODR and grievances are not general contacts).
+// Keep icon selection separate so the existing card order stays unchanged.
+const CATEGORY_ICON_RULES = [
+  [/postal\s+ballot|\be[-\s]?voting\b/i, 'ballot'],
+  [/stock\s+exchange/i, 'exchange'],
+  [/investor\s+charter/i, 'charter'],
+  [/\bodr\b|dispute/i, 'disputes'],
+  [/grievance/i, 'grievance'],
+  [/^mgt-9$/i, 'filing-extract'],
+  [/^mgt-/i, 'filing-return'],
+];
+
 export function getCategoryStyle(label) {
   const index = CATEGORY_STYLES.findIndex(([pattern]) => pattern.test(label));
-  return index === -1 ? { icon: 'documents', order: 100 } : { icon: CATEGORY_STYLES[index][1], order: index };
+  const iconRule = CATEGORY_ICON_RULES.find(([pattern]) => pattern.test(label));
+  return {
+    icon: iconRule?.[1] || (index === -1 ? 'documents' : CATEGORY_STYLES[index][1]),
+    order: index === -1 ? 100 : index,
+  };
 }
 
 export function buildFinancialCatalog(reports) {

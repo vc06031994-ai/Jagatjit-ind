@@ -48,3 +48,38 @@ test('category links resolve after refresh and unknown links never silently show
   assert.equal(resolveFinancialView(catalog, reports, { category: 'does-not-exist', all: true }).reports.length, 0);
   assert.equal(getCategoryStyle('A future category').icon, 'documents');
 });
+
+test('each displayed investor category has a meaningful, distinct icon', () => {
+  const expected = [
+    ['Details under Regulation 46', 'disclosure'],
+    ['Corporate Governance Reports', 'governance'],
+    ['Share Holding Pattern', 'shareholding'],
+    ['Quarterly Financial Results', 'results'],
+    ['Annual Report', 'annual'],
+    ['MGT-9', 'filing-extract'],
+    ['MGT-7', 'filing-return'],
+    ['Information for Physical Shareholders', 'shareholders'],
+    ['Accounts of Subsidiary Companies', 'subsidiary'],
+    ['Composition of Board and its Committees', 'board'],
+    ['Notices of AGM', 'meeting'],
+    ['Postal Ballot', 'ballot'],
+    ['Corporate Announcements', 'announcement'],
+    ['Intimation to Stock Exchange', 'exchange'],
+    ['Investor Charter', 'charter'],
+    ['Policies', 'policies'],
+    ['Deposit Scheme', 'deposit'],
+    ['Contacts', 'contact'],
+    ['ODR Portal', 'disputes'],
+    ['SOP for handling investor grievance', 'grievance'],
+    ['Other Documents', 'documents'],
+  ];
+  for (const [label, icon] of expected) assert.equal(getCategoryStyle(label).icon, icon, label);
+  assert.equal(new Set(expected.map(([, icon]) => icon)).size, expected.length);
+});
+
+test('specific icon selection does not reorder existing categories', () => {
+  assert.equal(getCategoryStyle('Postal Ballot').order, getCategoryStyle('Notices of AGM').order);
+  assert.equal(getCategoryStyle('Intimation to Stock Exchange').order, getCategoryStyle('Corporate Announcements').order);
+  assert.equal(getCategoryStyle('ODR Portal').order, getCategoryStyle('Contacts').order);
+  assert.equal(getCategoryStyle('SOP for handling investor grievance').order, getCategoryStyle('Contacts').order);
+});

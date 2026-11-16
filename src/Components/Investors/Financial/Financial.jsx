@@ -2,12 +2,15 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import { client } from '../../../api/contentful.js';
 import { FaRegFileAlt } from 'react-icons/fa';
 import { Link, useSearchParams } from 'react-router-dom';
+import { FiArrowUpRight, FiArrowLeft, FiChevronLeft, FiChevronRight, FiGrid } from 'react-icons/fi';
+import { LuVote } from 'react-icons/lu';
 import {
-  FiArrowUpRight, FiArrowLeft, FiChevronLeft, FiChevronRight,
-  FiMonitor, FiUsers, FiPieChart, FiShield, FiBarChart2, FiFileText,
-  FiBookOpen, FiClipboard, FiCalendar, FiInfo, FiMail, FiBriefcase,
-  FiBell, FiCreditCard, FiGrid,
-} from 'react-icons/fi';
+  TbDeviceDesktopSearch, TbUserShield, TbChartPie, TbShieldCheck,
+  TbChartBar, TbAffiliate, TbReportAnalytics, TbFileSearch,
+  TbFileCertificate, TbUserScan, TbBuildingCommunity, TbSitemap,
+  TbCalendarEvent, TbSpeakerphone, TbChartCandle, TbBook2,
+  TbBuildingBank, TbAddressBook, TbScale, TbHeadset, TbFiles,
+} from 'react-icons/tb';
 import { groupFinancialReports } from './financialPeriods.js';
 import { categoryKey, getDocumentDate, loadFinancialReports } from './financialData.js';
 import { buildFinancialCatalog, resolveFinancialView } from './financialCatalog.js';
@@ -15,16 +18,33 @@ import './Financial.css';
 
 const QUARTERS = ['Apr – Jun', 'Jul – Sep', 'Oct – Dec', 'Jan – Mar'];
 const CATEGORY_ICONS = {
-  disclosure: FiMonitor, governance: FiUsers, shareholding: FiPieChart,
-  compliance: FiShield, results: FiBarChart2, related: FiUsers,
-  annual: FiBookOpen, filing: FiClipboard, shareholders: FiInfo,
-  subsidiary: FiBriefcase, board: FiUsers, meeting: FiCalendar,
-  announcement: FiBell, policies: FiShield, deposit: FiCreditCard,
-  contact: FiMail, documents: FiFileText,
+  disclosure: TbDeviceDesktopSearch,
+  governance: TbUserShield,
+  shareholding: TbChartPie,
+  compliance: TbFileCertificate,
+  results: TbChartBar,
+  related: TbAffiliate,
+  annual: TbReportAnalytics,
+  'filing-extract': TbFileSearch,
+  'filing-return': TbFileCertificate,
+  shareholders: TbUserScan,
+  subsidiary: TbBuildingCommunity,
+  board: TbSitemap,
+  meeting: TbCalendarEvent,
+  ballot: LuVote,
+  announcement: TbSpeakerphone,
+  exchange: TbChartCandle,
+  charter: TbBook2,
+  policies: TbShieldCheck,
+  deposit: TbBuildingBank,
+  contact: TbAddressBook,
+  disputes: TbScale,
+  grievance: TbHeadset,
+  documents: TbFiles,
 };
 const categoryHref = (key) => `?category=${encodeURIComponent(key)}`;
 const renderCategoryIcon = (name) => {
-  const Icon = CATEGORY_ICONS[name] || FiFileText;
+  const Icon = CATEGORY_ICONS[name] || TbFiles;
   return <Icon aria-hidden="true" />;
 };
 
