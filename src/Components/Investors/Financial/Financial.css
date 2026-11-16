@@ -1,5 +1,6 @@
 /* ============================================================
-   Financial page — Milk Food style year-grouped filtration
+   Financial page — simple Milk Food style:
+   Category pills + Year-grouped table (no search / no filters)
    in Jagatjit brand style (black + gold #ECA533)
    ============================================================ */
 
@@ -36,178 +37,53 @@
   padding-bottom: 80px;
 }
 
-/* ---------------- Filter Panel ---------------- */
+/* ---------------- Category Pills ---------------- */
 
-.fin-filter-panel {
-  background-color: var(--fin-panel);
-  border: 1px solid var(--fin-border);
-  border-radius: 12px;
-  padding: 22px 24px;
+.fin-cat-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
   margin-bottom: 28px;
 }
 
-.fin-filter-top {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.fin-search {
-  position: relative;
-  flex: 1 1 280px;
-  display: flex;
-  align-items: center;
-}
-
-.fin-search-icon {
-  position: absolute;
-  left: 14px;
-  color: var(--fin-gold);
-  font-size: 20px;
-  pointer-events: none;
-}
-
-.fin-search-input {
-  width: 100%;
-  background-color: var(--fin-panel-2);
-  border: 1px solid var(--fin-border);
-  border-radius: 8px;
-  color: var(--fin-text);
+.fin-cat-label {
+  color: var(--fin-muted);
   font-family: 'Josefin Sans', sans-serif;
   font-size: 16px;
-  padding: 11px 40px 11px 44px;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.fin-search-input::placeholder {
-  color: var(--fin-muted);
-}
-
-.fin-search-input:focus {
-  border-color: var(--fin-gold);
-  box-shadow: 0 0 0 3px rgba(236, 165, 51, 0.18);
-}
-
-.fin-search-clear {
-  position: absolute;
-  right: 10px;
-  background: none;
-  border: none;
-  color: var(--fin-muted);
-  font-size: 20px;
-  line-height: 1;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 4px;
-}
-
-.fin-search-clear:hover {
-  color: var(--fin-gold);
-}
-
-.fin-category-select {
-  flex: 0 1 240px;
-  background-color: var(--fin-panel-2);
-  border: 1px solid var(--fin-border);
-  border-radius: 8px;
-  color: var(--fin-text);
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 16px;
-  padding: 11px 14px;
-  outline: none;
-  cursor: pointer;
-  transition: border-color 0.2s ease;
-}
-
-.fin-category-select:focus {
-  border-color: var(--fin-gold);
-}
-
-.fin-clear-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: transparent;
-  border: 1px solid var(--fin-border);
-  border-radius: 8px;
-  color: var(--fin-gold);
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 15px;
-  padding: 10px 18px;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
-}
-
-.fin-clear-btn:hover:not(:disabled) {
-  background-color: var(--fin-gold);
-  color: #000;
-}
-
-.fin-clear-btn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-/* Year pills */
-
-.fin-year-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 18px;
-  flex-wrap: wrap;
-}
-
-.fin-year-label {
-  color: var(--fin-muted);
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 15px;
   letter-spacing: 0.5px;
   white-space: nowrap;
 }
 
-.fin-year-pills {
+.fin-pills {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
 
-.fin-year-pill {
+.fin-pill {
   background: transparent;
   border: 1px solid var(--fin-border);
   border-radius: 999px;
   color: var(--fin-text);
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 15px;
-  padding: 7px 18px;
+  font-size: 17px;
+  min-height: 46px;
+  padding: 10px 22px;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-.fin-year-pill:hover {
+.fin-pill:hover {
   border-color: var(--fin-gold);
   color: var(--fin-gold);
 }
 
-.fin-year-pill.active {
+.fin-pill.active {
   background-color: var(--fin-gold);
   border-color: var(--fin-gold);
   color: #000;
   font-weight: 600;
-}
-
-.fin-result-count {
-  margin-top: 16px;
-  color: var(--fin-muted);
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 15px;
-}
-
-.fin-result-count strong {
-  color: var(--fin-gold);
 }
 
 .fin-sample-note {
@@ -274,7 +150,7 @@
 .fin-empty p {
   color: var(--fin-muted);
   font-family: 'Josefin Sans', sans-serif;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
 }
 
 /* ---------------- Year-grouped Table ---------------- */
@@ -289,7 +165,7 @@
 .fin-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 640px;
+  min-width: 560px;
 }
 
 .fin-table thead th {
@@ -381,17 +257,6 @@
   font-size: 14px;
 }
 
-.fin-cat-badge {
-  display: inline-block;
-  border: 1px solid var(--fin-border);
-  border-radius: 999px;
-  color: var(--fin-text);
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 13px;
-  padding: 4px 12px;
-  white-space: nowrap;
-}
-
 .fin-date {
   color: var(--fin-muted);
   font-family: 'Josefin Sans', sans-serif;
@@ -404,6 +269,12 @@
 }
 
 .fin-view-btn {
+  background: transparent;
+  border: 1px solid var(--fin-border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  min-height: 44px;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -417,39 +288,26 @@
 /* ---------------- Responsive ---------------- */
 
 @media (max-width: 767px) {
-  .fin-filter-panel {
-    padding: 18px;
-  }
-
-  .fin-filter-top {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .fin-category-select {
-    flex: 1 1 auto;
-  }
-
-  .fin-clear-btn {
-    justify-content: center;
-  }
-
-  .fin-year-pills {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 6px;
+  .fin-pills {
+    flex-wrap: wrap;
     max-width: 100%;
   }
 
-  .fin-year-pill {
+  .fin-pill {
     flex-shrink: 0;
   }
 
   .fin-table {
-    min-width: 560px;
+    min-width: 520px;
   }
 
   .fin-doc-name {
     font-size: 15px;
   }
+}
+
+.fin-pill:focus-visible,
+.fin-view-btn:focus-visible {
+  outline: 3px solid var(--fin-gold);
+  outline-offset: 4px;
 }

@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { client } from '../../../api/contentful.js';
-import { IoIosSearch } from "react-icons/io";
-import { IoClose } from "react-icons/io5";
 import { FaFilePdf } from "react-icons/fa";
 import { FiEye } from "react-icons/fi";
 import samplePdf from '../../../Assets/Files/Quarterly Results - December, 2024.pdf';
@@ -25,9 +23,7 @@ const Financial = () => {
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
   const [usingSample, setUsingSample] = useState(false);
-  const [search, setSearch] = useState('');
-  const [activeYear, setActiveYear] = useState('all');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState(''); // '' means All
 
   const parseRichText = (node) => {
     if (!node) return '';
@@ -89,33 +85,15 @@ const Financial = () => {
     return isNaN(year) ? 'Other' : year;
   };
 
-  // Unique years (descending) for the year pills
-  const years = useMemo(() => {
-    const unique = [...new Set(reports.map(getYear))];
-    return unique.sort((a, b) => {
-      if (a === 'Other') return 1;
-      if (b === 'Other') return -1;
-      return b - a;
-    });
-  }, [reports]);
-
-  // Unique categories for the dropdown
+  // Unique categories for the pills
   const categories = useMemo(() => {
     return [...new Set(reports.map((r) => r.category_name).filter(Boolean))].sort();
   }, [reports]);
 
-  // Apply search + year + category filters
+  // Filter by selected category pill only (kept simple for easy use)
   const filteredReports = useMemo(() => {
-    const term = search.trim().toLowerCase();
-    return reports.filter((report) => {
-      const matchesSearch = !term ||
-        (report.file_name || '').toLowerCase().includes(term) ||
-        (report.file_description || '').toLowerCase().includes(term);
-      const matchesYear = activeYear === 'all' || String(getYear(report)) === String(activeYear);
-      const matchesCategory = !category || report.category_name === category;
-      return matchesSearch && matchesYear && matchesCategory;
-    });
-  }, [reports, search, activeYear, category]);
+    return reports.filter((report) => !category || report.category_name === category);
+  }, [reports, category]);
 
   // Group filtered reports by year (Milk Food style), newest year first
   const groupedReports = useMemo(() => {
@@ -137,14 +115,6 @@ const Financial = () => {
       }));
   }, [filteredReports]);
 
-  const hasActiveFilters = search.trim() !== '' || activeYear !== 'all' || category !== '';
-
-  const clearFilters = () => {
-    setSearch('');
-    setActiveYear('all');
-    setCategory('');
-  };
-
   const formatDate = (value) => {
     const date = new Date(value);
     if (isNaN(date)) return '—';
@@ -153,11 +123,14 @@ const Financial = () => {
 
   const handleReportClick = (report) => {
     if (report.file_url) {
-      window.open(report.file_url, '_blank'); // Directly open the file URL in a new tab
+      window.open(report.file_url, '_blank', 'noopener,noreferrer'); // Directly open the file URL in a new tab
     } else if (report.html_content) {
       const newWindow = window.open('', '_blank');
-      newWindow.document.write(report.html_content);
-      newWindow.document.close();
+      if (newWindow) {
+        newWindow.opener = null;
+        newWindow.document.write(report.html_content);
+        newWindow.document.close();
+      }
     }
   };
 
@@ -169,71 +142,29 @@ const Financial = () => {
       </div>
 
       <div className="container fin-section">
-        {/* ---------- Filter Panel ---------- */}
-        <div className="fin-filter-panel">
-          <div className="fin-filter-top">
-            <div className="fin-search">
-              <IoIosSearch className="fin-search-icon" />
-              <input
-                type="text"
-                className="fin-search-input"
-                placeholder="Search documents..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              {search && (
-                <button type="button" className="fin-search-clear" onClick={() => setSearch('')} aria-label="Clear search">
-                  <IoClose />
-                </button>
-              )}
-            </div>
-
-            <select
-              className="fin-category-select"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value="">All Categories</option>
-              {categories.map((cat) => (
-                <option key={cat} value={cat}>{cat}</option>
-              ))}
-            </select>
-
+        {/* ---------- Category Pills (simple, Milk Food style) ---------- */}
+        <div className="fin-cat-row">
+          <span className="fin-cat-label">Category:</span>
+          <div className="fin-pills">
             <button
               type="button"
-              className="fin-clear-btn"
-              onClick={clearFilters}
-              disabled={!hasActiveFilters}
+              className={`fin-pill ${category === '' ? 'active' : ''}`}
+              aria-pressed={category === ''}
+              onClick={() => setCategory('')}
             >
-              <IoClose /> Clear
+              All
             </button>
-          </div>
-
-          <div className="fin-year-row">
-            <span className="fin-year-label">Filter by Year:</span>
-            <div className="fin-year-pills">
+            {categories.map((cat) => (
               <button
+                key={cat}
                 type="button"
-                className={`fin-year-pill ${activeYear === 'all' ? 'active' : ''}`}
-                onClick={() => setActiveYear('all')}
+                className={`fin-pill ${category === cat ? 'active' : ''}`}
+                aria-pressed={category === cat}
+                onClick={() => setCategory(cat)}
               >
-                All Years
+                {cat}
               </button>
-              {years.map((year) => (
-                <button
-                  key={year}
-                  type="button"
-                  className={`fin-year-pill ${String(activeYear) === String(year) ? 'active' : ''}`}
-                  onClick={() => setActiveYear(year)}
-                >
-                  {year}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="fin-result-count">
-            Showing <strong>{filteredReports.length}</strong> of <strong>{reports.length}</strong> documents
+            ))}
           </div>
         </div>
 
@@ -244,7 +175,7 @@ const Financial = () => {
           </p>
         )}
 
-        {/* ---------- Results ---------- */}
+        {/* ---------- Results: Year-grouped Table ---------- */}
         {loading ? (
           <div className="fin-loading">
             <span className="fin-spinner"></span>
@@ -256,16 +187,15 @@ const Financial = () => {
               <thead>
                 <tr>
                   <th>Document</th>
-                  <th>Category</th>
                   <th>Date</th>
-                  <th></th>
+                  <th scope="col">View</th>
                 </tr>
               </thead>
               <tbody>
                 {groupedReports.map((group) => (
                   <React.Fragment key={group.year}>
                     <tr className="fin-year-row-header">
-                      <td colSpan="4">
+                      <td colSpan="3">
                         <span className="fin-year-badge">{group.year}</span>
                         <span className="fin-year-count">
                           {group.items.length} {group.items.length === 1 ? 'document' : 'documents'}
@@ -287,12 +217,17 @@ const Financial = () => {
                             )}
                           </span>
                         </td>
-                        <td>
-                          <span className="fin-cat-badge">{report.category_name || 'General'}</span>
-                        </td>
                         <td className="fin-date">{formatDate(report.file_date)}</td>
                         <td className="fin-action">
-                          <span className="fin-view-btn"><FiEye /> View</span>
+                          <button
+                            type="button"
+                            className="fin-view-btn"
+                            aria-label={`View ${report.file_name}`}
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              handleReportClick(report);
+                            }}
+                          ><FiEye aria-hidden="true" /> View</button>
                         </td>
                       </tr>
                     ))}
@@ -305,9 +240,9 @@ const Financial = () => {
           <div className="fin-empty">
             <FaFilePdf className="fin-empty-icon" />
             <h3>No documents found</h3>
-            <p>Try adjusting your search or filters.</p>
-            <button type="button" className="fin-clear-btn" onClick={clearFilters}>
-              <IoClose /> Clear Filters
+            <p>No documents are available in this category yet.</p>
+            <button type="button" className="fin-pill active" onClick={() => setCategory('')}>
+              View All Documents
             </button>
           </div>
         )}
