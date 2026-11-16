@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { client } from '../../../api/contentful.js';
 import { FaFilePdf } from "react-icons/fa";
-import { FiEye } from "react-icons/fi";
+import { groupFinancialReports } from './financialPeriods.js';
 import samplePdf from '../../../Assets/Files/Quarterly Results - December, 2024.pdf';
 import "./Financial.css";
 
@@ -19,22 +19,23 @@ const SAMPLE_REPORTS = [
   { file_name: 'Annual Report 2022-23', category_name: 'Annual Reports', file_description: 'Audited annual report for FY 2022-23', file_date: '2023-03-31', file_url: samplePdf, html_content: '', created_at: '2023-03-31T00:00:00Z' },
 ];
 
+const parseRichText = (node) => {
+  if (!node) return '';
+  if (node.nodeType === 'text') {
+    return node.value;
+  }
+  if (node.content && Array.isArray(node.content)) {
+    return node.content.map(parseRichText).join('');
+  }
+  return '';
+};
+
 const Financial = () => {
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
   const [usingSample, setUsingSample] = useState(false);
   const [category, setCategory] = useState(''); // '' means All
 
-  const parseRichText = (node) => {
-    if (!node) return '';
-    if (node.nodeType === 'text') {
-      return node.value;
-    }
-    if (node.content && Array.isArray(node.content)) {
-      return node.content.map(parseRichText).join('');
-    }
-    return '';
-  };
 
   useEffect(() => {
     const fetchAllEntries = async () => {
@@ -80,11 +81,6 @@ const Financial = () => {
     fetchAllEntries();
   }, []);
 
-  const getYear = (report) => {
-    const year = new Date(report.file_date).getFullYear();
-    return isNaN(year) ? 'Other' : year;
-  };
-
   // Unique categories for the pills
   const categories = useMemo(() => {
     return [...new Set(reports.map((r) => r.category_name).filter(Boolean))].sort();
@@ -95,31 +91,7 @@ const Financial = () => {
     return reports.filter((report) => !category || report.category_name === category);
   }, [reports, category]);
 
-  // Group filtered reports by year (Milk Food style), newest year first
-  const groupedReports = useMemo(() => {
-    const groups = new Map();
-    filteredReports.forEach((report) => {
-      const year = getYear(report);
-      if (!groups.has(year)) groups.set(year, []);
-      groups.get(year).push(report);
-    });
-    return [...groups.entries()]
-      .sort((a, b) => {
-        if (a[0] === 'Other') return 1;
-        if (b[0] === 'Other') return -1;
-        return b[0] - a[0];
-      })
-      .map(([year, items]) => ({
-        year,
-        items: items.sort((a, b) => new Date(b.file_date) - new Date(a.file_date)),
-      }));
-  }, [filteredReports]);
-
-  const formatDate = (value) => {
-    const date = new Date(value);
-    if (isNaN(date)) return '—';
-    return date.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
-  };
+  const groupedReports = useMemo(() => groupFinancialReports(filteredReports), [filteredReports]);
 
   const handleReportClick = (report) => {
     if (report.file_url) {
@@ -132,6 +104,23 @@ const Financial = () => {
         newWindow.document.close();
       }
     }
+  };
+
+  const renderDocument = (report, index) => {
+    const available = Boolean(report.file_url || report.html_content);
+    return (
+      <button
+        key={report.id || `${report.file_name}-${index}`}
+        type="button"
+        className="fin-document-link"
+        onClick={() => handleReportClick(report)}
+        disabled={!available}
+        aria-label={`${available ? 'Open' : 'Unavailable'}: ${report.file_name}${available ? ' (new tab)' : ''}`}
+      >
+        <FaFilePdf aria-hidden="true" />
+        <span>{report.file_name || 'View document'}{!available && ' — Unavailable'}</span>
+      </button>
+    );
   };
 
   return (
@@ -182,59 +171,59 @@ const Financial = () => {
             <p>Loading documents...</p>
           </div>
         ) : filteredReports.length > 0 ? (
-          <div className="fin-table-wrap">
-            <table className="fin-table">
-              <thead>
-                <tr>
-                  <th>Document</th>
-                  <th>Date</th>
-                  <th scope="col">View</th>
-                </tr>
-              </thead>
-              <tbody>
-                {groupedReports.map((group) => (
-                  <React.Fragment key={group.year}>
-                    <tr className="fin-year-row-header">
-                      <td colSpan="3">
-                        <span className="fin-year-badge">{group.year}</span>
-                        <span className="fin-year-count">
-                          {group.items.length} {group.items.length === 1 ? 'document' : 'documents'}
-                        </span>
-                      </td>
-                    </tr>
-                    {group.items.map((report, idx) => (
-                      <tr
-                        key={`${group.year}-${idx}`}
-                        className="fin-doc-row"
-                        onClick={() => handleReportClick(report)}
-                      >
-                        <td className="fin-doc-cell">
-                          <span className="fin-doc-icon"><FaFilePdf /></span>
-                          <span className="fin-doc-meta">
-                            <span className="fin-doc-name">{report.file_name}</span>
-                            {report.file_description && (
-                              <span className="fin-doc-desc">{report.file_description}</span>
-                            )}
-                          </span>
-                        </td>
-                        <td className="fin-date">{formatDate(report.file_date)}</td>
-                        <td className="fin-action">
-                          <button
-                            type="button"
-                            className="fin-view-btn"
-                            aria-label={`View ${report.file_name}`}
-                            onClick={(event) => {
-                              event.stopPropagation();
-                              handleReportClick(report);
-                            }}
-                          ><FiEye aria-hidden="true" /> View</button>
-                        </td>
+          <div className="fin-results" aria-live="polite">
+            <div className="fin-table-heading">
+              <h2>{category || 'All Documents'}</h2>
+              <p>Select a document to open it in a new tab.</p>
+            </div>
+            {groupedReports.quarterly.length > 0 && (
+              <section aria-label="Quarterly documents">
+                <h3 className="fin-table-title">Quarterly Documents</h3>
+                <p className="fin-table-help" id="fin-quarter-help">Financial year: April to March. A dash means no document is listed.</p>
+                <div className="fin-table-wrap" role="region" aria-label="Quarterly documents table, scroll horizontally on small screens" tabIndex={0}>
+                  <table className="fin-table fin-quarter-table" aria-describedby="fin-quarter-help">
+                    <caption className="fin-sr-only">Documents by financial year and quarter</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Financial Year</th>
+                        {['Apr – Jun', 'Jul – Sep', 'Oct – Dec', 'Jan – Mar'].map((months, index) => (
+                          <th scope="col" key={months}>Q{index + 1}<span className="fin-quarter-months">{months}</span></th>
+                        ))}
                       </tr>
-                    ))}
-                  </React.Fragment>
-                ))}
-              </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                      {groupedReports.quarterly.map((group) => (
+                        <tr key={group.year}>
+                          <th scope="row">{group.year}</th>
+                          {group.quarters.map((items, index) => (
+                            <td key={index}>{items.length ? <div className="fin-document-list">{items.map(renderDocument)}</div> : <span className="fin-unavailable" aria-label="No document listed">—</span>}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            )}
+            {groupedReports.documents.length > 0 && (
+              <section aria-label="Other documents">
+                {groupedReports.quarterly.length > 0 && <h3 className="fin-table-title">Other Documents</h3>}
+                <div className="fin-table-wrap" role="region" aria-label="Documents by year" tabIndex={0}>
+                  <table className="fin-table fin-annual-table">
+                    <caption className="fin-sr-only">Annual and other documents grouped by year or stated financial year</caption>
+                    <thead><tr><th scope="col">Year</th><th scope="col">Documents</th></tr></thead>
+                    <tbody>
+                      {groupedReports.documents.map((group) => (
+                        <tr key={group.year}>
+                          <th scope="row">{group.year}</th>
+                          <td><div className="fin-document-list">{group.items.map(renderDocument)}</div></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            )}
           </div>
         ) : (
           <div className="fin-empty">

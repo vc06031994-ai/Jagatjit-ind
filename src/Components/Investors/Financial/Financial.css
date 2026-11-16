@@ -153,161 +153,93 @@
   margin: 0 0 14px;
 }
 
-/* ---------------- Year-grouped Table ---------------- */
+/* Financial year × quarter matrix. Keep native table cell layout. */
+.fin-results {
+  font-family: Arial, sans-serif;
+  color: var(--fin-text);
+}
+
+.fin-table-heading { margin-bottom: 28px; }
+.fin-table-heading h2 { font-size: 26px; color: var(--fin-gold); margin-bottom: 10px; }
+.fin-table-heading p, .fin-table-help { color: #ccc; font-size: 16px; line-height: 1.6; }
+.fin-table-title { color: #fff; font-size: 20px; margin: 24px 0 12px; }
+.fin-results section + section { margin-top: 36px; }
 
 .fin-table-wrap {
   overflow-x: auto;
   border: 1px solid var(--fin-border);
-  border-radius: 12px;
-  background-color: var(--fin-panel);
+  border-radius: 8px;
+  background: var(--fin-panel);
 }
-
 .fin-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 560px;
+  table-layout: fixed;
+  margin: 0;
+  color: #fff;
+  font-size: 17px;
 }
-
-.fin-table thead th {
+.fin-quarter-table { min-width: 800px; }
+.fin-table th, .fin-table td {
+  padding: 22px 18px;
+  border-right: 1px solid var(--fin-border);
+  border-bottom: 1px solid var(--fin-border);
+  vertical-align: top;
   text-align: left;
-  color: var(--fin-gold);
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--fin-border);
-  background-color: var(--fin-panel-2);
+  line-height: 1.55;
 }
-
-.fin-year-row-header td {
-  background-color: rgba(236, 165, 51, 0.08);
-  padding: 12px 20px;
-  border-bottom: 1px solid var(--fin-border);
-}
-
-.fin-year-badge {
-  color: var(--fin-gold);
-  font-family: 'TradeGothicLT', 'Josefin Sans', sans-serif;
-  font-size: 22px;
+.fin-table th:last-child, .fin-table td:last-child { border-right: 0; }
+.fin-table tbody tr:last-child > * { border-bottom: 0; }
+.fin-table thead th {
+  color: #080808;
+  background: var(--fin-gold);
   font-weight: 700;
-  letter-spacing: 1px;
-  margin-right: 12px;
-}
-
-.fin-year-count {
-  color: var(--fin-muted);
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 14px;
-}
-
-.fin-doc-row {
-  cursor: pointer;
-  transition: background-color 0.15s ease;
-}
-
-.fin-doc-row:hover {
-  background-color: rgba(236, 165, 51, 0.06);
-}
-
-.fin-doc-row td {
-  padding: 16px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: 18px;
   vertical-align: middle;
 }
-
-.fin-doc-row:last-child td {
-  border-bottom: none;
-}
-
-.fin-doc-cell {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.fin-doc-icon {
+.fin-table th:first-child { width: 160px; }
+.fin-table tbody th {
   color: var(--fin-gold);
-  font-size: 30px;
-  flex-shrink: 0;
-  display: flex;
-}
-
-.fin-doc-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.fin-doc-name {
-  color: var(--fin-text);
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 17px;
-  font-weight: 600;
-}
-
-.fin-doc-row:hover .fin-doc-name {
-  color: var(--fin-gold);
-}
-
-.fin-doc-desc {
-  color: var(--fin-muted);
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 14px;
-}
-
-.fin-date {
-  color: var(--fin-muted);
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 15px;
+  background: rgba(236, 165, 51, .06);
+  font-size: 18px;
   white-space: nowrap;
 }
-
-.fin-action {
-  text-align: right;
-}
-
-.fin-view-btn {
-  background: transparent;
-  border: 1px solid var(--fin-border);
-  border-radius: 6px;
-  padding: 10px 14px;
+.fin-table tbody tr:nth-child(even) td { background: rgba(255, 255, 255, .025); }
+.fin-quarter-months { display: block; font-size: 15px; font-weight: 400; margin-top: 4px; }
+.fin-document-list { display: flex; flex-direction: column; gap: 12px; }
+.fin-document-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 0;
   min-height: 44px;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--fin-gold);
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
-
-/* ---------------- Responsive ---------------- */
-
-@media (max-width: 767px) {
-  .fin-pills {
-    flex-wrap: wrap;
-    max-width: 100%;
-  }
-
-  .fin-pill {
-    flex-shrink: 0;
-  }
-
-  .fin-table {
-    min-width: 520px;
-  }
-
-  .fin-doc-name {
-    font-size: 15px;
-  }
-}
-
-.fin-pill:focus-visible,
-.fin-view-btn:focus-visible {
+.fin-document-link svg { flex-shrink: 0; color: var(--fin-gold); margin-top: 4px; font-size: 20px; }
+.fin-document-link:hover { color: var(--fin-gold); }
+.fin-document-link:hover span { text-decoration: underline; text-underline-offset: 4px; }
+.fin-document-link:disabled { color: #aaa; cursor: default; }
+.fin-document-link:disabled span { text-decoration: none; }
+.fin-document-link + .fin-document-link { border-top: 1px solid rgba(255, 255, 255, .1); padding-top: 16px; }
+.fin-unavailable { display: block; color: #aaa; padding: 8px 0; }
+.fin-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.fin-pill:focus-visible, .fin-document-link:focus-visible, .fin-table-wrap:focus-visible {
   outline: 3px solid var(--fin-gold);
   outline-offset: 4px;
+}
+@media (max-width: 767px) {
+  .fin-pills { max-width: 100%; }
+  .fin-table th, .fin-table td { padding: 16px 12px; }
+  .fin-annual-table th:first-child { width: 100px; }
+  .fin-annual-table tbody th { font-size: 16px; }
+  .fin-table-heading h2 { font-size: 23px; }
 }
