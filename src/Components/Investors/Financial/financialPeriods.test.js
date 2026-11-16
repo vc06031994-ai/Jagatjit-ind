@@ -76,3 +76,34 @@ test('conflicting quarters stay visible in other documents, not a wrong cell', (
   assert.equal(groups.quarterly.length, 0);
   assert.equal(groups.documents[0].items.length, 1);
 });
+
+test('dotted reporting dates in descriptions populate all four fiscal quarters', () => {
+  const reports = ['30.06.2025', '30.09.2025', '31.12.2025', '31.03.2026'].map((date) => report('Quarterly Financial Results', {
+    file_description: `Quarter ended ${date}.`,
+    file_date: '2026-08-10',
+  }));
+  const descriptions = reports.map((item) => item.file_description);
+  const groups = groupFinancialReports(reports);
+  assert.equal(groups.quarterly.length, 1);
+  assert.equal(groups.quarterly[0].year, '2025-26');
+  groups.quarterly[0].quarters.forEach((items, index) => assert.deepEqual(items, [reports[index]]));
+  assert.equal(groups.documents.length, 0);
+  assert.deepEqual(reports.map((item) => item.file_description), descriptions);
+  assert.ok(reports.every((item) => item.file_date === '2026-08-10'));
+});
+
+test('description date formats retain equivalent grouping after the dotted-date fix', () => {
+  for (const date of ['30.06.2025', '30/06/2025', '30-06-2025', '2025-06-30', '30 June 2025', '30 Jun. 2025']) {
+    for (const phrase of ['Quarter ended', 'Quarter ending on']) {
+      assert.deepEqual(getReportPeriod(report('Quarterly Financial Results', {
+        file_description: `${phrase} ${date}. Published on 10.08.2025.`,
+      })), { year: '2025-26', sortYear: 2025, quarter: 1 }, `${phrase} ${date}`);
+    }
+  }
+});
+
+test('invalid and unrelated dotted description dates do not imply a reporting quarter', () => {
+  for (const description of ['Quarter ended 31.06.2025.', 'Quarter ended 29.02.2025.', 'Uploaded on 30.06.2025.', 'Quarter ended. Published on 10.08.2025.']) {
+    assert.equal(getReportPeriod(report('Quarterly Financial Results', { file_description: description })).quarter, null, description);
+  }
+});

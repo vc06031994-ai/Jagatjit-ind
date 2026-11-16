@@ -48,7 +48,12 @@ export function getReportPeriod(report) {
   const kind = getReportKind(report);
   const fiscal = fiscalYear(title) ?? (/\b(?:FY|financial year)\b/i.test(description) ? fiscalYear(description) : null);
   // Only a clearly described reporting period may be taken from a description.
-  const describedPeriod = description.match(/quarter\s+(?:ended|ending)\b[^.;]*(?:\.[^.;]*)?/i)?.[0] || '';
+  // Normalise date punctuation only in a parsing copy, so 30.06.2025 and
+  // Jun. 2025 survive sentence splitting. Never borrow a later publication date.
+  const periodDescription = description
+    .replace(/(\d)\.(?=\d)/g, '$1/')
+    .replace(/\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\.(?=\s+\d)/gi, '$1');
+  const describedPeriod = periodDescription.match(/quarter\s+(?:ended|ending)\b[^.;]*/i)?.[0] || '';
   const period = reportingDate(title) || reportingDate(describedPeriod);
   const statedQuarter = explicitQuarter(title) || explicitQuarter(description);
   const datedQuarter = period ? Math.floor(((period.month + 9) % 12) / 3) + 1 : null;
