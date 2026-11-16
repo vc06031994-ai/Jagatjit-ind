@@ -1,0 +1,138 @@
+
+.value-hero-wrapper{
+  background-image: url("../../../Assets/AboutUs//Values/bg-value-2.png");
+  background-repeat: no-repeat;
+  background-position: top;
+  height: 85vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* media query for laptop  */
+@media only screen and (min-width: 1024px) and (max-width: 1440px){
+
+
+}
+.valuesfirstDiv{
+  text-align: center;
+  padding-top: 10%;
+}
+.value-hero-content{
+  text-align: center;
+}
+.logosec{
+  padding-bottom: 50px;
+}
+.logoDiv{ 
+  text-align: center;
+  padding: 10%;
+  background-color: #1e1e1e;
+  /* width: 50%; */
+  border-radius: 10px;
+}
+.logoTextDiv{
+ display: grid;
+ grid-template-columns: repeat(3,1fr);
+ gap: 40px;
+}
+.logoTxtHeader{ 
+  color: #ECA533;
+  font-size: 31px;
+  font-family: 'TradeGothicLT';
+  /* font-family: 'Montserrat'; */
+  font-weight: 600;
+  margin-top: 20px;
+}
+/* .img{
+  height: 100px;
+  width: 100px;
+} */
+.logoTxtParagraph{ 
+  font-size: 24px;
+  /* font-family: 'Montserrat'; */
+  margin-top: -10px;
+  font-family: 'TradeGothicLT';
+  line-height: 24px;
+}
+
+
+
+/* @media (max-width:481px)  { 
+  .logoTextDiv{
+      flex-direction: column;
+  }
+  .logoDiv{
+      align-self: center;
+
+  }
+} */
+
+@media (max-width:767px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ 
+  .logoTextDiv{
+      flex-direction: column;
+      padding: 5%;
+      margin-top: -5%;
+  }
+  .logoDiv{
+      align-self: center;
+      width: 100%;
+      /* margin-top: -3%; */
+  }
+
+ 
+  .logoTxtParagraph{
+    font-size: 26px;
+    font-weight: 100;
+  }
+  .logoTxtHeader{
+    font-size: 26px;
+    margin-top: 10px;
+  }
+  /* .img{
+    height: 70px;
+    width: 70px;
+  } */
+  .value-hero-wrapper{
+    height:70vh;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px){
+  .logoTextDiv{
+    grid-template-columns: repeat(2,1fr);
+  }
+
+
+  .hero-section p{
+    font-size: 22px !important;
+  }
+  .products-section p{
+    font-size: 22px !important;
+  }
+  .heritage-section p{
+    font-size: 22px !important;
+  }
+
+  .value-hero-wrapper{
+    height:85vh;
+  }
+}
+@media (max-width:767px){
+  .logoTextDiv{
+    grid-template-columns: repeat(1,1fr);
+  }
+
+ 
+}
+/* New */
+img.valueImg {
+  width: 30%;
+}
+h1.valuetitle {
+  font-size: 20px;
+  padding-bottom: 15px;
+}
+p.valuepara {
+  font-size: 20px;
+}

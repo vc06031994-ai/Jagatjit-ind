@@ -1,0 +1,529 @@
+
+
+.mainVodkaSection {
+  background-color: #010101;
+  margin: 0; 
+}
+.image-container {
+margin: 10%;
+display: flex; /* Use flexbox for responsive layout */
+align-items: center;
+justify-content: space-between; /* Distribute images evenly with space between */
+padding: 20px; /* Add padding to the section */
+}
+
+section:nth-child(4) .image-container {
+  margin-top: 0%;
+  padding: 0;
+}
+section:nth-child(5) .image-container {
+  margin-top: -10%;
+  padding: 0;
+}
+
+.vodka-image {
+width: 40%;
+height: 70vh;
+padding: 10px; 
+padding-top: 1px;
+}
+
+.vodka-imagess {
+padding-right: 10%;
+padding-bottom: 3%;
+}
+
+.split-section {
+/* background-image: url(../../../../Assets/Products/Liquor/Vodka/vodkabg1.png);
+background-size: contain;
+background-repeat: no-repeat;
+background-position: top; */
+display: flex; 
+height: 100vh; 
+margin: 0px;
+}
+
+.split-sections {
+/* background-image: url(../../../../Assets/Products/Liquor/Vodka/vodbg2.png);
+background-size: contain;
+background-repeat: no-repeat;
+background-position: top; */
+display: flex; 
+height: 130vh; 
+margin: 0px;
+}
+
+.split-sectionss {
+/* background-image: url(../../../../Assets/Products/Liquor/Vodka/vodbg3.png);
+background-size: contain;
+background-repeat: no-repeat;
+background-position: top; */
+display: flex; 
+height: 140vh; 
+margin: 0px;
+}
+
+.split-image {
+width: 100%;
+height: 90vh; 
+object-fit: contain; 
+}
+
+.content-container {
+margin-left: -8%;
+flex: 1; /* Take up 50% width (adjust if needed) */
+width: 100%;
+padding-right: 10%; /* Add padding for content */
+display: flex; /* Arrange heading, paragraph, and image vertically */
+flex-direction: column;
+padding-top: 20%;
+color: #fff; /* Text color */
+}
+
+.content-containers {
+flex: 1; /* Take up 50% width (adjust if needed) */
+width: 100%;
+display: flex; /* Arrange heading, paragraph, and image vertically */
+flex-direction: column;
+padding-top: 14%;
+margin-left: 10%;
+margin-right: -8%;
+color: #fff; /* Text color */
+}
+
+.bare-it-all {
+position: relative;
+font-family: 'Krona One';
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+text-transform: capitalize;
+
+}
+
+.info-text {
+  font-family: 'Josefin Sans';
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  line-height: 100%;
+  font-family: 'Light';
+text-align: justify;
+}
+
+.info-image {
+padding-top: 10%; 
+width: 100%; /* Adjust width as needed */
+}
+
+.bite-the-apple{
+font-family: 'Krona One';
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+text-transform: capitalize;
+color: #fff;
+margin-top: 10%;
+}
+
+.full-image-container {
+height: 100vh;
+width: 100vw; /* Use vw for viewport width */
+overflow: hidden; /* Hide any overflowing parts of the image */
+}
+
+.full-image {
+width: 100%; /* Ensure image fills container width */
+height: 100%; /* Ensure image fills container height */
+object-fit: cover; /* Scale image to cover the container */
+}
+
+
+@media (min-width: 992px) and (max-width: 1024px) {
+  .mainVodkaSection > section:first-child {
+    margin-top: 100px;
+    margin-bottom: 40px;
+  }
+
+  .image-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .vodka-image,
+  .container-2 > img {
+    width: calc(100% / 2);
+    height: 50vh;
+  }
+
+  .split-section,
+  .split-sectionss {
+    flex-direction: column;
+    height: auto;
+    margin: 40px 0;
+  }
+
+  .split-sections {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+
+  .content-container,
+  .content-containers {
+    text-align: center;
+    margin: 0;
+    padding: 0 15px;
+  }
+
+  .info-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: unset;
+    padding-top: 5%;
+
+  }
+
+  .split-sectionss > .image-container {
+    margin-top: -15%;
+  }
+  .full-image-container,
+  .full-image {
+    height: auto;
+  }
+ }
+@media (min-width: 768px) and (max-width: 991px) {
+
+  .mainVodkaSection > section:first-child {
+    margin-top: 100px;
+    margin-bottom: 40px;
+  }
+
+  .image-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .vodka-image,
+  .container-2 > img {
+    width: calc(100% / 2);
+    height: 50vh;
+  }
+
+  .split-section,
+  .split-sectionss {
+    flex-direction: column;
+    height: auto;
+    margin: 40px 0;
+  }
+
+  .split-sections {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+
+  .content-container,
+  .content-containers {
+    text-align: center;
+    margin: 0;
+    padding: 0 15px;
+  }
+
+  .info-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+
+  .split-sectionss > .image-container {
+    margin-top: -15%;
+  }
+}
+
+
+@media only screen and (max-width: 767px) {
+
+  .mainVodkaSection {
+    margin-top: 20%;
+  }
+
+  .image-container {
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .vodka-image {
+    width: 75%;
+    height: auto;
+    padding: 0;
+  }
+
+  .vodka-imagess {
+    padding: 0;
+    width: 100%;
+  }
+
+  .container-2 {
+    flex-direction: column-reverse;
+    padding: 50px 0;
+    gap: 40px;
+  }
+
+  .container-2 > img {
+    width: 75%;
+  }
+
+  .container-2 > img:first-child {
+    width: 100%;
+    height: auto;
+  }
+
+  .split-section,
+  .split-sectionss {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .split-image {
+    width: 100%;
+    height: 60vh;
+    object-fit: unset;
+  }
+
+  .content-container,
+  .content-containers {
+    margin: 0;
+    padding: 0;
+  }
+
+  .bare-it-all,
+  .bite-the-apple {
+    font-family: Lobster;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 46.8px;
+    letter-spacing: 0.07em;
+    text-align: center;
+  }
+
+  .info-text {
+    font-family: 'Josefin Sans';
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  line-height: 100%;
+  font-family: 'Light';
+    text-align: center;
+    padding: 0 35px;
+    margin-bottom: 4%;
+  }
+
+  .split-sections {
+    flex-direction: column-reverse;
+    height: auto;
+    margin: 30px 0;
+  }
+
+  .split-sectionss > div:first-child > img {
+    margin-top: -70px;
+  }
+
+  .split-sectionss .info-text {
+    text-align: justify;
+  }
+
+  .full-image {
+    width: 100%;
+    height: auto;
+    object-fit: unset;
+  }
+
+  .full-image-container {
+    height: 30vh;
+    margin-top: 40px;
+  }
+
+  .info-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+
+}
+.vc-sec-1{
+  /* background-image: url('../../../../Assets/Products/Liquor/Vodka/IV_01.jpg'); */
+  background-size: cover;
+  background-position:top center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.vc-sec-2{
+  /* background-image: url('../../../../Assets/Products/Liquor/Vodka/IV_06.jpg'); */
+  background-size: cover;
+  background-position:top center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.vc-sec-3{
+  /* background-image: url('../../../../Assets/Products/Liquor/Vodka/IV_04.png'); */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  background-repeat:no-repeat;
+}
+.vc-sec-4{
+  /* background-image: url('../../../../Assets/Products/Liquor/Vodka/IV_03.png'); */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-repeat:no-repeat;
+}
+
+.vc-sec-5{
+  /* background-image: url('../../../../Assets/Products/Liquor/Vodka/IV_02.jpg'); */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* .vc-sec-3::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(299deg, rgba(0,0,0,1) 44%, rgba(255,255,255,0) 100%);
+  z-index: 0;
+} */
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .vc-sec-1{
+    height: 100vh;
+  }
+  .vc-sec-2{
+    height: 100%;
+  }
+  .vc-sec-3{
+    height: 100%;
+  }
+  .vc-sec-4{
+    height: 100%;
+  }
+  .vc-sec-5{
+    height: 100%;
+  }
+  .glass-section .global-p-2{
+    font-size: 13px !important;
+    margin-top: 10px ;
+  }
+}
+
+@media(max-width:767px){
+  .vc-sec-1{
+    /* background-image:url('../../../../Assets/Products/Liquor/Vodka/IV_01_mobile.jpg') !important; */
+    display:block;
+    height:100vh;
+  }
+  .vc-sec-2{
+    /* background-image: url('../../../../Assets/Products/Liquor/Vodka/IV_06_mobile.jpg') !important; */
+    display: block;
+    height: 100vh;
+  }
+  .vc-sec-3{
+    /* background-image: url('../../../../Assets/Products/Liquor/Vodka/IV_04_mobile.png') !important; */
+    display: block;
+    height:135vh;
+  }
+  .vc-sec-4{
+    /* background-image: url('../../../../Assets/Products/Liquor/Vodka/IV_03_mobile.jpg') !important; */
+    display: block;
+    height:160vh;
+  }
+  .vc-sec-5{
+    /* background-image: url('../../../../Assets/Products/Liquor/Vodka/IV_02_mobile.jpg') !important; */
+    display: block;
+    height:190vh;
+  }
+  .glass-section .global-p-2{
+    font-size: 13px !important;
+    margin-top: 10px ;
+    line-height: 20px;
+    text-align: center !important;
+  }
+  .glass-section {
+    margin-top: 0 !important;
+  }
+  .change-f-color .global-p-2{
+    margin-top: 10px !important;
+    
+  }
+}
+.contentdiv-center{
+  display: grid;
+  place-content: center;
+}
+
+
+
+@media (min-width: 1024px) and (max-width: 1440px){
+  /* .vc-sec-4{
+    height: 100%;
+  }
+  .vc-sec-3{
+    height: 100%;
+  }
+  .vc-sec-5{
+    height: 100%;
+  } */
+  .glass-section .global-p-2{
+    font-size: 14px !important;
+    margin-top: 10px ;
+  }
+}
+.vodka-title{
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+
+}
+.vodka-title h1{
+  color:#010101;
+}
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .glass-section .global-p-2{
+  
+    width:100%; 
+    text-align: center !important;
+    line-height: 20px;
+  }
+}
+.vcacb-glass-sec .global-p-2{
+  text-align: center !important;
+}
+
+.change-f-color .global-p-2{
+  color: #010101 !important;
+} 
+.change-f-color .h1-primery{
+  color: #e59e00 !important;
+}
+
+.change-f-color .custom-img{
+  filter: brightness(0) saturate(100%) invert(72%) sepia(61%) saturate(2723%) hue-rotate(2deg) brightness(91%) contrast(103%);
+}

@@ -1,0 +1,52 @@
+.customline {
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  .customline::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #f0ad4e; /* Yellow color */
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .customline-marker {
+    position: absolute;
+    background-color: #f0ad4e;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    font-size: 16px;
+  }
+  
+  .row .customline-marker {
+    top: 50%;
+  }
+  
+  .customline-content,
+  .customline-image {
+    position: relative;
+    z-index: 2;
+    background-color: #333; /* Dark background */
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+  }
+  
+  .customline-image img {
+    border-radius: 8px;
+  }
+  

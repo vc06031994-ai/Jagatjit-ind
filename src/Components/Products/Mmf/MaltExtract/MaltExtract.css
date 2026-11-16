@@ -1,0 +1,505 @@
+.maltbodySection {
+  width: 100%;
+  background-color: #010101;
+  text-align: center;
+  justify-content: center;
+  margin: 0 auto;
+
+}
+
+.mainimagemalt {
+  overflow: hidden;
+  margin: 0px;
+  background-size: contain;
+  height: 50vh;
+  width: 100%;
+}
+
+
+
+.maltImage {
+  width: 50%;
+  height: 100%;
+}
+
+.maltSectionDiv {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.maltSectionDiv img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  margin: 0px;
+}
+
+.malttexthead {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  margin: 0;
+  font-family: 'WHISKEY Jill';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 120px;
+}
+
+#malt-bg {
+  position: absolute;
+  width: 100%;
+  height: 80vh;
+  /* Using vh for responsive height */
+  top: -170px;
+  background: url(../../../../Assets/Products/Mmf/malt_bg_1.png);
+  /* Assuming image filename is malt_bg_1.png */
+  background-size: cover;
+  /* Ensures image covers the entire element */
+}
+
+/* Malt Food Extract text */
+.malt-text {
+  position: relative;
+  padding-top: 10%;
+  width: 100%;
+  font-family: 'Josefin Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 110.41%;
+  text-align: center;
+  /* Already centered by default */
+  letter-spacing: 0.07em;
+
+  color: #FFFFFF;
+}
+
+.maltcontent-container {
+  width: 100%;
+  /* Adjust container width as needed */
+  /* margin: 0 auto; */
+  /* Center container horizontally */
+  /* padding: 20px; */
+  padding-left: 10%;
+  padding-right: 5%;
+  margin-top: 9%;
+  align-self: center;
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+
+}
+
+.maltcontent-containerone {
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  align-self: center;
+  align-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+/* Malt extract description (all text justified) */
+.malt-description {
+  padding-top: 10%;
+  width: 100%;
+  flex-direction: row;
+  font-family: 'Josefin Sans';
+  font-size: 22px;
+  line-height: 26px;
+  justify-content: center;
+  text-align: justify;
+  /* All text within this element will be justified */
+
+  color: #FFFFFF;
+}
+
+.malt-description p {
+
+  width: 90%;
+  font-family: 'Josefin Sans';
+  font-size: 22px;
+  line-height: 26px;
+  justify-content: center;
+  text-align: justify;
+  /* All text within this element will be justified */
+
+  color: #FFFFFF;
+}
+
+/* Malt extract process (combined description, image, and list) */
+.maltprocess-description {
+  width: 90%;
+  height: 90%;
+  margin-top: 20px;
+  /* Add spacing after description */
+  display: flex;
+  flex-direction: row;
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+  text-align: justify;
+  /* All text within this element will be justified */
+  color: #FFFFFF;
+}
+
+
+
+.maltprocess-description p {
+  width: 90%;
+}
+
+/* Malt extract process list (already justified) */
+.maltprocess-list {
+  width: 60%;
+  margin-top: -20%;
+  margin-left: 10%;
+  margin-right: 20%;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 26px;
+  text-align: left;
+  color: #FFFFFF;
+}
+
+.maltmilling-description {
+  width: 100%;
+}
+
+.maltmilling-descriptionfive {
+  width: 60%;
+}
+
+.maltmilling-descriptionfive img {
+  width: 95%;
+}
+
+
+.maltmilling-description img {
+  width: 70%;
+  height: 100%;
+}
+
+.maltmilling-description h2 {
+  margin-top: 5%;
+  font-size: 3.2rem;
+  text-align: left;
+  font-family: 'Josefin Sans';
+  color: #FFFFFF;
+}
+
+.maltmilling-description p {
+  width: 100%;
+  margin-top: 2%;
+  align-items: left;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: justify;
+  color: #FFFFFF;
+  /* Allow text to grow and shrink */
+}
+
+
+.maltmilling-descriptionlast {
+  width: 100%;
+  margin-top: 2%;
+  align-items: left;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: justify;
+  color: #FFFFFF;
+  /* Allow text to grow and shrink */
+}
+
+.maltImageone {
+  width: 70%;
+  height: 50%;
+  object-fit: contain;
+  margin-left: 15%;
+  margin-right: 10%;
+}
+
+@media (max-width: 768px) {
+
+  .maltcontent-container {
+    width: 100%;
+    /* Adjust container width as needed */
+    /* margin: 0 auto; */
+    /* Center container horizontally */
+    /* padding: 20px; */
+    padding-left: 10%;
+    padding-right: 5%;
+    margin-top: 9%;
+    align-self: center;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .maltcontent-containerone {
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    align-self: center;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .maltprocess-list {
+    width: 100%;
+    margin-top: 10%;
+    font-style: normal;
+    text-align: left;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    color: #FFFFFF;
+  }
+
+  .maltprocess-list li {
+    width: 100%;
+    font-style: normal;
+    text-align: left;
+  }
+
+  .maltprocess-description {
+    width: 100%;
+  }
+
+  .maltmilling-description h2 {
+    margin-top: 5%;
+    font-size: 2rem;
+    text-align: left;
+    font-family: 'Josefin Sans';
+    color: #FFFFFF;
+  }
+
+  .maltmilling-description img {
+    margin-top: 10%;
+    width: 90%;
+    height: 100%;
+  }
+
+  .maltmilling-descriptionlast {
+    margin-top: 10%;
+    margin-bottom: 30%;
+    width: 100%;
+    height: 100%;
+  }
+
+  .maltmilling-descriptionfive {
+    width: 100%;
+  }
+
+  .maltmilling-descriptionfive img {
+    width: 90%;
+  }
+
+  .maltmilling-description p {
+    width: 95%;
+    margin-top: 2%;
+    align-items: left;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: left;
+    color: #FFFFFF;
+    /* Allow text to grow and shrink */
+  }
+
+  .malt-description {
+    padding-top: 10%;
+    margin: 0;
+    width: 100%;
+    flex-direction: row;
+    font-family: 'Josefin Sans';
+    font-size: 16px;
+    line-height: 20px;
+    justify-content: center;
+    text-align: center;
+    /* All text within this element will be justified */
+    color: #FFFFFF;
+  }
+
+  .malt-description p {
+
+    width: 90%;
+    font-family: 'Josefin Sans';
+    font-size: 18px;
+    line-height: 26px;
+    justify-content: center;
+    text-align: center;
+    /* All text within this element will be justified */
+  
+    color: #FFFFFF;
+  }
+  
+
+  .malttexthead {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin: 0;
+    font-family: 'WHISKEY Jill';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+  }
+
+
+
+  .maltprocess-description p {
+    width: 100%;
+    font-size: 18px;
+    text-align: left;
+  }
+}
+
+.malt-hero{
+  position: relative;
+  background-image: url('../../../../Assets/Products/Mmf/malt.jpg') !important;
+  background-position: center;
+  background-size: cover;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width:767px){
+  .malt-hero{
+    height: 50vh;
+  }
+}
+.malt-hero h1{
+  z-index: 1;
+}
+.overlay-01 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with 50% opacity */
+  z-index: 0;
+}
+.malt-hero::before{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(0deg, rgba(0,0,0,1) 39%, rgba(255,255,255,0) 100%);
+  z-index: 0;
+}
+.malt-disc{
+  margin-top: -150px;
+  z-index: 1;
+  position: relative;
+}
+.malt-disc p{
+  font-size: 26px;
+  font-family: 'TradeGothicLT';
+  font-weight: 500;
+  text-align: center;
+}
+.malt-title{
+  font-family: 'WHISKEY Jill' !important;
+  font-weight: 400;
+}
+.malt-item{
+  padding: 80px 0;
+}
+.eath-sec-2{
+  background-image: url('../../../../Assets/Products/Mmf/maltbg02.png');
+  background-size: cover;
+  background-position: center;
+
+}
+.card-bodys{
+ position: relative;
+ z-index: 1;
+}
+.card-bodys::after{
+ content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIMAAAAXCAYAAAAoavwzAAAACXBIWXMAAC4jAAAuIwF4pT92AAAD1UlEQVRoge3aW4hVVRzH8c/cdBrNpjKCsilpNIrCiiKosexm0YUuhOBDUK8ilQVFQmExStFtoKR6iBiiMooiumj1YDYEEpJZSQWB0c1uSF6qccrs4b8PZ53DXDx65hyns78vZ53/3nvt/97rv9b+rf9aTYP9s9SBJZiPR/FeZmvDazgHt+O55Pz5mIl+DNbOzcaieZzrvxdbcHdiO0EEweVYmdhPx5WYjlsS+3lYg6fwUFn9R2FaNR1uZKoVDEfiNpyb2DqwTDT+/Yn9Z3yXlT9K7J9hALvxbGJvRVNSZ4Fr8CO+x5wD8D0no7VK9byISzGEE0UD/YnVuCI7XuAvnIrZ2JjYB3H+MHWvw0J0Kx1JLhT+H4oLsCk5NlkEVU4FVBoMLViEQ9AnGp9ij21W7MXEsH8EtpXVswMbKrjvqmFsj4sRYQgvJPa3xCfoQSyt4B4NT1OFAnKxaARCBPZl5S7cJHrxuir5tj9Mx69Z+TehKXL2kdE0Q4sYztsS21BS3pWUvxW6oJ6BQATASuxUDFpitOoy/oJ5QjPayLBaDLcDit/yJvH93o1XsXe8HawSL2EB3hHPlDMMIwVDixCAk4TgOwx/19CvarNDCM29mCqeLaeMwrDZLRI7BUG5B3dgPW41sQOB0DdfoVceCCPSNNg/a4Z4UR0iqXNnfV2qGRdhLp7GT3X2pV504xn8gptb0ak4NTy2Tk7VmmOEfmjFPJGzaESWKerB15vxuZgW9mmcefmQ4qevWom3g52TRd6nJbENZL/bsL7SPMP/ibNE5nIVfkjsU/BHXTwaP04TSb5JeEDpWtFMEQzbG3nevQGPKA2E5SJ/stbEHTHacYrSTHCXCASYUXb+FmwnT8KUsyD7nSfWTiYa7fgEm5Uu9q3BfXgSd410cR4MpfSKRbZX8GVinyOm2AeTwD5eaL2jE9txOCkrpyvIe4RYXCRWeoelkTXDvjJFvMBpotedUVdvgnZ8IwJhI85Mjq0QM4QVeLuSSvORYWyaFRX41LJjC/EGrqvSvdrK/jfjZZEFTvM/7Tg8K3eWXbMUPSoMhMLNckZnp9ht1YtrE/tk8V2+Cs8rFZwXi2nbw0rfcYfY/XWPaNACnfg0u9eNib0bN2TnLk7sv4sAfALX78czDctEVcy1ZpPSzTPEYt1mMUR/gX+SY8vFXs4esa/zw8y+RAg5YtbyWFaeK6Z/RDAU9n9+jTdxidJVWKLnV9z7RyMPhgOjB2fj4zL7WhEMW5UK0TTtvTUpv48PxC6xtNH/xdVV8nVMcgE5fswWwnNXmf0ysXr6bs09GoP/AHfpu2yDL0h2AAAAAElFTkSuQmCC');
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ color: #eca533;
+ top: 30%;
+ left: 53%;
+ z-index: -1;
+}
+
+.last-card::after{
+ display: none;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+ .card-bodys::after{
+   display: none;
+ }
+ .eath-sec-2 h2{
+  font-size: 35px !important;
+ }
+}
+@media (max-width:767px){
+ .card-bodys::after{
+   display: none;
+ }
+ .eath-sec-2 h2{
+  font-size: 25px !important;
+ }
+}
+
+.eath-sec-2 h2{
+  font-size: 48px;
+  font-family: 'TradeGothicLT';
+}
+/*New*/
+.text-size{
+  font-size: 44px;
+}
+@media (max-width:1280px){
+  .text-malt-food{
+    font-size: 16.72px !important;
+  }
+}
+.malt-stages img.img-fluid {
+  width: 40%;
+}
+h5.malt-stages {
+  font-size: 18px;
+}
+

@@ -1,0 +1,827 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+.royalFirstDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+    height: 100vh;
+}
+
+.royalRowContent {
+    align-self: center;
+    width: 85%;
+}
+
+.royalImgcontent {
+    width: 100%;
+    margin: 0;
+}
+.royalPride3Img{
+    align-items: flex-end;
+    display: block;
+    padding-top: 5%;
+}
+.royalFirstDiv {
+    width: 100%;
+    background-image: url('../../../../Assets/Products/Liquor/RoyalPride/Royal-Pride-01.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.royalFirstDiv > div {
+    padding-left: 70px !important;
+}
+
+.royalImgcontent {
+    width: 50%;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+}
+
+.royalHeading {
+    color: #FFFFFF;
+    font-family: 'TradeGothicLT';
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 0;
+    text-align: left;
+
+}
+
+.animated {
+    opacity: 0;
+    /* Initially hidden */
+    animation: fadeInZoom ease-in-out 1s forwards;
+    animation-delay: 0.1s;
+    /* Add a slight delay for a smoother flow */
+}
+
+@keyframes fadeInZoom {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+        /* Start with a slight zoom out */
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+        /* Zoom back to normal size */
+    }
+}
+
+.royalsecondHeading {
+    color: #ECA533;
+    font-family: "Andika";
+    font-size: calc(20px + 1vw);
+    letter-spacing: 5px;
+    text-align: left;
+    margin-bottom: 35px;
+}
+
+.royalParagraph {
+    color: #FFFFFF;
+    width: 80%;
+    font-family: 'Josefin Sans';
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    font-family: 'Light';
+    text-align: justify;
+}
+
+.royalParagraph span {
+    font-size: 1.5rem;
+    color: #ECA533;
+    font-family: 'Josefin Sans';
+    text-decoration: none;
+    font-family: 'Light';
+}
+
+.royalColumnContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    /* padding-right: 5%; */
+    padding-top: 5%;
+}
+
+.royalSecondDivHeading {
+    /* font-family: 'Lobster', cursive; */
+    font-family: 'Krona One';
+    font-size: calc(30px + 1vw);
+    font-weight: 700;
+    margin-bottom: 0;
+    text-align: right;
+    letter-spacing: 4px;
+    width: 50%;
+}
+
+.royalPrideSecondDivHeading {
+    font-family: 'Krona One';
+    font-size: calc(30px + 1vw);
+    font-weight: 700;
+    margin-bottom: 0;
+    text-align: left;
+    letter-spacing: 4px;
+    padding-right: 5%;
+    margin-bottom: 10%;
+}
+
+.royalthirdDivHeading {
+    /* font-family: 'Lobster', cursive; */
+    font-family: 'Krona One';
+    font-size: calc(30px + 1vw);
+    font-weight: 700;
+    margin-bottom: 0;
+    text-align: right;
+    letter-spacing: 4px;
+    width: 50%;
+}
+
+
+.sectionTwoHeading span {
+    color: #ECA533;
+    font-weight: 400;
+    font-style: normal;
+    font-family: 'WHISKEY Jill' !important;
+    font-size: 80px !important;
+    letter-spacing: 1px !important;
+    line-height: 76px !important;
+    text-decoration: none;
+}
+
+.royalthirdDivLine {
+    font-family: 'Krona One';
+    font-size: calc(30px + 1vw);
+    font-weight: 700;
+    margin-bottom: 0;
+    text-align: center;
+    letter-spacing: 4px;
+    padding-right: 5%;
+    margin-bottom: 10%;
+}
+
+.royalSecondDivParagraph {
+    width: 35%;
+    text-align: right;
+    font-family: 'Josefin Sans';
+    font-family: 'Light';
+    font-size: 24px;
+    letter-spacing: 1px;
+    margin-top: 3%;
+    color: #FFFFFF;
+}
+
+.royalSecondDivParagraph span {
+    /* font-family: 'Josefin Sans'; */
+    font-weight: 100;
+    color: #ECA533;
+    letter-spacing: 1px;
+   font-family: 'TradeGothicLT';
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.royalThirdDivContent {
+    display: flex;
+    flex-direction: column;
+    padding: 10%;
+    padding-right: 0;
+    width: 60%;
+}
+
+.royalcandleimagehide {
+    display: none;
+}
+
+/* //Royal Pride */
+.royalPrideSecondDiv {
+    background-image: url('../../../../Assets/Products/Liquor/RoyalPride/Royal-Pride-02.jpg');
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+@media (max-width:767px){
+    .royalPrideSecondDiv{
+        background-image: url('../../../../Assets/Products/Liquor/RoyalPride/Royal-Pride-02-mobile.jpg');
+    }
+}
+
+.royalPrideThirdDiv {
+    background-image: url('../../../../Assets/Products/Liquor/RoyalPride/Royal-Pride-03.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* aspect-ratio: 16/8.81; */
+    height: 100vh;
+
+}
+
+.royalPrideFourthDiv {
+    background-image: url('../../../../Assets/Products/Liquor/RoyalPride/Royal-Pride-04.jpg');
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    /* aspect-ratio: 16/8.81; */
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+}
+@media (max-width:767px){
+    .royalPrideFourthDiv{
+        background-image: url('../../../../Assets/Products/Liquor/RoyalPride/Royal-Pride-04-mobile.jpg');
+        background-position: center !important;
+        background-size: cover !important;
+    }
+}
+
+.royalprideThirdDivContent {
+    display: flex;
+    flex-direction: row;
+    text-align: justify;
+    align-self: flex-end;
+    /* padding: 10%; */
+}
+
+.royalpridehide {
+    display: none;
+}
+
+.royalcandleimagesingle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    object-fit: cover;
+}
+
+.royalrowdiv {
+    display: flex;
+    width: 100%;
+    margin-top: 10%;
+    gap: 25px;
+    justify-content: space-between;
+    align-self: center;
+    /* align-items: center; */
+}
+
+.icon-4-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.royalimageText {
+    display: grid;
+    grid-template-columns: 20% 50%;
+    align-items: center;
+}
+
+.royallogoimage {
+   margin-left: 5%;
+   margin-right: 5%;
+   align-self: center;
+   width: auto;
+   object-fit: fill;
+}
+
+.royalFourthDiv {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.royalleftArrowDiv {
+    border-color: white;
+    padding: 1%;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-width: 1px;
+    border-style: solid;
+    border-left-color: black;
+    border-top-right-radius: 15%;
+    border-bottom-right-radius: 15%;
+    display: flex;
+    text-align: right;
+}
+
+.royalrightArrowDiv {
+    border-color: white;
+    padding: 1%;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-width: 1px;
+    border-style: solid;
+    border-right-color: black;
+    border-top-left-radius: 15%;
+    border-bottom-left-radius: 15%;
+    display: flex;
+}
+
+.royalarrowHeading {
+    font-size: 21px;
+    margin-bottom: 0%;
+} 
+
+.pre-next-wrap {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    place-self: center;
+}
+
+.pre-next-wrap > .royalrightArrowDiv img, 
+.pre-next-wrap > .royalleftArrowDiv img {
+    margin: 10px !important;
+}
+@media  (max-width: 1440px) {
+
+    .sectionTwoHeading span {
+        line-height: 70px !important;
+        font-size: 70px !important;
+    }
+    .royalrowdiv {
+        gap:20px;
+    }
+    .side-content{
+        padding-right:70px;
+    }
+
+}
+@media  (max-width: 1366px){
+    .royalFirstDiv > div {
+        padding-left: 113px !important;
+    }
+}
+@media  (max-width: 1280px){
+    .royalFirstDiv > div {
+        padding-left: 70px !important;
+    }
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+    .royalFirstDiv {
+        margin-top: 54px;
+    }
+    .acpoldSecondHeading ,  .sectionTwoHeading {
+        font-size: 65px !important;
+    }
+    .royalHeading{
+        font-size: 2em;
+    }
+
+    .royalFirstDiv > div {
+        padding-left: 32px !important;
+    }
+
+    .royalprideThirdDivContent > div:nth-child(2) {
+        padding-right: 32px !important;
+    }
+    .royalImgcontent {
+        width:45%;
+    }
+    .royalSecondDivParagraph{
+        width:45%;
+    }
+    .royalSecondDivParagraph span{
+        font-size: 19.72px !important;
+    }
+    .side-content{
+        padding-left: 30px;
+    }
+  
+}
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .royalFirstDiv {
+        width: 100%;
+        height: 90vh;
+
+    }
+    .animated  .global-p-2{
+        text-align: left !important;
+    }
+
+    .royalFirstDiv > div {
+        padding-left: 0 !important;
+    }
+    .royalColumnContent .global-p-2{
+        text-align: end;
+    }
+    .royalImgcontent {
+        width: 60%;
+        height: 60vh;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+
+    .royalRowContent {
+        width: 60%;
+        height: 60vh;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        
+    }
+
+    .royalImgcontent > img {
+        width: 100%;
+        height: 100%;
+    }
+    .royalHeading {
+        font-size: 2rem;
+    }
+
+    .royalsecondHeading {
+        font-size: 16px;
+    }
+
+    .royalParagraph,
+    .royalrowdiv {
+        width: 100%;
+    }
+
+    .royalPrideSecondDiv {
+        background-position: bottom;
+        background-size: cover;
+        /* height: 80vh; */
+    }
+
+    
+    .royalprideThirdDivContent {
+        flex-direction: column-reverse;
+    }
+
+    .royalColumnContent {
+        padding: 20% 15px 0 15px;
+    }
+
+    .royalSecondDivParagraph,
+    .royalSecondDivHeading {
+        width: 100%;
+    }
+    .royalSecondDivParagraph {
+        width: 65%;
+        text-align: right;
+        align-self: flex-end;
+    }
+
+    .royalprideThirdDivContent > div > img {
+        height: 50vh !important;
+    }
+
+    .royalFourthDiv {
+        height: 70vh !important;
+    }
+
+    .royalThirdDivContent {
+        width: 100% !important;
+    }
+
+    .royalPrideFourthDiv {
+        background-position: bottom;
+        background-size: cover;
+        height: 100vh;
+        margin-bottom: 40px;
+    }
+
+    .royalFourthDiv  > div:nth-child(1) > img {
+        width: 100% !important;
+        height: auto !important;
+    }
+    .royalFirstDiv > div {
+        padding-left:24px !important;
+    }
+    .royalPrideThirdDiv{
+        height:auto;
+    }
+    
+    .royalColumnContent {
+        align-items: center;
+        padding: 20% 010% 15px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .royalFirstDiv {
+        flex-direction: column;
+        height: auto;
+        margin-top: 25%;
+    }
+
+    .royalFirstDiv > div{
+        flex-direction: column;
+        padding: 0 !important;
+        gap: 50px;
+    }
+
+    .royalRowContent {
+        width: 100%;     
+        padding: 0px;
+        height: auto;
+        margin-bottom: 5%;
+    }
+
+    .royalImgcontent {
+        width: 100%;
+    }
+
+    .royalHeading{
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .royalsecondHeading {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .royalParagraph {
+        font-size: 1.2rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .royalParagraph span{
+        font-size: 1.2rem;
+    }
+
+    .royalImgcontent > img {
+        width: 100%;
+        height: auto;
+    }
+
+    .royalColumnContent {
+        align-items: center;
+        padding: 20% 15px 10% 15px;
+        text-align: center;
+    }
+
+    .royalPrideSecondDiv {
+        background-position: bottom;
+        background-size: contain;
+    }
+
+    .royalSecondDivHeading,
+    .royalSecondDivHeading {
+        font-size: 1.6rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .royalSecondDivParagraph {
+        width: 100%;
+        font-size: 1.2rem;
+        text-align: center;
+        color: #fff;
+        margin: 20px 0;
+    }
+    .royalSecondDivParagraph span {
+        /* font-family: 'Josefin Sans'; */
+        font-weight: 100;
+        color: #ECA533;
+        letter-spacing: 1px;
+       font-family: 'TradeGothicLT';
+        font-size: 1.2rem;
+        text-decoration: none;
+    }
+
+    
+    .royalPrideThirdDiv {
+        background-position: bottom;
+        height: 70vh;
+
+    }
+    
+    .royalthirdDivLine {
+        font-size: 22px;
+        padding: 0;
+    }
+    .royalthirdDivLine span {
+        font-size: 22px;
+    }
+
+    .royalprideThirdDivContent {
+        flex-direction: column-reverse !important;
+        padding: 15% 0;
+    }
+    .sectionTwoHeading span{
+        font-size: 50px !important;
+        line-height: 50px !important;
+       
+    }
+    .sectionTwoHeading{
+        text-align: center !important;
+    }
+    .royalprideThirdDivContent > div:nth-child(1) {
+        padding: 0 !important;
+    }
+
+    .royalprideThirdDivContent > div:nth-child(2) {
+        padding: 0 15px !important;
+    }
+
+    .royalrowdiv {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+
+    .royalprideThirdDivContent > div > img {
+        height: auto !important;
+        width: calc(100% - 5%);
+        top: calc(20px - 5px);
+        position: relative;
+    }
+
+    .royalcandleimagesingle > img {
+        width: 40px;
+        height: 70px;
+    }
+
+    .royalcandleimagesingle > p {
+        font-family: Josefin Sans;
+        font-size: 10px;
+        font-weight: 300;
+        line-height: 11.04px;
+        letter-spacing: 0.07em;
+        text-align: center;
+    }
+
+    .royalcandleimagehide {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-self: center;
+        padding: 5%;
+    }
+
+    .royalPrideFourthDiv {
+        background-position: bottom;
+        height: 100vh;
+        background-size: contain;
+        margin-bottom: 40px;
+    }
+
+    .royalThirdDivContent {
+        padding: 35px;
+        width: 100%;
+    } 
+
+    .royalimageText {
+        grid-template-columns: 40% 60%;
+    }
+
+    .royalPrideSecondDivHeading {
+        display: none;
+    }
+
+    .royallogoimage {
+        width: 80px;
+    }
+
+    .royalFourthDiv {
+        height: 50vh;
+    }
+
+    .royalFourthDiv > div:nth-child(1) img{
+        width: 100%;
+        height: auto;
+    }
+ 
+    .icon-4-wrap {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30%;
+    }
+    .royalPride3Img{
+        align-items: flex-end;
+        display: none;
+        padding-top: 5%;
+    }
+
+} 
+
+
+@media screen and (max-width: 14in) {
+
+}
+@media screen and (min-width: 980px) and (max-width: 1100px){
+    .royalPride3Img{
+        align-items: flex-end;
+        width: 45%;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+    .royalColumnContent {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .royalPrideSecondDiv {
+        background-position: bottom;
+        background-size: cover;
+    }
+    .royalPride3Img{
+        align-items: flex-end;
+        width: 45%;
+    }
+    .icon-4-wrap {
+        padding-bottom: 8%;
+        display: block;
+    }
+    .royalimageText {
+        grid-template-columns: 40% 60%;
+        margin: 2%;
+    }
+  
+  }
+.ry-pr-sec{
+    /* background-image: url('../../../../Assets/Products//Liquor/RoyalPride/Royal-Pride-01.jpg'); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.ry-pr-sec-2{
+    /* background-image: url('../../../../Assets/Products//Liquor/RoyalPride/Royal-Pride-02.jpg'); */
+    background-size: cover;
+    background-position:top center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.ry-pr-sec-3{
+    /* background-image: url('../../../../Assets/Products//Liquor/RoyalPride/Royal-Pride-04.jpg'); */
+    background-size: cover;
+    background-position:top center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.ry-pr-sec-4{
+    background-image: url('../../../../Assets/Products/Liquor/RoyalPride/bg-royal-pride.jpg') !important;
+}
+.ry-pr-sec-4 .sectionTwoHeading{
+    line-height: 80px !important;
+}
+.ry-pr-sec-3  .g-heading-4{
+    width:45%;
+}
+@media (min-width: 768px) and (max-width: 1024px){
+    .ry-pr-sec{
+        height: 100vh !important;
+    }
+    .ry-pr-sec-2{
+        height: 80vh !important;
+    }
+    .ry-pr-sec-3{
+        height: 80vh !important;
+    }
+}
+@media (max-width:767px){
+    .ry-pr-sec{
+        /* background-image: url('../../../../Assets/Products/Liquor/RoyalPride/Royal-Pride-01-mobile.jpg') !important; */
+        display: block;
+        padding: 130px 0;
+
+      }
+      .ry-pr-sec-2{
+        /* background-image: url('../../../../Assets/Products/Liquor/RoyalPride/Royal-Pride-02-mobile.jpg') !important; */
+        display: block;
+        padding: 20px 0;
+      }
+      .ry-pr-sec-3{
+        /* background-image: url('../../../../Assets/Products/Liquor/RoyalPride/Royal-Pride-04-mobile.png') !important; */
+        display: block;
+        padding: 20px 0;
+        height:110vh;
+        background-position: left;
+      }
+      .ry-pr-sec-3 .global-p-2{
+        font-size: 13px !important;
+        text-align: center !important;
+        line-height: 25px;
+      }
+      .ry-pr-sec-3 .g-heading-4{
+        width:100%;
+      }
+      .ry-pr-sec-2 .global-p-2{
+        margin-top:20px;
+      }
+  
+    }

@@ -1,0 +1,94 @@
+.modal-backdrop{
+    opacity: var(--bs-backdrop-opacity);
+    display: none
+}
+.accordion-button{
+    padding: 0.5rem 0 !important;
+}
+.accordion-item{
+    border: none;
+}
+
+
+  .accordion-button:focus{
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .offcanvas{
+    padding-bottom: 2rem;
+  }
+@media (min-width:1024px){
+    .offcanvas{
+     display: none;
+    }
+}
+
+.mobile-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgb(0 0 0 / 50%);
+    z-index: 10;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+}
+.navbar-toggler{
+    border-color: #fff !important;
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+  }
+
+  .navbar-toggler:focus{
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .btn-close:focus{
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .offcanvas{
+    background-color: rgb(0 0 0 / 50%) !important;
+    backdrop-filter: blur(10px);
+  }
+  .accordion{
+    --bs-accordion-bg: transparent !important;
+    --bs-accordion-border-width:0 !important
+  }
+  .accordion-button{
+    background-color: transparent !important;
+  }
+  .btn-close{
+    --bs-btn-close-bg: url('../../Assets/close-1.png') !important;
+  }
+  .nav-link{
+    color: #fff !important;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-family: 'TradeGothicLTbold';
+    text-transform: uppercase;
+  }
+
+
+  .accordion-button{
+    color: #fff !important;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-family: 'TradeGothicLTbold' !important;
+    text-transform: uppercase;
+  }
+  .nav-link.active {
+    color: #ECA533; /* Change to your desired color */
+}
+
+
+@media (max-width:767px){
+  .offcanvas{
+    width: 100% !important;
+  }
+}
+
+/* Removed hide/show transitions; navbar remains sticky and visible */

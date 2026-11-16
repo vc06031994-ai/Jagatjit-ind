@@ -1,0 +1,113 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/css/ion.rangeSlider.min.css">
+
+<style>
+
+.irs--round .irs-bar {
+   background-color: #D1F366;
+}
+
+.irs--round .irs-handle {
+  background-color: #fff;
+  border-color: #D1F366;
+  box-shadow: 0px 0px 0px 5px rgba(209, 243, 102, 0.2);
+}
+
+.irs--round .irs-handle.state_hover, 
+.irs--round .irs-handle:hover {
+   background-color: #fff;
+}
+
+.irs--round .irs-handle {
+    width: 22px;
+    height: 22px;
+    top: 27px;
+}
+
+.irs--round .irs-from, 
+.irs--round .irs-to, 
+.irs--round .irs-single {
+  background-color: transparent;
+  color: #666666;
+  font-family: "prompt";
+}
+
+.irs--round .irs-min, 
+.irs--round .irs-max {
+  display: block;
+}
+
+</style>
+   
+<input type="text" class="js-range-slider" name="my_range" value=""
+    data-skin="round"
+    data-type="double"
+    data-postfix="kr."
+    data-min="2000"
+    data-max="10000"
+    data-grid="false"
+/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/js/ion.rangeSlider.min.js"></script>
+
+<script>
+    var $range = $(".js-range-slider"),
+        $from = $("#input_2_65"),
+        $to = $("#input_2_66"),
+        range,
+        min = $range.data('min'),
+        max = $range.data('max'),
+        from,
+        to;
+
+    var updateValues = function () {
+        $from.prop("value", from);
+        $to.prop("value", to);
+    };
+
+    $range.ionRangeSlider({
+        step: 100, // Increment step of 100
+        onChange: function (data) {
+            from = data.from;
+            to = data.to;
+            updateValues();
+
+             // Add "KR" to the .irs-from and .irs-to elements
+        $(".irs-from").text(from + "kr.");
+        $(".irs-to").text(to + "kr.");
+        }
+    });
+
+    range = $range.data("ionRangeSlider");
+
+    var updateRange = function () {
+        range.update({
+            from: from,
+            to: to
+        });
+    };
+
+    $from.on("input", function () {
+        from = +$(this).prop("value");
+        if (from < min) {
+            from = min;
+        }
+        if (from > to) {
+            from = to;
+        }
+        updateValues();    
+        updateRange();
+    });
+
+    $to.on("input", function () {
+        to = +$(this).prop("value");
+        if (to > max) {
+            to = max;
+        }
+        if (to < from) {
+            to = from;
+        }
+        updateValues();    
+        updateRange();
+    });
+</script>

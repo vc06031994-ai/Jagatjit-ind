@@ -1,0 +1,303 @@
+.loginMainDivDob {
+    background-image: url('../../Assets/DOB/Age-Page.png');
+    height: 100vh;
+    background-size: cover;
+    color: #fff;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    /* text-align: center; */
+   overflow-y: scroll;
+}
+
+.white-arrow-right {
+    background-image: url('../../Assets/rightImg.png');
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100px;
+    width: 3em;
+    height: 3em;
+    margin-left: 8px;
+}
+.submit_p {
+    color: white;
+    letter-spacing: 1.18em;
+    text-transform: uppercase;
+    margin-top: auto;
+    text-align: center;
+    /* border-radius: 10px; */
+    text-align: center;
+    flex-direction: row;
+    display: flex;
+    align-self: center;
+    margin-bottom: auto;
+    font-weight: 700;
+    background-color: transparent;
+    font-size: 18px;
+}
+.dobheading{
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    font-family: 'TradeGothicLT';
+    margin-top: 2rem;
+
+}
+.dobinputFields{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    /* width: 50%; */
+    /* margin-left: auto;
+    margin-right: auto; */
+    align-items: center;
+    gap:50px;
+}
+/* .loginDiv {
+    text-align: center;
+} */
+
+.logo {
+    width: 12%; 
+}
+.dobparagraph{
+    font-size: 26px;
+    font-family: 'TradeGothicLT';
+    margin-top: 2rem;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+.remeberBoxDiv {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-self: center;
+    margin-top: 1%;
+    align-items: center;
+}
+.dobRemember{
+    font-size: 26px;
+    align-self: center;
+    margin-left: 15px;
+    font-family: 'TradeGothicLT';
+    cursor: pointer;
+
+}
+
+.checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .checkbox:checked {
+    background-color:#eca533;
+    border: none;
+  }
+  
+  .checkbox:checked::before {
+    content: '✔';
+    display: block;
+    width: 100%;
+    /* height: 100%; */
+    text-align: center;
+    line-height: 20px;
+    color: #000;
+  }
+  .dobRights{
+    margin-top: 20px;
+    /* text-align: center; */
+    letter-spacing: 2px;
+  }
+  
+.firstParagraphdobFooterRights{
+    font-size: 18px;
+
+    margin-top: 2%; 
+    font-family: 'TradeGothicLT';
+}
+.secondParagraphdobFooterRights{
+    font-size: 18px;
+    font-family: 'TradeGothicLT';
+
+}
+.thirdParagraphdobFooterRights{
+    font-size: 18px;
+    font-family: 'TradeGothicLT';
+
+}
+.dateDiv {
+    width: 100%;
+    font-size: 180px;
+    /* text-align: center; */
+    /* height: 200px; */
+    background-color: transparent;
+    border-style: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    outline:none;
+    /* letter-spacing: 10px; */
+    font-family: 'WHISKEY Jill', sans-serif;
+
+}
+.age-sless {
+    font-size: 130px;
+    text-decoration: none;
+    opacity: 1;
+    
+}
+.dateDiv::-webkit-inner-spin-button {
+    display: none;
+}
+.dateDiv::-webkit-input-placeholder{
+    color: #fff;
+}
+
+.dateDiv::after   {
+    content: "002F";
+    position: absolute;
+}
+@media only screen and (min-width: 1024px) and (max-width: 1440px){
+    .dobinputFields{
+        width: 80%;
+    }
+.loginDiv img   {
+    width:8%;
+}
+.dateDiv ,.age-sless{
+    font-size: 120px;
+}
+.dobRights p{
+    font-size: 15px !important;
+}
+.dobparagraph{
+    font-size: 20px !important;
+}
+.dobRemember {
+    font-size: 15px !important;
+}
+.dobheading {
+    font-size: 20px !important;
+}
+.dateDiv{
+    height: 180px;
+}
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px){
+    .loginDiv img   {
+        width:8%;
+    }
+    .dateDiv ,.age-sless{
+        font-size: 120px;
+    }
+    .dobRights p{
+        font-size: 15px !important;
+    }
+    .dobparagraph{
+        font-size: 20px !important;
+    }
+    .dobRemember {
+        font-size: 15px !important;
+    }
+    .dobheading {
+        font-size: 20px !important;
+    }
+    .dateDiv{
+        height: 180px;
+    }
+}
+
+@media  (max-height: 550px){
+
+    .loginMainDivDob{
+        height:100%;
+    }
+}
+/* @media (max-width: 1566px) and (max-height: 800px) {
+    .loginMainDivDob{
+        height:100%;
+    }
+} */
+
+@media (max-width: 767px) {
+    .dobRemember{
+        font-size: 16px;
+    }
+    .logo {
+        height: 100px;
+        width: 100px; 
+    }
+    .loginMainDiv {
+        text-align: center;
+    }
+    .dobheading{
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+    .dobparagraph{
+        font-size: 12px;
+    }
+    .firstParagraphdobFooterRights{
+        font-size: 12px;
+    }
+    .secondParagraphdobFooterRights{
+        font-size: 12px;
+    }
+    .thirdParagraphdobFooterRights{
+        font-size: 12px;
+    }
+    .dateDiv ,.age-sless {
+        font-size: 40px;
+        /* letter-spacing:2px; */
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .dobinputFields{
+        width: 100%;
+    }
+    .dobinputFields{
+        gap:15px;
+    }
+}
+
+
+
+
+/* .dateDiv::-webkit-datetime-edit-month-field {
+    text-decoration: underline;
+    letter-spacing: 4px;
+} */
+
+/* .dateDiv::-webkit-datetime-edit-day-field {
+    text-decoration: underline;
+    letter-spacing: 4px;
+} */
+
+/* .dateDiv::-webkit-datetime-edit-year-field {
+    text-decoration: underline;
+    letter-spacing: 4px;
+} */
+
+
+
+/* .dateDiv::-webkit-calendar-picker-indicator {
+    display: none;
+} */
+ /* .age-sless{
+    font-size: 130px;
+    text-decoration: none;
+    opacity: 1;
+ } */
+

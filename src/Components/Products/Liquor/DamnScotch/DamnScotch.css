@@ -1,0 +1,941 @@
+/* .wide-image-back {
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-color: black;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    right: 0;
+    top: 0;
+}
+
+.top-image-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.wide-text-wrap {
+    width: 50%;
+    text-align: center;
+}
+
+.banner-title {
+    font-family: Krona One;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 67.35px;
+    letter-spacing: 0.07em;
+    color: #9A1112;
+}
+
+.banner-summary {
+    color: #ffffff;
+    font-family: Fredoka;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 39.75px;
+    letter-spacing: 0.09em;
+}
+
+.banner-logo {
+    width: 50%;
+}
+
+@media only screen and (max-width: 767px) {
+    .top-image-container {
+        flex-direction: column;
+    }
+
+    .wide-text-wrap {
+        width: 100%;
+    }
+
+    .banner-logo {
+        width: 70%;
+        aspect-ratio: 3/2;
+    }
+
+    .banner-title {
+        font-family: Krona One;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 67.35px;
+        letter-spacing: 0.07em;
+        color: #9A1112;
+    }
+
+    .wide-image-wrap>img {
+        width: 100%;
+        height: auto;
+        padding-left: 8%;
+    }
+
+    .banner-summary {
+        color: #ffffff;
+        font-family: Fredoka;
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 20px;
+        letter-spacing: 0.09em;
+    }
+}
+
+@media only screen and (min-width: 768px) {}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {} */
+
+/* .bottleImgLogo {
+    height: 80%;
+    width: 80%;
+} */
+ 
+.bottleImg {
+  height: 90vh;
+  width: auto;
+} 
+
+/* .bottleImgfirst {
+  margin-right: 10%;
+} */
+
+.section2BotleImg {
+  height: 90vh;
+  width: auto;
+  margin-right: 10%;
+}
+
+.favBotGroupImg {
+  margin-bottom: -15%;
+  margin-top: 5%;
+}
+
+.acpoldpagesRowDiv {
+  display: flex;
+}
+
+.acpremium5ImgDiv {
+  justify-content: center;
+  display: flex;
+  height: 50%;
+  margin-top: 5%;
+}
+
+.acpremiumleftrightDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 50%;
+  place-self: center;
+  justify-content: center;
+  margin: 5% 0;
+}
+
+.premiumleftarrowDiv {
+  text-align: right;
+  align-self: center;
+}
+
+.leftImgBtn {
+  height: 150px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.rightImgBtn {
+  height: 150px;
+  margin-left: 5px;
+}
+
+.acparrowSize {
+  font-size: 55px;
+}
+
+.premiumrightarrow {
+  text-align: left;
+  align-self: center;
+}
+
+.acpsecDiv {
+
+  display: flex;
+  align-items: left;
+  width: 40%;
+  flex-direction: column;
+}
+.acpsecDiv>img {
+  width: 100%;
+  height: auto;
+}
+
+.img-dec {
+  height: 100% !important;
+}
+
+/* //flavour icon */
+.profile-icon-wrap {
+  display: flex;
+  margin-top: 0;
+  margin-top: 10%;
+  gap: 20px;
+}
+
+.profile-icon-1::before,
+.profile-icon-2::before,
+.profile-icon-3::before,
+.profile-icon-4::before {
+  content: '';
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-size: cover;
+  width: 70px;
+  height: 110px;
+}
+
+.profile-icon-1::before {
+  background-image: url('../../../../Assets/Products/Liquor/AcpremiumOld/elegant.png');
+}
+
+.profile-icon-2::before {
+  background-image: url('../../../../Assets//Products/Liquor/AcpremiumOld/sweet.svg');
+}
+
+.profile-icon-3::before {
+  background-image: url('../../../../Assets//Products/Liquor/AcpremiumOld/deep.svg');
+}
+
+.profile-icon-4::before {
+  background-image: url('../../../../Assets//Products/Liquor/AcpremiumOld/smooth.svg');
+}
+
+
+
+.pagesTextDiv {
+  /* margin-top: -30%; */
+  width: 50%;
+  padding: 0 0 0 150px;
+}
+
+.pagesTextFavorDiv {
+  width: 60%;
+  padding-left: 60px;
+}
+
+.pagesTextbetween {
+  display: flex;
+padding:0 !important;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  /* align-self: flex-end; */
+}
+
+.acppremiumfifthhDiv {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-link-redirect {
+  width: 100%;
+  height: auto;
+  margin: 50px 0;
+}
+.rowdiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.acpNewarrowDiv {
+  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 20px;
+}
+
+
+.acppremiumleftArrowDiv {
+  width: 100%;
+  height: auto;
+  color: #FFFFFF;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  display: flex;
+  justify-content: end;
+  gap: 30px;
+  padding: 15px;
+  transition: all 0.5s;
+}
+.acppremiumleftArrowDiv:hover ,.acppremiumleftArrowDiv:active  ,.acppremiumrightArrowDiv:hover ,.acppremiumrightArrowDiv:active {
+  background-color: #ECA533;
+  border: 2px solid #ECA533;
+}
+.acppremiumleftArrowDiv:hover  .acpNpremiumarrowHeading ,.acppremiumleftArrowDiv:hover .leftIconImg  ,.acppremiumrightArrowDiv:hover  .acpNpremiumarrowHeading ,.acppremiumrightArrowDiv:hover  .leftIconImg  {
+  color:#000;
+  fill:#000;
+}
+.acppremiumleftArrowDiv:active  .acpNpremiumarrowHeading ,.acppremiumleftArrowDiv:active .leftIconImg ,.acppremiumrightArrowDiv:active  .acpNpremiumarrowHeading , .acppremiumrightArrowDiv:active   .leftIconImg{
+  color:#000;
+  fill:#000;
+}
+.acppremiumrightArrowDiv {
+  width: 100%;
+  height: auto;
+  color: #FFFFFF;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 1);    
+  border-radius: 10px;
+  display: flex;
+  justify-content: left;
+  gap: 30px;
+  padding: 15px;
+  transition: all 0.5s;
+}
+
+.acpNpremiumarrowHeading {
+  font-family: 'Regular';
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 52.99px;
+  letter-spacing: 0.05em;
+}
+
+.acpNewrightSmallImg,
+.acpNewleftSmallImg {
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+  
+
+.acpNewleftSmallImg > img,
+.acpNewrightSmallImg > img {
+  width: auto;
+  height: 150px;
+}
+
+.pagesTextDivTwo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+}
+
+.acpoldSecondHeading {
+  color: #ECA533;
+  font-family: 'WHISKEY Jill';
+  font-weight: 400;
+  font-style: normal;
+  text-align: left;
+  font-size: 80px;
+  letter-spacing: 3px;
+}
+
+.acpoldParagraph {
+  color: #FFFFFF;
+  width: 100%;
+  font-family: 'Josefin Sans';
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  font-family: 'Light';
+  text-align: left
+  ;
+  max-width: 90%;
+}
+
+.sectionTwoHeading {
+  color: #FFFFFF;
+  font-weight: 400;
+  font-style: normal;
+  font-family: 'WHISKEY Jill' !important;
+  font-size: 80px !important;
+  letter-spacing: 1px !important;
+  line-height: 35px !important;
+  text-align: start !important;
+}
+
+.sectionTwoParagraph {
+  margin-top: 30px;
+  width: 60%;  
+  text-align: left;
+  max-width: 100%;
+}
+
+.sectionTwoParagraph span {
+  color: #FFFFFF;
+  font-family: 'Josefin Sans';
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  font-family: 'Regular';
+  text-decoration: none;
+  text-align: right;
+  max-width: 100%;
+}
+
+.acpremiumfirstSectionImage {
+  background-image: url('../../Assests/acpremiumfirstsection.png');
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  place-items: center;
+  aspect-ratio: 16 / 8.71;
+}
+
+.acpremiumsecondSectionImage {
+  background-image: url('../../Assests/acpremiumsecontiontwoBg.png');
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  place-items: center;
+  aspect-ratio: 16 / 8.71;
+}
+
+.acpremiumfourthSectionImage {
+  background-image: url('../../Assests/aristoprembg1.png');
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  place-items: center;
+  aspect-ratio: 16 / 8.71;
+}
+
+.sectionThree {
+  background-image: url('../../../../Assets/Products/Liquor/AcpremiumOld/section3Bg.png');
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  place-items: center;
+  aspect-ratio: 16 / 8.71;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* align-items: center; */
+ 
+}
+/* 
+.sectionThree>div:nth-child(odd) {
+  position: relative;
+  top: -28px;
+  z-index: -1;
+} */
+
+.flavourDiv {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
+}
+
+.curtainImage {
+  transform: scaleX(-1);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.imageText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.logoText {
+  height: 5%;
+  width: 5%;
+  margin-right: 3%;
+}
+
+.logoTextParagraph {
+  text-align: left;
+  color: #FFFFFF;
+  font-weight: 100;
+  font-style: normal;
+  font-family: 'Light';
+  font-size: 17px;
+  letter-spacing: 1px;
+  line-height: 120%;
+  opacity: 0.9;
+}
+
+.flavourDivHeader {
+  text-align: center !important;
+  padding-top:50px;
+}
+
+.pagesTextFavorDivHeader {
+  color: #ECA533;
+  font-weight: 400;
+  font-style: normal;
+  font-family: 'WHISKEY Jill';
+  font-size: 80px;
+  letter-spacing: 1px;
+  line-height: 70px;
+  text-align: start;
+  width:60%;
+}
+
+
+/* secondpage styles */
+.acpoldSecondPageSectionOneImage {
+  background-image: url('../../../../Assets/Products/Liquor/AcpremiumOld/sc1background.png');
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  place-items: center;
+}
+
+.acpScondSectionTwoImage {
+  background-image: url('../../../../Assets/Products/Liquor/DamnScotch/damn2ndSecimg.png');
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: initial;
+  place-items: center;
+}
+
+.acpsecondfourthSectionImage {
+  background-image: url('../../../../Assets/Products/Liquor/AcpremiumNew/beyondbg.png');
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+  place-items: center;
+  display: flex;
+}
+@media  (max-width: 1440px) {
+  .sectionTwoParagraph    {
+      width:81%;
+  }
+
+  .pagesTextDiv{
+      padding-left:120px;
+  }
+  .scotch-sec-3 .sectionTwoHeading{
+      line-height: 70px !important;
+  }
+  .pageSecondText h1{
+      margin-top: 8%;
+  }
+  .acpsecDiv{
+      width:40%;
+  }
+  /* .profile-icon-wrap  .global-p-2 {
+    font-size: 14px !important;
+    overflow: hidden;
+    width: 100%; 
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  } */
+  
+}
+
+@media only screen and (min-width: 990px) and (max-width:1140px){
+
+  .pagesTextDiv {
+      padding-left: 0;
+  }
+  .flavourDiv {
+  width:70%;
+  }
+  .pagesTextFavorDivHeader {
+      padding-top:80px;       
+  }
+  .acpsecDiv>img{
+      width:100%;
+  }
+  .acpsecDiv {
+      width:50%
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px){
+
+  .acpremium-container>div {
+      padding: 0;
+  }
+  .pagesTextFavorDivHeader {
+      font-size: 70px;    
+      line-height: 60px;
+      width: 65%;
+  }
+  .pagesTextbetween   {
+      padding-top:80px !important;
+  }
+  .acpoldSecondPageSectionOneImage {
+      width: 100%;
+      height: auto;
+      padding-top: 55px;
+  }
+  .image{
+      display: block !important;
+  }
+  .acpsecDiv {
+      margin: 0;
+  }
+
+  .acpsecDiv>img {
+      width: 100%;
+      height: auto;
+  }
+
+  .acpoldSecondHeading {
+      font-size: 70px;
+      margin: 0;
+  }
+  .sectionTwoHeading{
+      font-size: 70px !important;
+  }
+
+  .acpoldParagraph,
+  .sectionTwoHeading {
+      max-width: unset;
+  }
+
+  .bottleImg,
+  .section2BotleImg {
+      height: auto;
+      width: 50%;
+  }
+
+  .acpScondSectionTwoImage,
+  .sectionThree,
+  .acpsecondfourthSectionImage,
+  .acppremiumfifthhDiv,
+  .acpremium5ImgDiv>img {
+      width: 100%;
+      height: auto;
+      padding:60px;
+  }
+  .favBotGroupImg {
+      margin-bottom:-18%
+  }
+  .pagesTextDiv {
+      margin: 0;
+      padding: 80px 0;
+      width:60%;
+  }
+  .sectionTwoParagraph {
+      width: 100%;
+  }
+
+  .sectionThree>div:nth-child(odd) {
+      position: relative;
+      top: -16px;
+  }
+/* 
+  .flavourDivHeader {
+      padding-top: 40px;
+  } */
+
+  .flavourDiv {
+      width: 100%;
+      justify-content: unset;
+      gap: 40px;
+  }
+  .acppremiumrightArrowDiv,
+  .acppremiumleftArrowDiv {
+      padding: 11px;
+      gap: 10px;
+  }
+
+  .acpNewarrowDiv {
+      display: grid;
+      grid-template-columns: 47% 47%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .acpoldpagesRowDiv {
+      padding: 90px 15px 0 15px;
+  }
+  .rowdiv{
+      flex-direction: column;
+  }
+  .bottleImg{
+      height:60vh;
+  }
+  .acpoldpagesRowDiv {
+      flex-direction: column;
+      text-align: center;
+      height: auto;
+  }
+
+  .acpsecDiv {
+      margin-left: 0;
+      width: 100%;
+      align-items: center;
+  }
+
+  /* .bottleImgLogo,
+  .bottleImg,
+  .section2BotleImg {
+      width: 100%;
+      height: auto;
+  } */
+
+  .pageSecondText {
+      padding-top: 30px;
+  }
+
+  .acpoldSecondHeading {
+      font-size: 50px;
+      margin-left: 0;
+      line-height: 50px;
+      text-align: center;
+  }
+
+  .acpoldParagraph {
+      text-align: center;
+      margin: 0;
+  }
+
+  .pagesTextDivTwo {
+      flex-direction: column-reverse;
+      text-align: center;
+      height: 80vh;
+      padding: 0 15px;
+  }
+
+  .pagesTextDiv {
+      width: 100%;
+      padding: 0;
+  }
+
+  .sectionTwoHeading {
+      font-size: 50px !important;
+      line-height: 50px !important;
+      margin-bottom: 10px;
+      max-width: 100%;
+      text-align: center !important;
+      margin:0 !important;
+  }
+
+  .sectionTwoParagraph {
+      font-size: 1.2rem;
+      line-height: 100%;
+      max-width: 100%;
+      /* text-align: center; */
+  }
+
+  .sectionTwoParagraph>span {
+      font-size: 1.2rem;
+      line-height: 100%;
+  }
+
+  .sectionThree {
+      width: 100%;
+      height: auto;
+      padding: 30px 15px;
+  }
+
+  .flavourDiv {
+      width: 100%;
+      justify-content: unset;
+      gap: 30px;
+  }
+
+  .profile-icon-wrap>div {
+      width: 100%;
+      font-size: 14px;
+      line-height: 24px;
+  }
+
+  .profile-icon-1::before,
+  .profile-icon-2::before,
+  .profile-icon-3::before,
+  .profile-icon-4::before {
+      width: 30px;
+      height: 50px;
+  }
+  .small-glas .profile-icon-3::before{
+    width:40px !important
+  }
+  .small-glass .profile-icon-2::before{
+    width:40px !important
+  }
+  .acpsecondfourthSectionImage {
+      width: 100%;
+      height: auto;
+      margin-top: 180px;
+      aspect-ratio: 14 / 9;
+  }
+
+  .pagesTextbetween>.pagesTextFavorDivHeader {
+      margin-top: -45%;
+      margin-bottom: 50px;
+      width: 100%;
+      font-size: 50px;
+      line-height: 47px;
+      text-align: center;
+  }
+  .logoText{
+      width:10%;
+  }
+  .legacy-img-wrap {
+      width: 100%;
+      top: 25px;
+      position: relative;
+      padding:20px;
+  }
+
+  .acppremiumfifthhDiv {
+      width: 100%;
+      height: auto;
+      margin-bottom: 50px;
+  }
+
+  .acpremium5ImgDiv {
+      height: auto;
+      margin-top: 0;
+      margin-bottom: 20px;
+  }
+
+  .acpremium5ImgDiv>img {
+      width: 100%;
+      height: auto;
+  }
+  .image{
+      display: block !important;
+  }
+  .bottleImgfirst {
+      margin-right: 0%;
+  }
+
+  .logoTextParagraph {
+      font-size: 12px !important;
+  }
+
+  .acpNewarrowDiv {
+      display: grid;
+      grid-template-columns: 47% 47%;
+  }
+
+  .acppremiumrightArrowDiv,
+  .acppremiumleftArrowDiv {
+      padding: 15px;
+      gap: 10px;
+  }
+
+  .acpNpremiumarrowHeading {
+      font-size: 16px;
+      line-height: 17px;
+  }
+
+  .acpNewleftSmallImg > img,
+  .acpNewrightSmallImg > img {
+      width: auto;
+      height: 100px;
+  }
+}
+
+/* @media (max-width: 1024px) {
+  .acppremiumrightArrowDiv,
+  .acppremiumleftArrowDiv {
+      padding: 11px;
+      gap: 10px;
+  }
+      .acpNpremiumarrowHeading {
+      font-size: 16px;
+      line-height: 17px;
+  }
+
+  .acpNewleftSmallImg > img,
+  .acpNewrightSmallImg > img {
+      width: auto;
+      height: 100px;
+  }
+  .sectionTwoHeading {
+      font-size: 18px;
+      line-height: 40px;
+      margin-bottom: 10px;
+      max-width: 100%;
+      letter-spacing: normal;
+      text-align: center;
+  }
+  
+} */
+
+.scotch-sec-1{
+    /* background-image: url('../../../../Assets/Products/Liquor/DamnScotch/Scotch_01.jpg') !important; */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+}
+.scotch-sec-2{
+  /* background-image: url('../../../../Assets/Products/Liquor/DamnScotch/Scotch_02.jpg') !important; */
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.scotch-sec-4{
+  /* background-image: url('../../../../Assets/Products/Liquor/DamnScotch/Scotch_03.jpg') !important; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.scotch-sec-3{
+  /* background-image: url('../../../../Assets/Products/Liquor/RoyalPride/section3bg.png') !important; */
+}
+@media (min-width: 768px) and (max-width: 1024px){
+  .scotch-sec-1{
+    height: 100vh !important;
+  }
+  .scotch-sec-2{
+    height: 50vh !important;
+  }
+  .scotch-sec-4{
+    height: 50vh !important;
+  }
+}
+@media (max-width:767px){
+  .scotch-sec-1{
+    /* background-image: url('../../../../Assets/Products/Liquor/DamnScotch/Scotch_01_mobile.png') !important; */
+    display: block;
+    padding-top:130px;
+    background-position: bottom;
+    height:130vh;
+
+  }
+  .scotch-sec-2{
+    /* background-image: url('../../../../Assets/Products/Liquor/DamnScotch/Scotch_02_mobile.jpg') !important; */
+    display: block;
+  }
+  .scotch-sec-4{
+    /* background-image: url('../../../../Assets/Products/Liquor/DamnScotch/Scotch_03_mobile.png') !important; */
+    display: block;
+    height:115vh;
+  }
+  .small-text{
+    font-size: 13px !important;
+  }
+}

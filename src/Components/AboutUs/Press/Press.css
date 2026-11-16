@@ -1,0 +1,142 @@
+
+
+.newsImg{
+  aspect-ratio: 16/12;
+  /* width: 200px;
+  border-radius: 5px;
+  margin-left: 16%;
+  margin-bottom: 5%; */
+  object-fit: cover;
+  border-radius: 10px;
+  
+}
+.post-btn a{
+text-decoration: none;
+}
+.post-btn:hover a{
+color:#fff;
+font-weight: 600;
+}
+.bg-dark{
+background-color: transparent !important;
+}
+.newsDiv{
+  width: 300px; 
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.newsmainDiv {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+text-align: center;
+margin-left: 5%;
+margin-right: 5%;
+}
+.newsPara{
+font-size: 21px;
+color: white;
+/* opacity: 0.6; */
+text-decoration: none;
+} 
+.newsPara:hover{
+color: #ECA533;
+}
+/* .newsPara:we */
+
+@media (max-width: 768px) {
+.bottomnewsDiv{
+  margin-bottom: 20%;
+}
+}
+
+.card-body{
+height: 100%;
+display: flex;
+flex-direction: column;
+padding:0 !important;
+gap: 1rem;
+}
+.press-hero{
+background-image: url('../../../Assets/AboutUs/press.png');
+background-size: cover;
+height: 85vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.card-title{
+font-family: 'TradeGothicLT';
+font-size: 23px;
+color: #eca533;
+}
+.achive-heading{
+font-family: 'WHISKEY Jill';
+font-size: 100px;
+font-weight: 400;
+line-height: 83px;
+color: #eca533;
+}
+
+@media (min-width: 1025px) and (max-width: 1366px){
+
+  .achive-heading {
+    font-size: 85px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px){
+
+.reportPara{
+  font-size: 35px;
+}
+.press-hero{
+  height: 85vh;
+}
+.achive-heading{
+  font-size: 60px;
+  line-height: 43px;
+}
+}
+@media (max-width:767px){
+
+.reportPara{
+  font-size: 20px;
+}
+.press-hero{
+  height: 70vh;
+}
+.achive-heading{
+  font-size: 50px;
+  line-height: 40px;
+}
+.achive-sec{
+  padding: 40px 0;
+}
+}
+
+/* new */
+.newsTexts {
+  margin: 0 10px;
+}
+
+p.newsdec {
+  font-size: 25px;
+}
+h5.cardnews
+ {
+  font-size: 18px;
+}
+h5.cardachivement{
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+}
+.ouraward {
+  font-size: 25px;
+}

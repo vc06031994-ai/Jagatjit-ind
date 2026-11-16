@@ -1,0 +1,569 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+/* @import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Jura:wght@300..700&display=swap');
+
+.acblackFirstDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+    height: 100vh;
+    /* background-image: url('../../../../Assets/Products/Liquor/AcBlack/AC_01.jpg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+}
+
+.acblackRowContent {
+    align-self: center;
+    width: 50%;
+}
+
+.acblackImgcontent {
+    align-self: center;
+}
+
+/* font-family: Krona One; */
+/* font-family: Fredoka; */
+/* font-family: 'Josefin Sans'; */
+.acblackColumnContent {
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-end;     */
+}
+.acsec1div{
+    display: flex;
+    /* align-self: center;
+    padding-left: 5%;
+    padding-right: 5%; */
+}
+.acfirstImg{
+    width: 100%;
+}
+.aciconsDiv{
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    margin: 5%;
+    width: 40%;
+    height: 20%;
+    margin-left: 0;
+}
+.aciconsDiv p {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-self: center;
+    margin-top: 6%;
+    margin-left: 4%;
+
+}
+.aciconsDiv img {
+    width: 25%;
+    height: 25%;
+}
+.aciconsDivopp{
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-top: 4%;
+    width: 40%;
+    height: 20%;
+}
+
+.aciconsDivopp p {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-self: center;
+    margin-top: 6%;
+    margin-left: 4%;
+}
+
+
+.aciconsDivopp img {
+    width: 25%;
+    height: 25%;
+}
+
+.accandleDiv{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:65%;
+}
+.acsec4secimg{
+    height: 60%;
+    width: 60%;
+}
+.acsec4imgDiv{
+    justify-content: center;
+    display: flex;
+}
+.acleftarrowDiv{
+    text-align: right;
+    align-self: center;
+}
+.acrightarowDiv{
+    text-align: left;
+    align-self: center;
+}
+.acarrowImg{
+    height: 150px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+/* acblacksecondimg.png */
+.acblackSecondDiv {
+    /* background-image: url('../../../../Assets/Products/Liquor/AcBlack/AC_02.jpg'); */
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    background-repeat: no-repeat;
+    /* align-content: start; */
+    /* aspect-ratio: 16/7.41; */
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width:767px){
+  
+}
+
+.acblackThirdDiv {
+    background-image: url('../../../../Assets/Products/Liquor/AcBlack/AC_03.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    /* aspect-ratio: 16/8.81; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.candleimage {
+    height: 50%;
+    width: 50%;
+    display: flex;
+}
+.candleimagehide {
+    display: none;
+}
+
+.acblackFourthDiv {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.pre-next-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-self: center;
+}
+
+.pre-next-wrap > .rightArrowDiv img,
+.pre-next-wrap > .leftArrowDiv img {
+   margin: 10px !important;
+}
+
+.arrowHeading {
+    font-size: 21px;
+    margin-bottom: 0%;
+}
+
+.leftArrowDiv {
+    border-color: white;
+    padding: 1%;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-width: 1px;
+    border-style: solid;
+    border-left-color: black;
+    border-top-right-radius: 15%;
+    border-bottom-right-radius: 15%;
+    display: flex;
+    text-align: right;
+}
+
+.rightArrowDiv {
+    border-color: white;
+    padding: 1%;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-width: 1px;
+    border-style: solid;
+    border-right-color: black;
+    border-top-left-radius: 15%;
+    border-bottom-left-radius: 15%;
+    display: flex;
+
+}
+.custom-img{
+    margin:10px 0;
+}
+.acblackSecondDivParagraph  {
+    width:45%;
+}
+.acblackThirdDivContent {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 70%;
+    padding: 5% 0;
+}
+
+.imageText {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    margin-top: 5%;
+    margin-bottom: 5%;
+    align-self: center;
+}
+.spaces{
+    padding:50px 0;
+}
+.logoimage {
+
+    margin-right: 3%;
+}
+/* .navigation-bottom{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+   }
+   .nav-img{
+    width: 100px;
+   }
+   .nav-img img{
+    object-fit: contain;
+   }
+   .nav-text{
+    text-align: end;
+   }
+   .leftIconImg{
+    font-size: 50px;
+   } */
+
+   .navigation-bottom {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    gap:50px;
+}
+.navigation-bottom1{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+.nav-img img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+
+.leftIconImg {
+    font-size: 50px;
+}
+.acb-sec-1{
+    background-image: url('../../../../Assets/Products/Liquor/AcBlack/acblackbg01.png') !important ;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .navlist{
+    color:#fff;
+    text-decoration: none;
+  }
+  .navlist:hover{
+    color:#fff;
+    
+  }
+  .nav-left{
+    text-align: end;
+  }
+  .acb-sec-3{
+    /* background-image: url('../../../../Assets/Products/Liquor/AcBlack/AC_03.jpg') !important; */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    background-repeat:no-repeat;
+}
+
+
+@media (max-width: 768px) {
+    .navigation-bottom {
+        /* flex-direction: column; */
+        padding: 10px;
+    }
+    
+    .nav-img img {
+        width: 100%; /* Adjust width as needed */
+        height: 100px;
+    }
+
+    .nav-text {
+        text-align: end;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1024px) {
+    .acblackFirstDiv {
+        height: 100vh;
+    }
+
+    .acblackSecondDiv {
+        height: 50vh;
+    }
+
+    .acblackThirdDiv {
+        height: 100vh;
+    }
+
+    .acblackFourthDiv > div > img {
+        height: auto;
+        width: 100%;
+    }
+    .acblackSecondDiv{
+        height: 90vh;
+    }
+    .acfirstImg {
+        width:75%;
+    }
+    /* .acblackColumnContent {
+        padding: 0 10%;
+    } */
+}
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .acblackFirstDiv {
+        height: 100vh;
+    }
+    .acblackSecondDiv{
+        height: 90vh;
+    }
+
+    .acblackRowContent{
+        width: 100%;
+    }
+/* 
+    .acblackColumnContent {
+        padding: 10px 10%;
+    } */
+
+    .acblackThirdDiv {
+        width: 100vw;
+        height: 100vh;
+        background-position: right;
+    }
+
+    .candle-image-wrap-desk > div > p {
+        text-align: center;
+    }
+
+    .acblackFirstDiv > div,
+    .candle-image-wrap-desk > div {
+        flex-direction: column;
+    }
+
+    .acblackSecondDiv,
+    .acblackFourthDiv {
+        height: 65vh;
+    }
+
+    .acblackFourthDiv > div > img {
+        height: auto !important;
+        width: 100% !important;
+    }
+    .acfirstImg {
+        width:75%;
+    }
+}
+
+@media (max-width: 767px) {
+    .acblackFirstDiv {
+        flex-direction: column;
+        height: 100vh;
+        /* margin-top: 30%; */
+    }
+
+    .acblackFirstDiv > div {
+        flex-direction: column;
+        gap: 40px;
+        
+    }
+
+    .acblackRowContent {
+        width: 100%;
+        text-align: center;
+    }
+    .acblackSecondDivParagraph{
+        width:100%;
+    }
+    
+    .acblackSecondDiv {
+        width: 100%;
+        height: 100vh;
+        /* margin: 50px 0; */
+        display: block;
+    }
+
+    .acblackThirdDiv {
+       height: auto;
+       width: 100%;
+       background-position: right;
+    }
+
+    .acblackThirdDivContent {
+        flex-direction: column-reverse;
+        align-items: flex-end;
+    }
+
+    .candleimagehide {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        padding: 10% 5%;
+        justify-content: space-evenly;
+    }
+
+    .candle-image-wrap {
+        justify-content: center;
+    }
+
+    .candle-image-wrap > div {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .candle-image-wrap p {
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 13.25px;
+        letter-spacing: 0.07em;
+    }
+
+    .candleimage,
+    .acblackThirdDivContent > div {
+        display: none !important;
+    }
+
+    
+    .aciconsDiv{
+        height: auto;
+    }
+
+    .acblacksecondHeading {
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 55px;
+        letter-spacing: 0.07em;
+        margin: 0;
+    }
+
+    .acblackParagraph {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 17.66px;
+        letter-spacing: 0.09em;
+        text-align: left;
+        margin: 15px 0;
+    }
+
+    .acblackSecondDivHeading {
+        font-family: Lobster;
+        font-size: 32px;
+        font-weight: 400;
+        line-height: 37.44px;
+        letter-spacing: 0.07em;
+        text-align: right;
+    }
+
+    .acblackColumnContent {
+        padding: 50px 30px 50% 15px;
+    }
+
+    .acblackThirdDivHeading {
+        font-family: Lobster;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 26.5px;
+        letter-spacing: 0.09em;
+    }
+
+    .acblackFourthDiv {
+        width: 100%;
+        height: auto;
+        margin: 40px 0;
+    }
+
+    .acblackFourthDiv > div > img {
+        height: auto;
+        width: 100%;
+    }
+    .aciconsDiv img {
+        width: 80%;
+        height: 80%;
+    }
+    .acblackColumnContent{
+        align-items: center !important;
+    }
+    .acpNpremiumarrowHeading{
+        font-size: 20px;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .acblackFirstDiv{
+        background-image: url('../../../../Assets/Products/Liquor/AcBlack/AC_1.jpg');
+    }
+    .acb-sec-1{
+        height: 50vh !important;
+    }
+  }
+
+  @media (max-width:767px){
+    .acblackFirstDiv{
+        /* background-image: url('../../../../Assets/Products/Liquor/AcBlack/AC_1new.png') !important; */
+    }
+    .acblackSecondDiv{
+        /* background-image: url('../../../../Assets/Products/Liquor/AcBlack/AC_2.jpg') !important; */
+    }
+    .acb-sec-3{
+        /* background-image: url('../../../../Assets/Products/Liquor/AcBlack/AC_03_mobile.jpg') !important; */
+        height: 110vh !important;
+        display: block !important;
+        padding-top: 0 !important; 
+        padding-bottom: 0 !important;
+    }
+    .custom-img{
+        max-width: 50px !important;
+        margin-bottom:0;
+    }
+    .acb-sec-3 .global-p-2{
+        font-size: 13px !important;
+    }
+
+  }
+

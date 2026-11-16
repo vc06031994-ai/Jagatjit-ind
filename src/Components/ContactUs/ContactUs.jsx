@@ -1,0 +1,172 @@
+
+import React, { useState } from 'react';
+import axios from 'axios';
+import '../ContactUs/ContactUs.css'
+import { CiLocationOn } from "react-icons/ci";
+import { FiMail } from "react-icons/fi";
+import { GrPhone } from "react-icons/gr";
+import mapImg from '../../Assets/ContactUs/Rectangle.png';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import file from '../../Assets/Files/Quarterly Results - December, 2024.pdf';
+
+const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    body: ''
+  });
+  const [errors, setErrors] = useState({});
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
+
+  const isValidEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateForm = () => {
+    let formErrors = {};
+    let isValid = true;
+
+    if (!formData.name) {
+      formErrors.name = 'Name is required';
+      isValid = false;
+    } 
+
+    if (!formData.email) {
+      formErrors.email = 'Email is required';
+      isValid = false;
+    } else if (!isValidEmail(formData.email)) {
+      formErrors.email = 'Invalid email address';
+      isValid = false;
+    }
+
+    if (!formData.body) {
+      formErrors.body = 'Message is required';
+      isValid = false;
+    }
+
+    setErrors(formErrors);
+    return isValid;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const notify = (message) => toast(message);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      try {
+        const response = await axios.post('https://api.jagatjit.com/api/contact', formData);
+        notify('Form submitted successfully!')
+        setFormData({ name: '', email: '', body: '' }); // Clear form after successful submission
+        // navigate("/home");
+      } catch (error) {
+        setMessage(`Error: ${error.response ? error.response.data : 'Network Error'}`);
+      }
+    }
+  };
+
+  return (
+    <>
+    <div className="hero-section contact-us">
+      
+      <h1 className="heading-top">Contact US</h1>
+     
+    </div>
+      <div className='container'>
+        <ToastContainer />
+        <div className='contactContactmain'>
+          <div className='contactContact col-md-6' >
+            <h1 className='contactHeading'>Get in Touch with Us</h1>
+            <p className='contactusParagraph global-p'><GrPhone className='contacticons' /><a href="tel:0181-2783112" style={{ textDecoration: 'none', color: 'white' }}>0181-2783112</a></p>
+            <p className='contactusParagraph global-p'><FiMail className='contacticons' /> <a href="mailto:jil@jagatjit.com" style={{ textDecoration: 'none', color: 'white' }}>jil@jagatjit.com</a></p>
+            <div style={{ display: 'flex', flexDirection: 'row',gap: '10px' }}><CiLocationOn className='locts' /><p className='contactusParagraph global-p'> <a href="https://maps.app.goo.gl/LAcFgCDhUC7ajYTXA" style={{ textDecoration: 'none', color: 'white' }}>Jagatjit Nagar, Hamira, Kapurthala Dist, 144802,<br></br> Punjab, India.</a></p></div>
+            <a
+                        href={file}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-success me-2 d-none"
+                      >
+                        View Document
+                      </a>
+          </div>
+          <div className='col-md-6'>
+            <h1 className='inputFieldHeading global-p'>Fill in the details and we'll get right back to you.</h1>
+           
+            <form onSubmit={handleSubmit}>
+              <div style={{ marginTop: '6%' }}>
+                {/* <label>Name:</label> */}
+                <input
+                  className='inputField'
+                  type="text"
+                  placeholder='Name'
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  style={{ width: '100%', padding: '15px 20px' }}
+                />
+                {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
+              </div>
+              <div>
+                {/* <label>Email:</label> */}
+                <input
+                  className='inputField'
+                  type="email"
+                  placeholder='Email'
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  style={{ width: '100%', padding: '15px 20px' }}
+                />
+                {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
+              </div>
+              <div>
+                {/* <label>Body:</label> */}
+                <textarea
+                  className='textareainput'
+                  name="body"
+                  placeholder='What would you like to know about?'
+                  cols={30}
+                  rows={5}
+                  style={{ backgroundColor: 'black', color: 'white', width: '100%', padding: '15px 20px' }}
+                  value={formData.body}
+                  onChange={handleChange}
+
+                />
+                {errors.body && <p style={{ color: 'red' }}>{errors.body}</p>}
+              </div>
+              <button className='section3Button' type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+        {message && <p>{message}</p>}
+        {/* <div style={{ display: 'flex', justifyContent: 'center', marginTop: '5%', marginBottom: '5%' }}>
+        <img src={mapImg} alt='mapImg' style={{ maxWidth: '80%' }} />
+      </div> */}
+
+
+      </div>
+      <div className="container">
+      <div class="cs_map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6478.933552351611!2d75.43797944955092!3d31.457236818544185!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a4c716aaaaaab%3A0x8f489715c9a3d6c9!2sJagatjit%20Industries%20Limited!5e1!3m2!1sen!2sin!4v1705050817336!5m2!1sen!2sin"
+          allowfullscreen></iframe>
+      </div>
+      </div>
+      
+    </>
+  );
+};
+
+export default ContactUs;

@@ -1,0 +1,98 @@
+.form-control:focus{
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+.form-select:focus{
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+.financial-hero{
+    height: 85vh !important;
+    position: relative;
+}
+.financial-hero::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(0deg, rgba(0,0,0,1) 39%, rgba(255,255,255,0) 100%);
+    z-index: 0;
+  }
+  .finance-col .card-title{
+    font-size: 18px;
+  }
+  .finance-col .card-text{
+    font-size: 18px;
+  }
+  @media (max-width:767px){
+    .finance-col .card-title{
+        font-size: 16px !important;
+    }
+   .finance-col .card-text{
+        font-size: 16px !important;
+    }
+  }
+
+.pdf-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.pdf-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  width: 90%;
+  height: 90%;
+  overflow: auto;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.pdf-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.pdf-controls {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.pdf-controls button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pdf-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

@@ -1,0 +1,62 @@
+.slider-item {
+  padding: 0 10px; /* Optional: add some spacing between slides */
+}
+.slide-btn{
+  width:40% !important;
+}
+.slider-item img {
+  height: 150px;
+  object-fit: cover; /* Ensure images cover the area without distortion */
+  width: 100%;
+}
+.small-bottle{
+  width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap:10px;
+}
+.content-div {
+  transition: transform 0.5s ease;
+}
+.product-name{
+  font-family: 'WHISKEY Jill', sans-serif !important;
+  font-size: 20px;
+}
+.slick-initialized .slick-slide{
+  display: flex;
+  justify-content: center;
+}
+/* .content-div{
+padding-left: 10%;
+
+} */
+.right-col{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  position: relative;
+}
+.left-img{
+  position: relative;
+  z-index: 2;
+  transform: rotate(31.71deg);
+
+}
+
+.slick-active:not(.slick-current){
+filter: grayscale(100%);
+}
+/* @keyframes rotateImage {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-on-scroll {
+  animation: rotateImage 2s linear infinite; /* Rotate continuously} */
+

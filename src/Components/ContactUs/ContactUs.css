@@ -1,0 +1,158 @@
+
+/* .container {
+    margin-top: 10%;
+} */
+
+.cs_map {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    border-radius: 5px;
+    overflow: hidden;
+  
+  }
+  
+  .cs_map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+.inputField {
+    width: 100%;
+    margin-bottom: 2%;
+    background-color: black;
+    border-color: #fff;
+    padding: 2%;
+    border-width: 0.5px;
+    border-radius: 5px;
+    color: #fff;
+}
+.contact-us {
+    height: 80vh !important;
+}
+.inputFieldHeading {
+    font-size: 18px;
+    margin-bottom: 0;
+    font-weight: 600 !important;
+    font-family: 'TradeGothicLT';
+}
+
+.contactHeading {
+    font-size: 40px;
+    margin-bottom: 45px !important;
+    font-weight: bold;
+    font-family: 'TradeGothicLT';
+    margin-bottom: 10%;
+}
+
+.contactusParagraph {
+
+   
+    margin-bottom: 5%;
+    /* margin-left: 5%;
+    margin-right: 5%; */
+}
+
+.textareainput {
+    width: 100%;
+    margin-bottom: 2%;
+    background-color: black;
+    border-color: #fff;
+    border-width: 0.5px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.contacticons {
+    color: #ECA533;
+    /* margin-bottom: -3px; */
+    margin-right: 10px;
+}
+.locts {
+    color: #ECA533;;
+    font-size: 26px;
+    /* margin-top: 5px;
+    margin-left: 20px;
+    margin-right: -15px; */
+}
+
+.contactContact {
+    margin-bottom: 1%;
+}
+
+.contactContactmain {
+    display: flex;
+    /* margin-left: 10%;
+    margin-right: 10%; */
+    justify-content: space-between;
+    align-self: center;
+    margin-bottom: 6%;
+}
+
+
+@media (max-width: 767px) {
+ 
+    
+    .contactContactmain {
+        display: flex;
+        justify-content: space-around;
+        align-self: center;
+        flex-direction: column;
+        margin-bottom: 15%;
+        margin-top: 10%;
+    }
+    .contactusParagraph{
+        text-align: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    form    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    form div {
+        width:100%;
+    }
+    /* .container {
+        margin-top: 20%;
+    } */
+
+    .inputFieldHeading {
+        font-size: 18px;
+        margin-bottom: 0;
+        font-weight: 100;
+        font-family: 'Josefin Sans';
+        text-align: center;
+    }
+
+    .contactHeading {
+        font-size: 30px;
+        margin-bottom: 30px;
+        font-weight: 100;
+        font-family: 'Josefin Sans';
+        text-align: center;
+    }
+
+    .contactContact h1 {
+        text-align: center;
+    }
+
+    .locts {
+        color: #ECA533;;
+        font-size: 40px;
+        /* margin-left: 15px;
+        margin-right: -18px;
+        margin-top:0; */
+    }
+    .contact-us {
+        height:70vh !important;
+    }
+
+}

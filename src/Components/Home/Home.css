@@ -1,0 +1,1577 @@
+@font-face {
+    font-family: 'Whiskey Jill';
+    src: url('../../fonts/WhiskeyJillDemo-2O7Vo.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+   }
+  
+  @font-face {
+    font-family: 'TradeGothicLT';
+    src: url('../../fonts/trade-gothic-lt-std-58a78e64434a9.ttf') format('truetype'),
+         url('../../fonts/trade-gothic-lt-std-bold-condensed-no-20-5872def1d27d8.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'TradeGothicLTbold';
+    src: url('../../fonts/Trade-Gothic-LT-Bold-Condensed-No.-20.ttf') format('truetype'),
+         url('../../fonts/Trade-Gothic-LT-Bold-Condensed-No.-20-Oblique.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .pin-spacer{
+    padding: 0 !important;
+}
+
+/* ==========================================GLOBLE FONT START ========================================*/
+h1{
+    margin-bottom: 0 !important;
+}
+.container{
+    padding-left:20px !important;
+    padding-right:20px !important;
+}
+.global-h2{
+    font-family: 'TradeGothicLT' !important;
+    font-size: 34px !important;
+    font-weight: 600 !important;
+  }
+  .global-h3{
+    font-family: 'TradeGothicLT' !important;
+    font-size: 21px !important;
+    color: #b9b7b7 !important;
+    font-weight: 500;
+  }
+  .global-p{
+    font-size: 19.72px !important;
+    font-family: 'TradeGothicLT' !important;
+    font-weight: 500 !important;
+    color: #b9b7b7 !important;
+    text-align: justify !important;
+  }
+  .global-p-2{
+  font-size: 19.72px !important;
+  font-family: 'TradeGothicLT' !important;
+  font-weight: 500 !important;
+  color: #fff !important;
+  line-height: 28px;
+  text-align: justify;
+  margin-top:10px !important;
+  }
+  .global-p-3{
+  font-size: 25px !important;
+  font-family: 'TradeGothicLT' !important;
+  font-weight: 400 !important;
+  color: #eca533 !important;
+  }
+.g-heading-4{
+    font-size: 80px;
+    line-height: 80px;
+    text-transform: uppercase;
+    font-family: 'Whiskey Jill', sans-serif;
+    font-weight: 400 !important;
+    /* text-align: center; */
+}
+.g-heading-4-yellow{
+    font-size: 80px;
+    line-height: 80px;
+    text-transform: uppercase;
+    font-family: 'Whiskey Jill', sans-serif;
+    font-weight: 400 !important;
+    /* text-align: center;  */
+    color: #e59e00;
+}
+.small-bottle .center{
+    text-align: center !important;
+}
+.center {
+    text-align: justify !important;
+}
+/* .text-center    {
+    text-align: justify !important;
+} */
+/* Top Heading Of every pages without home page */
+.heading-top {
+    font-size: 120px;
+    font-family: 'Whiskey Jill';
+    font-weight: 400;
+    z-index: 1;
+    position: relative;
+    line-height: 120px;
+  }
+
+  /* Top Heading Description */
+
+  .firstDivParagraph{
+    font-family: 'TradeGothicLT';
+    font-size: 55px;
+    margin-top: -10px;
+    z-index: 1;
+  }
+  .h1-primery{
+    font-family: 'Whiskey Jill';
+    color: #fff;
+    font-weight: 400;
+    font-size: 140px;
+    line-height: 117px;
+    margin-bottom: 0 !important;
+    /* margin-top:100px; */
+  }
+  .h2-secondary{
+    color: #eca533;
+    font-size: 80px;
+    font-weight: 400;
+    line-height: 80px;
+    font-family: 'Whiskey Jill';
+    margin-bottom: 0 !important;
+  }
+
+.space{
+    margin-top:100px;
+}
+
+
+
+  
+/* ==================================================GLOBLE FONT END ===============================================*/
+
+#sectionImage1 {
+    /* background-image: url('../../Assets/Home/bg-home-1.png'); */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.sectionBottleDiv {
+    position: relative;
+    /* max-height: 100vh; */
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    /* position: fixed; */
+    background-repeat: no-repeat;
+    /* aspect-ratio: 14 / 7.3; */
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.sectionBottleDivsec1 {
+    position: relative;
+    max-height: 85vh;
+    background-size: cover;
+    background-position: center;
+    /* position: fixed; */
+    background-repeat: no-repeat;
+    /* aspect-ratio: 14 / 7.3; */
+}
+
+.imageContainer1 {
+    /* height: 90vh; */
+    height: 85vh;
+    margin-top: 85px;
+}
+
+.mapContainerDiv {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.first-img{
+    height:95vh !important;
+}
+.sectionImage1Div {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-end; */
+    align-items: flex-start;
+    /* position: absolute; */
+    padding: 13%;
+    padding-right:20px;
+    padding-left: 0 !important;
+}
+
+.section1Heading {
+    font-size: 190px;
+    color: #fff;
+    font-family: 'Whiskey Jill', sans-serif;
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    line-height:172px;
+    
+}
+
+.section1subHeading {
+    font-size: 60px;
+    color: #fff;
+    font-family: 'Josefin Sans';
+    font-weight: 600;
+    letter-spacing: 3px;
+    
+}
+.flex-center   {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-center .card-bodys::after{
+    top:40% !important;
+}
+.width {
+    width:85%;
+}
+.section1paragraph {
+    font-size: 24px;
+    color: #fff;
+    /* font-family: 'Josefin Sans'; */
+    font-weight: 100;
+    letter-spacing: 3px;
+}
+
+#sectionImage2 {
+    background-image: url('../../Assets/Home/bg-home-2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 100px 20px;
+    /* height: 100vh; */
+}
+
+.lastsecmainDiv h1{
+    margin-bottom:0 !important;
+    position: relative;
+    z-index: 5;
+}
+.left-img{
+    height:85vh;
+}
+
+.App{
+    position: relative !important;
+}
+.box-color{
+    border: 2px solid #000 !important;
+    color:#000 !important;
+}
+.section3MainDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 10%;
+    align-items: center;
+    /* height: 100vh; */
+}
+/* 
+.imageDivsow {
+    display: flex;
+    justify-content: center;
+    background-color: #ECA533;
+    margin: 0 35%;
+} */
+
+.imageDivsow{
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.imageDivsow::after{
+    content: '';
+    width: 231px;
+    height: 70%;
+    background-color: #ECA533;
+    position: absolute;
+    left: 35%;
+    top: 15%;
+    z-index: 1;
+}
+/* media query form home page in laptop  */
+@media only screen and (min-width: 1024px) and (max-width: 1440px){
+    #sectionImage2{
+        height: auto;
+    }
+    .section1Heading{
+        font-size: 100px;
+        line-height: 120px;
+    }
+    .btnheading{
+        font-size: 70px !important;
+    }
+    .royalsectwo{
+        padding-bottom: 60px;
+    }
+    .g-heading-2{
+        font-size: 100px !important;
+    }
+    .g-heading-3{
+        font-size: 35px !important;
+    }
+    .g-span{
+        font-size: 35px !important;
+    }
+    .g-heading-4 ,.g-heading-4-yellow{
+        font-size: 60px !important;
+        line-height: 60px;
+    }
+    .lastsecmainDiv{
+        padding-top: 0 !important;
+    }
+    .h1-primery{
+        font-size: 110px;
+        line-height: 110px;
+      }
+      .h2-secondary{
+        font-size: 70px;
+        line-height: 98px;
+      }
+      .g-heading-2 {
+        font-size: 95px !important;
+        line-height: 90px !important;
+      }
+      #sectionImage3{
+        height:160vh !important;
+      }
+      .box-color{
+        margin-top:0 !important;
+      }
+}
+
+
+@media (min-width: 1365px) and (max-width: 1440px){
+    .imageDivsow::after {
+        left: 15%;
+        width: 150px;
+    }
+    .firstDivParagraph{
+        font-size: 30px !important;
+      }
+}
+
+@media (min-width: 1025px) and (max-width: 1366px){
+    .imageDivsow::after {
+        width:150px;
+    }
+    .heading-top{
+        font-size: 100px;
+        /* margin-top: 60px; */
+        line-height: 100px;
+      }
+      .firstDivParagraph{
+        font-size: 30px !important;
+      }
+
+    }
+
+@media (min-width: 768px) and (max-width: 1024px){
+    .imageDivsow::after {
+        width: 140px;
+        left: 31%;
+        top: 11%;
+        height: 80%;
+    
+}
+.h1-primery{
+    font-size: 80px;
+    line-height: 80px;
+  }
+  .h2-secondary{
+    font-size: 60px;
+    line-height: 65px;
+  }
+.heading-top{
+    font-size: 80px !important;
+    line-height: 80px;
+  }
+.section5Image {
+    max-width: 80%;
+}
+    #sectionImage2{
+        height: auto;
+    }
+    .right-col{
+        gap:30px;
+    }
+    .mt-5{
+        margin-top: 0 !important;
+    }
+    .firstDivParagraph{
+        font-size: 35px;
+      }
+}
+
+@media (max-width:767px){
+    .section5Image{
+        max-width: 60%;
+    }
+    .heading-top   {
+        font-size: 50px !important;
+        line-height: 50px;
+        text-align: center;
+    }
+    .firstDivParagraph{
+        font-size: 21px !important;
+        padding-top:10px;
+    }
+    .h1-primery{
+        font-size: 60px;
+        line-height: 60px;
+        text-align: center;
+        margin-top:0;
+      }
+      .h2-secondary{
+        font-size: 40px;
+        line-height: 45px;
+        text-align: center;
+      }
+      .global-h2{
+        font-size: 28px !important;
+      }
+      .global-p-2{
+        text-align: justify !important;
+      }
+      .lastsecmainDiv h1{
+        margin-bottom:20px !important;
+      }
+.space{
+    margin-top:0;
+}
+.box-color{
+    margin-top:0 !important;
+  }
+}
+
+.secion2TextWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.smallImgButton>img {
+    width: 100%;
+    height: auto;
+}
+
+.mob-show-btn {
+    display: none;
+}
+
+.smallImgDiv {
+    display: flex;
+    gap: 40px;
+}
+
+#sectionImage5 {
+    background-image: url('../../Assets/Home/sec5backgroundImg.png');
+    background-size: cover;
+    background-position: right;
+    place-items: center;
+    height: 100vh;
+    padding: 0;
+}
+
+.section5MainDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 10%;
+    align-items: center;
+    height: 100vh;
+}
+
+.section5GroupImagesDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 50px;
+}
+
+#sectionImage6 {
+    background-image: url('../../Assets/Home/sec6backgroundImg.png');
+}
+
+.section {
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    place-items: center;
+    /* aspect-ratio: 16 / 8.71; */
+
+}
+.imageMapContainer {
+    border: none; /* Ensure no default border */
+    outline: none; /* Remove any outline that might appear */
+  }
+  
+  .imageMapContainer:focus {
+    border: none; /* Ensure no border on focus */
+    outline: none; /* Remove outline on focus */
+  }
+  
+  .imageMapContainer:active {
+    border: none; /* Ensure no border when active */
+    outline: none; /* Remove outline when active */
+  }
+.section1 {
+    /* width: 100%; */
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    place-items: center;
+    /* aspect-ratio: 17 / 8.78; */
+}
+
+.carousel-item>img {
+    height: 100vh;
+}
+
+.btnheading {
+    font-size: 100px;
+    font-family: 'Whiskey Jill', sans-serif;
+    font-weight: 400;
+    /* letter-spacing: 4px; */
+    margin-bottom: 0;
+    line-height: 96px;
+}
+
+.btnsubheading {
+
+    font-size: 25px;
+    font-family: 'Josefin Sans';
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: #ECA533;
+    margin-bottom: 0;
+}
+
+.btnparagraph {
+    font-size: 18px;
+    margin-bottom: 0;
+    font-weight: 200;
+}
+
+.smallImgButton {
+    background-color: transparent;
+    border-color: transparent;
+    border: 0;
+    border-radius: 10px;
+}
+
+.section2 {
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    place-items: center;
+    /* aspect-ratio: 16 / 8.71; */
+}
+
+.section3GroupHeaderDiv {
+    width: 100%;
+    align-self: center;
+    justify-content: flex-end;
+    padding-left: 6%;
+}
+
+.section3Image {
+    width: 100%;
+    /* width: 100%; */
+    /* width: 100%; */
+    /* height: auto; */
+    /* margin: 5%; */
+}
+
+.sectionThreeMainDiv {
+    display: flex;
+    align-self: center;
+    align-items: center;
+}
+
+.section3Header {
+    font-size: 45px;
+    font-family: 'Regular';
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-decoration: none;
+    margin-bottom: 0%;
+    opacity: 0.9;
+    /* width: 50vw; */
+}
+
+.sec3headwidth {
+    /* width: 50%; */
+    margin-left: -15px;
+    /* font-size: 3rem; */
+}
+
+.spansec3head {
+    font-size: 45px;
+    letter-spacing: 5px;
+}
+
+.section3Paragraph {
+    font-size: 13px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    margin-left: -15px;
+}
+
+.section3Button {
+    border: 0.5px solid #ECA533;
+    padding: 15px 30px;
+    font-size: 15px;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-top: 30px;
+    background-color: transparent;
+    text-transform: uppercase;
+    /* width:30%; */
+    border-radius: 0 !important;
+}
+.section3Button:hover{
+    color:#fff;
+    background-color: #ECA533;
+    border:1px solid #fff;
+}
+button{
+    font-family: 'TradeGothicLT' !important;
+}
+
+.section4Button {
+    border-color: #ECA533;
+    background-color: black;
+    border-width: 0.5px solid;
+    border-radius: 25px;
+    padding: 10px 35px;
+    color: #ECA533;
+    letter-spacing: 2px;
+    margin-top: 30px;
+}
+
+.subparaheading {
+    font-size: 16px;
+    font-family: 'Lobster', cursive;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.subparaheading span {
+    font-size: 16px;
+    font-family: 'Lobster', cursive;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #ECA533;
+    text-decoration: none;
+}
+
+.section5firstImage {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.section5secondImage {
+    display: flex;
+    gap: 50px;
+}
+
+/* .section5Image {
+    width: 200px;
+    height: 200px;
+    margin: 6px 6px 6px 5px;
+    border-radius: 12px;
+} */
+
+.section5Header {
+    font-size: 38px;
+    font-family: 'Josefin Sans';
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 0;
+    width: 60%;
+}
+
+.section6Header {
+    font-size: 34px;
+    font-family: 'Josefin Sans';
+    font-weight: 100;
+    color: #fff;
+    letter-spacing: 4px;
+    margin-bottom: 0%;
+    text-align: center;
+    margin: 30px 0 20px 0;
+
+}
+
+.imageMapContainer {
+    background-color: black;
+    height: 85vh;
+    width: 100%;
+    margin-top:-30px;
+    border: 1px solid #000;
+}
+
+
+.mainDiv {
+    padding-left: 5%;
+}
+
+.transformText {
+    font-size: 200px;
+    font-family: 'Josefin Sans';
+    -webkit-text-stroke-width: 2;
+    -webkit-text-stroke-color: 'white';
+    opacity: 0.6;
+}
+
+.sectionMargin {
+    padding-top: 15%;
+}
+
+.section3GroupImagesDiv {
+    width: 100%;
+    /* object-fit: contain; */
+
+}
+
+.section6firstThirdDiv {
+    background-image: url('../../../../Assets/Products/Liquor/RoyalPride/royalprideBg.png');
+    background-position: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* aspect-ratio: 16/8.81; */
+    width: 100vw;
+    height: 100vh;
+}
+
+.section6firstThirdDivContent {
+    display: flex;
+    flex-direction: row;
+    text-align: justify;
+    align-self: flex-end;
+    /* padding: 10%; */
+}
+
+.section6firstthirdDivLine {
+    font-family: 'Krona One';
+    font-size: calc(30px + 1vw);
+    font-weight: 700;
+    margin-bottom: 0;
+    text-align: center;
+    letter-spacing: 4px;
+    padding-right: 5%;
+    margin-bottom: 2%;
+}
+
+/* style={{ height: '90vh', marginBottom: '5%' }} */
+.lastsecmainDiv {
+    /* height: 100vh; */
+    height: auto !important;
+    /* margin-bottom: 5%; */
+    margin-bottom: 0;
+    padding-top: 70px !important;
+}
+
+.section6firstrowdiv {
+    display: flex;
+    width: 80%;
+    margin-top: 20%;
+    justify-content: space-between;
+    align-self: center;
+    /* align-items: center; */
+}
+
+.section6firstcandleimagesingle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    object-fit: cover;
+}
+
+.slider-btn-link-1 {
+    top: 45%;
+    left: 45%;
+}
+
+.slider-btn-link-2 {
+    top: 40%;
+    left: -37%;
+}
+
+.slider-btn-link-3 {
+    top: 42%;
+    left: -48%;
+}
+
+.carousel-caption .section-silder-Button {
+    font-family: 'Regular';
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 20px;
+    text-align: center;
+    border: 0.5px solid #ECA533;
+    border-radius: 25px;
+    padding: 8px 25px;
+    color: #ECA533;
+    letter-spacing: 1px;
+    background-color: transparent;
+    text-transform: uppercase;
+}
+
+.blink {
+    animation: blinkAnimation 1s infinite;
+}
+
+@keyframes blinkAnimation {
+
+    0%,
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.pulse {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    opacity: 0.8;
+    animation: pulseAnimation 1s ease-out infinite;
+}
+
+@keyframes pulseAnimation {
+    100% {
+        opacity: 0.2;
+        transform: scale(2);
+    }
+}
+
+.section2img {
+    height: 500px;
+    transform: rotate(45deg);
+}
+
+.bottle-active {
+    filter: drop-shadow(0px 0px 25px #ECA533);
+    /* box-shadow: 0px 0px 46.4px 0px rgba(255, 160, 19, 1), inset 0px 0px 100.4px 0px rgba(212, 131, 9, 0.726); */
+    transform: scale(1.1);
+}
+
+
+
+
+/* @media (min-width:641px) {
+    .section2img {
+        height: 300px;
+        width: auto;
+        object-fit: cover;
+    } */
+
+   
+    .lastsecmainDiv {
+        height: 100vh;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btnparagraph {
+        font-size: 25px;
+        /* text-align: center; */
+    }
+   
+
+    .bottle-active {
+        filter: drop-shadow(0px 0px 25px #ECA533);
+        /* box-shadow: 0px 0px 46.4px 0px rgba(255, 160, 19, 1), inset 0px 0px 100.4px 0px rgba(212, 131, 9, 0.726); */
+        transform: scale(0.5);
+    }
+
+    .inactiveBotle {
+        scale: 0.5;
+    }
+
+    .sectionThreeImageDiv>.smallImgDiv {
+        gap: 5px;
+        /* padding: 5px; */
+    }
+
+    .section,
+    .sectionImage5 {
+        height: 100vh;
+        background-size: cover;
+    }
+
+    /* .section5Image {
+        width: 150px;
+        height: 150px;
+        margin: 6px 6px 6px 5px;
+        border-radius: 12px;
+    } */
+
+    .section5GroupImagesDiv {
+        gap: 20px;
+    }
+
+    .royalsectwo {
+        padding-top: 60px;
+    }
+
+    .sectionThreeHeadDiv {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+        /* max-width: 60%; */
+    }
+    .since-span{
+        font-size: 25px;
+        color: #ECA533;
+        text-decoration: none;
+        font-style: italic;
+    }
+
+
+    .g-span{
+        font-size: 40px;
+        text-decoration: none;
+        font-family: 'TradeGothicLT'
+    }
+    .g-heading-2{
+        font-size: 145px;
+        line-height: 117px;
+        text-transform: uppercase;
+        font-family: 'Whiskey Jill', sans-serif;
+        font-weight: 400 !important;
+    }
+    .g-heading-3{
+        font-size: 45px;
+        font-family: 'TradeGothicLT';
+        font-weight: 600;
+    }
+    #sectionImage3{
+        background-image: url('../../Assets/Home/all-bottle-new.jpg');
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 140vh;
+    }
+    @media (max-width:767px){
+        #sectionImage3{
+            background-image: url('../../Assets/Home/all-bottle-new-mobile.jpg'); 
+            height: 75vh;
+        }
+    }
+    @media only screen and (min-width: 767px) and (max-width: 1024px){
+        #sectionImage3{
+            background-image: url('../../Assets/Home/all-bottle-new-mobile.jpg'); 
+            height: 90vh;
+        }
+    }
+ 
+    form     .section3Button{
+        padding:15px 60px !important;
+    }
+   .section-4{
+    height:100vh !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+   }
+      #sectionImage4 {
+        background-image: url('../../Assets/Home/bg-home-4.png');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding: 0 0 70px 0;
+    }
+
+
+    @media only screen and (max-width: 1270px) {
+        .section3Header {
+            font-size: 30px;
+            font-family: 'Josefin Sans';
+        }
+        .btnparagraph{
+            font-size: 18px;
+        }
+        .small-bottle .global-p-2{
+            font-size: 16px !important;
+            line-height: 20px !important;
+        }
+    }
+    @media screen and (min-width: 1280px) and (max-width: 1366px){
+     
+        .btnparagraph {
+            font-size: 20px !important;
+        }
+        .left-img{
+            height:100vh;
+        }
+    
+        .section3Button{
+            padding:15px 35px;
+        }
+    }
+    /* @media (min-width:641px) {
+    
+        portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones
+        .section {
+            height: 45vh;
+        }
+        .section3MainDiv {
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+    } */
+    
+    @media screen and (min-width: 1366px) and (max-width: 1440px) {
+    
+        /* hi-res laptops and desktops */
+        .section {
+            height: 100vh;
+        }
+        .btnparagraph {
+            font-size: 20px !important;
+        }
+     
+        .section3Button {         
+        padding:15px 25px;
+        }
+    }
+    @media screen and (min-width: 1441px) and (max-width: 1920px){
+        .btnheading {
+            font-size: 98px !important;
+        }
+        .g-span{
+            font-size: 35px;
+        }
+        .g-heading-2{
+            font-size: 100px;
+            line-height: 100px;
+        }
+        .g-heading-3{
+            font-size: 30px;
+            line-height: 30px;
+        }
+        .section3Button{
+            margin-top: 0;
+        }
+        #sectionImage3{
+            height: 160vh;
+        }
+    }
+    
+    @media only screen and (min-width: 1025px) and (max-width: 1365px) {
+        .btnheading {
+            font-size: 70px !important;
+        }
+    
+        .section3Button {
+            font-size: 12px;
+            font-weight: 300;
+            line-height: 14px;
+            text-align: center;
+        padding:15px;
+        }
+      
+    }
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+    
+        .main,
+        .sectionBottleDiv {
+            height: 100vh;
+        }
+        .footerImage img {
+            width: 120px;
+            height: 100px;
+        }
+        .sectionBottleDiv {
+            max-height: unset;
+        }
+    
+        .section3Button {
+            font-size: 12px;
+            font-weight: 300;
+            line-height: 14px;
+            text-align: center;
+        padding:15px;
+        }
+    
+        .section-silder-Button {
+            font-size: 12px;
+            line-height: 14px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+    
+        .imageContainer1 {
+            height: 500px;
+        }
+    
+        /* .sectionImage1Div {
+            padding: 10%;
+        } */
+    
+        .section2 {
+            height: 100% !important;
+        }
+    
+    
+        .secion2TextWrap {
+            width: 100%;
+            gap: 15px;
+        }
+    
+        .section3MainDiv {
+            padding: 0;
+        }
+    
+        .section3MainDiv>.section2img {
+            width: auto;
+            height: 100%;
+            margin: 0;
+        }
+    
+        .sectionThreeImageDiv {
+            display: flex;
+        }
+    
+        .smallImgDiv {
+            display: grid;
+            align-self: unset;
+            grid-template-columns: repeat(4, auto);
+        }
+    
+        .btnheading {
+            font-size: 55px;
+            line-height: 78px;
+            margin-bottom: 10px;
+        }
+        .btnparagraph{
+            font-size: 20px !important;
+        }
+    
+        .btnsubheading {
+            font-size: 14px;
+        }
+    
+        .carousel-item>img,
+        section:nth-child(4) {
+            height: auto;
+        }
+    
+        #sectionImage5 {
+            height: 100vh;
+        }
+    
+        #sectionImage5 .section5MainDiv {
+            flex-direction: column;
+            display: flex;
+            padding: 7%;
+        }
+    
+        .section3GroupHeaderDiv {
+            width: 100%;
+        }
+    
+        .App>div,
+        .imageMapContainer {
+         
+            width: 100%;
+        }
+    
+        .slider-btn-link-1 {
+            top: 45%;
+            left: 45%;
+        }
+    
+        .slider-btn-link-2 {
+            top: 38%;
+            left: -23%;
+        }
+    
+        .slider-btn-link-3 {
+            top: 38%;
+            left: -35%;
+        }
+        .g-heading-2{
+            font-size: 90px;
+        }
+        .g-heading-3{
+            font-size: 35px;
+        }
+        .g-heading-4 ,.g-heading-4-yellow{
+            font-size: 70px !important; 
+            line-height: 70px !important;
+        }
+        .section1Heading{
+            font-size: 100px;
+        }
+        .imageContainer1 {
+            height: 65vh;
+        }
+        .first-img{
+            object-fit: contain;
+        }
+        .left-img{
+            height: 100% !important;
+        }
+     
+    }
+    
+
+
+    @media screen and (max-width: 15in) {
+        .section5GroupImagesDiv img {
+            width: 150px;
+            height: auto;
+        }
+    
+        .imageContainer1 {
+            height: 80vh;
+        }
+    
+        .sectionBottleDiv {
+            height: 100vh;
+            background-size: cover;
+            background-position: bottom;
+            max-height: unset;
+        }
+    
+    }
+    
+
+    @media screen and (max-width: 767px) {
+
+        .imageMapContainer {
+            height: 100% !important;
+            width: 100%;
+        }
+        
+        .imageDivsow::after{
+            width: 100px;
+            left: 35%;
+            height: 80%;
+            top: 10%;
+        }
+        #sectionImage1 {
+            padding-top:100px;
+
+        }
+        #sectionImage4{
+            padding:0;
+        }
+        .first-img{
+            height:50vh !important;
+        }
+        .sectionBottleDiv {
+            height: 90vh;
+            background-size: cover;
+            background-position: bottom;
+            max-height: unset;
+        }
+        .left-img{
+            /* height:auto !important; */
+            height:40vh;
+        }
+        .royalsectwo {
+            padding-top: 60px;
+        }
+      
+        
+        /* .sectionBottleDiv1sec {
+            height: 100vh;
+            background-size: cover;
+        } */
+    
+        .sectionImage1Div {
+            padding: 0 15px;
+        }
+    
+        .section1Heading,
+        .section1subHeading {
+            font-size: 40px;
+            font-weight: 400;
+            line-height: 70px;
+            letter-spacing: 0.07em;
+            text-align: left;
+            margin: 0;
+        }
+    
+        .imageContainer1 {
+            height: 500px;
+        }
+    
+        .secion2TextWrap>.sectionThreeImageDiv {
+            display: none;
+        }
+    
+        .mob-show-btn {
+            display: block;
+        }
+    
+        .section3Button {
+            font-size: 12px;
+            font-weight: 300;
+            line-height: 12px;
+            text-align: center;
+            padding:15px 10px;
+            /* width:50%; */
+        }
+    
+    
+        #sectionImage2 {
+            height: auto;
+            padding:50px 10px;
+        }
+    
+        #sectionImage2 .section3MainDiv {
+            display: flex;
+            flex-direction: column-reverse;
+            padding: 10%;
+            gap: 30px;
+            height: auto;
+        }
+    
+        .section3MainDiv>.section2img {
+            width: auto;
+            height: 300px;
+            margin: 0;
+        }
+     
+    
+        .section3MainDiv>.secion2TextWrap {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+        }
+    
+        .smallImgButton>img {
+            width: 100%;
+            height: 120px;
+            object-fit: contain;
+        }
+    
+        .btnheading {
+            font-size: 40px;
+            font-weight: 400;
+            margin-bottom: 0%;
+            line-height: 35.33px;
+            letter-spacing: 0.1em;
+            margin-bottom: 5px;
+            /* text-align: center; */
+        }
+    
+        .btnsubheading {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 22.08px;
+            letter-spacing: 0.18em;
+            margin-bottom: 10px;
+        }
+    
+        .btnparagraph {
+            font-family: Montserrat;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 17.07px;
+        }
+    
+        .secion2TextWrap .section3Button {
+            color: #000;
+            background-color: rgba(255, 153, 0, 1);
+            font-size: 12px;
+            font-weight: 300;
+            line-height: 12px;
+            text-align: center;
+        }
+    
+        .sectionThreeHeadDiv,
+        .sectionThreeImageDiv {
+            margin: 0;
+        }
+    
+        .sectionThreeHeadDiv {
+            padding-top: 10%;
+        }
+    
+        .sectionThreeImageDiv>.smallImgDiv {
+            display: flex;
+            /* justify-content: space-evenly; */
+            flex-wrap: wrap;
+            /* gap: 10px;
+            margin-left: auto;
+            margin-right: auto; */
+            /* padding: 5px; */
+        }
+    
+        .smallImgDiv {
+            height: auto;
+            width: auto;
+        }
+    
+    
+    
+        .section3GroupHeaderDiv,
+        .section3GroupImagesDiv {
+            width: 100%;
+        }
+    
+        .section3GroupHeaderDiv {
+            margin-left: 45px;
+        }
+    
+        .carousel-item>img,
+        .App>section:nth-child(4) {
+            height: auto;
+        }
+    
+        #sectionImage5 {
+            height: 100vh;
+        }
+    
+        .sec3headwidth {
+            width: 100%;
+            font-size: 30px;
+            letter-spacing: 5px;
+        }
+    
+        .spansec3head {
+            font-size: 38;
+            font-family: 'Josefin Sans';
+        }
+    
+        .section3Paragraph {
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+        }
+    
+        .bottle-active {
+            /* box-shadow: #ECA533; */
+            filter: drop-shadow(0px 0px 25px #ECA533);
+            scale: 0.9;
+        }
+    
+        .inactiveBotle {
+            scale: 0.9;
+        }
+    
+        .imageDivsow {
+            height: 100%;
+            width: auto;
+            object-fit: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        #sectionImage5>.section5MainDiv {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 50px 20px;
+            gap: 50px;
+            height: 100vh;
+        }
+    
+        .section5Header {
+            font-size: 32px;
+            font-weight: 300;
+            line-height: 33.13px;
+            letter-spacing: 0.09em;
+            width: 90%;
+        }
+    
+        #sectionImage5 .section3Button {
+            border: 2px solid rgba(236, 165, 51, 1);
+            color: rgba(236, 165, 51, 1);
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 12px;
+        }
+    
+    
+        .section5GroupImagesDiv img {
+            width: 150px;
+            height: auto;
+        }
+    
+        .App>div {
+            padding: 80px 0 0 0;
+            height: auto !important;
+        }
+    
+        /* .imageMapContainer {
+            height: auto;
+            background-color: #c91919;
+        } */
+    
+        .slider-btn-link-1 {
+            top: 22%;
+            left: 13%;
+        }
+    
+        .slider-btn-link-2 {
+            top: 52%;
+            left: 13%;
+        }
+    
+        .slider-btn-link-3 {
+            top: 51%;
+            left: 10%;
+        }
+        .g-heading-2{
+            font-size: 60px;
+            line-height: 50px;
+        }
+    
+        .g-heading-3{
+            font-size: 20px;
+        }
+        .btnparagraph{  
+            font-size: 13px;
+        }
+        .g-heading-4 ,.g-heading-4-yellow{
+            font-size: 40px !important; 
+            line-height: 40px !important;
+            text-align: center;
+        }
+          .content-div{
+        text-align: center;
+    } 
+    .section2img {
+        height: 250px;
+        width: auto;
+        object-fit: cover;
+    }
+    
+    }
+   #sectionImage-3{
+    background-image: url('../../Assets/Home/section-3-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+   }

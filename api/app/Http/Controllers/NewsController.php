@@ -1,0 +1,84 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Resources\AchievementResource;
+use App\Http\Resources\NewsResource;
+use App\Models\Achievement;
+use App\Models\News;
+use Illuminate\Http\Request;
+
+class NewsController extends Controller
+{
+    public function index()
+    {
+        $news = News::orderBy('order')->get();
+        return view('backend.pages.news.index', compact('news'));
+    }
+
+    public function create()
+    {
+        return view('backend.pages.news.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'status' => 'required|in:publish,draft',
+            'date' => 'required|date',
+        ]);
+
+        $news = News::create($request->only('name', 'order', 'status', 'link', 'date'));
+
+        if ($request->hasFile('news_image')) {
+            $news->addMedia($request->file('news_image'))->toMediaCollection('news_image', 's3');
+        }
+
+        return redirect()->route('new.index')->with('success', 'News created successfully');
+    }
+
+    public function edit(News $new)
+    {
+        return view('backend.pages.news.edit', compact('new'));
+    }
+
+    public function update(Request $request, News $new)
+    {
+        $request->validate([
+            'name' => 'required',
+            'date' => 'required|date',
+            'status' => 'required|in:publish,draft',
+        ]);
+
+        $new->update($request->only('name', 'order', 'status', 'link', 'date'));
+
+        if ($request->hasFile('news_image')) {
+            $new->clearMediaCollection('news_image');
+            $new->addMedia($request->file('news_image'))->toMediaCollection('news_image', 's3');
+        }
+
+        return redirect()->route('new.index')->with('success', 'Award Press updated successfully');
+    }
+
+    public function destroy(News $new)
+    {
+        $new->delete();
+        return redirect()->route('new.index')->with('success', 'Award Press deleted successfully');
+    }
+
+    public function allNews()
+    {
+        $news = News::where('status', 'publish')->orderBy('date')->get();
+        $achievement = Achievement::where('status', 'publish')->orderBy('date')->get();
+
+        $newsResource = NewsResource::collection($news);
+        $achievementResource = AchievementResource::collection($achievement);
+
+        return response()->json([
+            'news' => $newsResource,
+            'achievement' => $achievementResource,
+        ]);
+
+    }
+}

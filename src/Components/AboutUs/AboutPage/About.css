@@ -1,0 +1,190 @@
+@font-face {
+  font-family: 'WHISKEY Jill';
+  src: url('../../fonts/WHISKEYJillDemo-2O7Vo.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TradeGothicLT';
+  src: url('../../fonts/trade-gothic-lt-std-58a78e64434a9.ttf') format('truetype'),
+       url('../../fonts/trade-gothic-lt-std-bold-condensed-no-20-5872def1d27d8.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+.about-us {
+  color: #ffffff;
+  background-color: #000000;
+  text-align: center;
+}
+
+.hero-section {
+  background-image: url('../../../Assets/AboutUs/about-bg-2.png');
+  background-size: contain;
+  background-position: center;
+  padding: 100px 20px;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hero-section::before {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 200px;
+background: linear-gradient(0deg, rgba(0, 0, 0, 1) 39%, rgba(255, 255, 255, 0) 100%);
+z-index: 0;
+}
+/* .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 1));
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+}
+.overlay-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+} */
+
+
+/* .hero-section p {
+  font-family: 'TradeGothicLT';
+  margin: 0 auto;
+  font-size: 26px;
+  line-height: 1.3;
+} */
+/* .img-wrapper{
+  background-image: url("../../../Assets/AboutUs/Values/pro-1.png");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+/* @media (min-width: 768px) and (max-width: 1024px) {
+  .product-wrapper{
+    background-size: 50%;
+  }
+} */
+ .product-wrapper{
+  position: relative;
+ }
+.products-section {
+  padding: 200px 12px 50px 12px;
+  text-align: left;
+ 
+}
+
+
+.products-section p {
+  max-width: 800px;
+  font-size: 18px;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  font-family: 'TradeGothicLT';
+}
+.end-img{
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+  position: absolute;
+  right: 0;
+  bottom: 46px;
+}
+@media (max-width:767px){
+  .end-img{
+    position: relative;
+    bottom: 0;
+  }
+}
+.product-image {
+  max-width: 400px;
+  margin-top: 20px;
+}
+
+.heritage-section {
+  padding: 50px 20px;
+}
+
+.heritage-section h2 {
+  font-size: 70px;
+  /* margin-bottom: 20px; */
+  font-family: 'WHISKEY Jill';
+  font-weight: 400;
+}
+.about-text{
+  position: absolute;
+  bottom:0
+}
+.heritage-section p ,.about-text p {
+  font-size: 18px;
+  line-height: 1.3;
+  font-family: 'TradeGothicLT';
+}
+.bd-none{
+  border: none;
+ }
+
+@media (max-width:767px){
+  .hero-section{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .about-text {
+    bottom:20px;
+  }
+ .abt{
+  margin-bottom: 200px !important;
+ }
+  .hero-section p,
+  .products-section p,
+  .heritage-section p{
+    font-size: 18px !important;
+  }
+
+  .products-section{
+    padding: 50px 20px;
+  }
+  .overlay-2 {
+    align-items: center;
+  }
+  .products-section p{
+    text-align: center;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+.products-section{
+  padding: 50px 12px;
+}
+/* .hero-section {
+  height:80vh;
+} */
+.contactContactmain{
+  gap:20px;
+}
+.overlay-2{
+  align-items: center;
+}
+.products-section h2 ,.heritage-section h2 {
+  font-size: 60px;
+}
+
+}
