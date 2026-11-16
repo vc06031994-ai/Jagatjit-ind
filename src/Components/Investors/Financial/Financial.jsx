@@ -14,6 +14,7 @@ import {
 import { groupFinancialReports } from './financialPeriods.js';
 import { categoryKey, getDocumentDate, loadFinancialReports } from './financialData.js';
 import { buildFinancialCatalog, resolveFinancialView } from './financialCatalog.js';
+import { openHtmlDocument } from './openHtmlDocument.js';
 import './Financial.css';
 
 const QUARTERS = ['Apr – Jun', 'Jul – Sep', 'Oct – Dec', 'Jan – Mar'];
@@ -119,15 +120,6 @@ const Financial = () => {
   const scrollCategories = (direction) => {
     const navigation = navigationRef.current;
     if (navigation) navigation.scrollBy({ left: direction * navigation.clientWidth * 0.75, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
-  };
-
-  const openHtmlDocument = (report) => {
-    const newWindow = window.open('', '_blank');
-    if (newWindow) {
-      newWindow.opener = null;
-      newWindow.document.write(report.html_content);
-      newWindow.document.close();
-    }
   };
 
   const renderDocument = (report, index) => {
