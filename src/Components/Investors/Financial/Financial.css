@@ -69,8 +69,8 @@ body:has(.financial-page) .mobile-navbar { background-color: #010101; }
   background: transparent;
   color: #fff;
   font-family: 'TradeGothicLT', sans-serif;
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 600;
   line-height: 1.4;
   letter-spacing: 1px;
   text-transform: uppercase;
