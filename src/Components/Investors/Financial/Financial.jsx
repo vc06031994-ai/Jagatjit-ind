@@ -57,6 +57,7 @@ const Financial = () => {
   const category = categoryKey(searchParams.get('category') || '');
   const showAll = searchParams.get('view') === 'all';
   const contentRef = useRef(null);
+  const sectionRef = useRef(null);
   const navigationRef = useRef(null);
   const previousView = useRef('directory');
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -87,7 +88,7 @@ const Financial = () => {
     if (loading || error || previousView.current === viewKey) return;
     previousView.current = viewKey;
     contentRef.current?.focus({ preventScroll: true });
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    sectionRef.current?.scrollIntoView({ block: 'start', behavior: 'instant' });
   }, [viewKey, loading, error]);
 
   useEffect(() => {
@@ -157,7 +158,7 @@ const Financial = () => {
   const renderYearTable = (key, title, description, yearHeading) => groups[key].length > 0 && (
     <section className="fin-report-section" aria-labelledby={`fin-${key}-heading`} key={key}>
       <div className="fin-section-heading">
-        <h2 id={`fin-${key}-heading`}>{title}</h2>
+        <h3 id={`fin-${key}-heading`}>{title}</h3>
         <p>{description}</p>
       </div>
       <div className="fin-table-wrap">
@@ -174,7 +175,11 @@ const Financial = () => {
 
   return (
     <div className="financial-page">
-      <main className="container fin-section">
+      <header className="text-center food-hero our-process financial-hero">
+        <h1 className="heading-top">Financial</h1>
+        <p className="firstDivParagraph">Our yearly reports</p>
+      </header>
+      <main className="container fin-section" ref={sectionRef}>
         {!loading && !error && catalog.length > 0 && (
           <nav className="fin-category-navigation" aria-label="Investor categories">
             <button className="fin-nav-scroll" type="button" aria-label="Previous categories" aria-controls="fin-category-links" disabled={!canScrollLeft} onClick={() => scrollCategories(-1)}><FiChevronLeft aria-hidden="true" /></button>
@@ -192,7 +197,7 @@ const Financial = () => {
         <div ref={contentRef} className="fin-content" tabIndex={-1}>
           {!isDirectory && <Link to="/investors/financial" className="fin-back-link"><FiArrowLeft aria-hidden="true" /> Back to Categories</Link>}
           <header className={`fin-page-heading ${isDirectory ? 'fin-directory-heading' : ''}`}>
-            <h1>{loading || error ? 'Investors' : view.label}</h1>
+            <h2>{loading || error ? 'Investors' : view.label}</h2>
             {isDirectory && <p>Select a category to view financial reports and shareholder documents.</p>}
           </header>
           <div id="fin-results" className="fin-results" role="region" aria-label="Financial documents" aria-busy={loading}>
@@ -233,7 +238,7 @@ const Financial = () => {
                 {groups.quarterly.length > 0 && (
                   <section className="fin-report-section" aria-labelledby="fin-quarterly-heading">
                     <div className="fin-section-heading">
-                      <h2 id="fin-quarterly-heading">Quarterly Documents</h2>
+                      <h3 id="fin-quarterly-heading">Quarterly Documents</h3>
                       <p>Financial year: April to March. Select a date to open a document. A dash means no document is listed.</p>
                       <p className="fin-date-note">Dates shown are document dates from our archive and may differ from quarter-end dates.</p>
                     </div>
