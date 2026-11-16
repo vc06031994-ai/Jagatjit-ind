@@ -1,5 +1,5 @@
 /* Match Home.css: TradeGothicLT text, Whiskey Jill display headings,
-   #ECA533 gold and square, outlined buttons. Styles stay on this page. */
+   #ECA533 gold and square controls. Styles stay on this page. */
 .financial-page {
   --fin-gold: #ECA533;
   --fin-muted: #b9b7b7;
@@ -53,17 +53,18 @@ body:has(.financial-page) .mobile-navbar { background-color: #010101; }
 .financial-page .fin-category-navigation { display: grid; grid-template-columns: 38px minmax(0, 1fr) 38px; align-items: center; gap: 8px; }
 .financial-page .fin-category-links { position: relative; display: flex; align-items: stretch; gap: 8px; overflow-x: auto; padding: 6px; scrollbar-width: thin; scrollbar-color: var(--fin-gold) #171717; }
 .financial-page .fin-category-links .fin-category-button { flex-shrink: 0; white-space: nowrap; gap: 8px; }
-.financial-page .fin-nav-scroll { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; border: 1px solid var(--fin-line); border-radius: 0; color: var(--fin-gold); background: #111; font-size: 24px; cursor: pointer; }
-.financial-page .fin-nav-scroll:disabled { color: #777; cursor: default; }
+.financial-page .fin-nav-scroll { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; border: 0; border-radius: 0; color: #fff; background: #242424; font-size: 24px; cursor: pointer; transition: background-color .2s, color .2s; }
+.financial-page .fin-nav-scroll:not(:disabled):hover { background: var(--fin-gold); color: #000; }
+.financial-page .fin-nav-scroll:disabled { color: #777; background: #181818; cursor: default; }
 .financial-page .fin-category-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 44px;
   padding: 12px 16px;
-  border: 1px solid var(--fin-gold);
+  border: 0;
   border-radius: 0;
-  background: transparent;
+  background: #242424;
   color: #fff;
   font-family: 'TradeGothicLT', sans-serif;
   font-size: 14px;
@@ -76,7 +77,7 @@ body:has(.financial-page) .mobile-navbar { background-color: #010101; }
   cursor: pointer;
   transition: background-color .2s, color .2s;
 }
-.financial-page .fin-category-button:hover { background: rgba(236, 165, 51, .15); }
+.financial-page .fin-category-button:hover { background: var(--fin-gold); color: #000; }
 .financial-page .fin-category-button.is-active { background: var(--fin-gold); color: #000; }
 .financial-page .fin-results { scroll-margin-top: 120px; }
 .financial-page .fin-results-heading { margin-bottom: 36px; }
@@ -239,26 +240,31 @@ body:has(.financial-page) .mobile-navbar { background-color: #010101; }
 .financial-page .fin-quarter-entry .fin-date-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 /* Investor directory: four icon cards per row, matching the reference flow. */
-.financial-page .fin-category-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.financial-page .fin-category-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .financial-page .fin-category-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-  min-height: 172px;
-  padding: 24px 18px;
-  border: 1px solid var(--fin-line);
+  position: relative;
+  gap: 20px;
+  min-height: 198px;
+  padding: 28px 22px;
+  border: 1px solid rgba(255, 255, 255, .14);
   border-radius: 0;
-  background: #0d0d0d;
+  background: linear-gradient(145deg, #1b1b1b, #101010);
   color: #fff;
   text-decoration: none;
   text-align: center;
-  transition: border-color .2s, background-color .2s;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .18);
+  transition: border-color .2s, transform .2s, box-shadow .2s;
 }
-.financial-page .fin-category-card:hover { border-color: var(--fin-gold); background: #19150d; color: var(--fin-gold); }
-.financial-page .fin-category-icon { display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: rgba(236, 165, 51, .08); color: var(--fin-gold); }
-.financial-page .fin-category-icon svg { width: 32px; height: 32px; stroke-width: 1.5; }
+.financial-page .fin-category-card::before { content: ''; position: absolute; inset: -1px -1px auto; height: 3px; background: var(--fin-gold); transform: scaleX(0); transition: transform .2s; }
+.financial-page .fin-category-card:is(:hover, :focus-visible) { border-color: var(--fin-gold); color: #fff; transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0, 0, 0, .35); }
+.financial-page .fin-category-card:is(:hover, :focus-visible)::before { transform: scaleX(1); }
+.financial-page .fin-category-icon { display: inline-flex; align-items: center; justify-content: center; width: 76px; height: 76px; background: rgba(236, 165, 51, .1); color: var(--fin-gold); transition: background-color .2s; }
+.financial-page .fin-category-card:is(:hover, :focus-visible) .fin-category-icon { background: rgba(236, 165, 51, .18); }
+.financial-page .fin-category-icon svg { width: 44px; height: 44px; stroke-width: 1.5; }
 .financial-page .fin-category-name { font-size: 14px; font-weight: 600; line-height: 1.5; letter-spacing: .8px; text-transform: uppercase; overflow-wrap: anywhere; }
 .financial-page .fin-investor-information { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--fin-line); }
 .financial-page .fin-investor-information h2 { font-size: 26px; color: #fff; }
@@ -271,8 +277,15 @@ body:has(.financial-page) .mobile-navbar { background-color: #010101; }
 }
 @media (max-width: 575px) {
   .financial-page .fin-category-grid { gap: 12px; }
-  .financial-page .fin-category-card { padding: 20px 12px; gap: 14px; min-height: 180px; }
-  .financial-page .fin-category-icon { width: 52px; height: 52px; }
+  .financial-page .fin-category-card { padding: 22px 12px; gap: 16px; min-height: 190px; }
+  .financial-page .fin-category-icon { width: 64px; height: 64px; }
+  .financial-page .fin-category-icon svg { width: 38px; height: 38px; }
 }
 @media (max-width: 359px) { .financial-page .fin-category-grid { grid-template-columns: 1fr; } }
-@media (prefers-reduced-motion: reduce) { .financial-page .fin-category-card { transition: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .financial-page .fin-category-card,
+  .financial-page .fin-category-card::before,
+  .financial-page .fin-category-icon,
+  .financial-page .fin-nav-scroll { transition: none; }
+  .financial-page .fin-category-card:is(:hover, :focus-visible) { transform: none; }
+}
