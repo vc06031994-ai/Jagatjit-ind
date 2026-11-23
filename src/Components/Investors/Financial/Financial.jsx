@@ -3,14 +3,6 @@ import { client } from '../../../api/contentful.js';
 import { FaRegFileAlt } from 'react-icons/fa';
 import { Link, useSearchParams } from 'react-router-dom';
 import { FiArrowUpRight, FiArrowLeft, FiChevronLeft, FiChevronRight, FiGrid } from 'react-icons/fi';
-import { LuVote } from 'react-icons/lu';
-import {
-  TbDeviceDesktopSearch, TbUserShield, TbChartPie, TbShieldCheck,
-  TbChartBar, TbAffiliate, TbReportAnalytics, TbFileSearch,
-  TbFileCertificate, TbUserScan, TbBuildingCommunity, TbSitemap,
-  TbCalendarEvent, TbSpeakerphone, TbChartCandle, TbBook2,
-  TbBuildingBank, TbAddressBook, TbScale, TbHeadset, TbFiles,
-} from 'react-icons/tb';
 import { groupFinancialReports } from './financialPeriods.js';
 import { categoryKey, getDocumentDate, loadFinancialReports } from './financialData.js';
 import { buildFinancialCatalog, resolveFinancialView } from './financialCatalog.js';
@@ -18,36 +10,7 @@ import { openHtmlDocument } from './openHtmlDocument.js';
 import './Financial.css';
 
 const QUARTERS = ['Apr – Jun', 'Jul – Sep', 'Oct – Dec', 'Jan – Mar'];
-const CATEGORY_ICONS = {
-  disclosure: TbDeviceDesktopSearch,
-  governance: TbUserShield,
-  shareholding: TbChartPie,
-  compliance: TbFileCertificate,
-  results: TbChartBar,
-  related: TbAffiliate,
-  annual: TbReportAnalytics,
-  'filing-extract': TbFileSearch,
-  'filing-return': TbFileCertificate,
-  shareholders: TbUserScan,
-  subsidiary: TbBuildingCommunity,
-  board: TbSitemap,
-  meeting: TbCalendarEvent,
-  ballot: LuVote,
-  announcement: TbSpeakerphone,
-  exchange: TbChartCandle,
-  charter: TbBook2,
-  policies: TbShieldCheck,
-  deposit: TbBuildingBank,
-  contact: TbAddressBook,
-  disputes: TbScale,
-  grievance: TbHeadset,
-  documents: TbFiles,
-};
 const categoryHref = (key) => `?category=${encodeURIComponent(key)}`;
-const renderCategoryIcon = (name) => {
-  const Icon = CATEGORY_ICONS[name] || TbFiles;
-  return <Icon aria-hidden="true" />;
-};
 
 const Financial = () => {
   const [reports, setReports] = useState([]);
@@ -190,7 +153,7 @@ const Financial = () => {
           {!isDirectory && <Link to="/investors/financial" className="fin-back-link"><FiArrowLeft aria-hidden="true" /> Back to Categories</Link>}
           <header className={`fin-page-heading ${isDirectory ? 'fin-directory-heading' : ''}`}>
             <h2>{loading || error ? 'Investors' : view.label}</h2>
-            {isDirectory && <p>Select a category to view financial reports and shareholder documents.</p>}
+            {isDirectory && <p>Select a category from the tabs above to view financial reports and shareholder documents.</p>}
           </header>
           <div id="fin-results" className="fin-results" role="region" aria-label="Financial documents" aria-busy={loading}>
             {loading ? (
@@ -203,15 +166,7 @@ const Financial = () => {
               </div>
             ) : isDirectory ? (
               <>
-                <div className="fin-category-grid" aria-label="Choose an investor category">
-                  {catalog.map((option) => (
-                    <Link key={option.key} className="fin-category-card" to={categoryHref(option.key)} aria-label={`${option.label} — ${option.reports.length} ${option.reports.length === 1 ? 'document' : 'documents'}`}>
-                      <span className="fin-category-icon">{renderCategoryIcon(option.icon)}</span>
-                      <span className="fin-category-name">{option.label}</span>
-                    </Link>
-                  ))}
-                </div>
-                {catalog.length === 0 && <div className="fin-state"><h2>No documents available</h2><p>Categories will appear here when documents are published.</p></div>}
+                {catalog.length === 0 && <div className="fin-state"><h2>No documents available</h2><p>Category tabs will appear above when documents are published.</p></div>}
                 <section className="fin-investor-information" aria-label="Investor information">
                   <div><h2>Financial Information</h2><p>Explore Jagatjit Industries Limited’s financial reports, corporate disclosures and shareholder documents. Select a category above, or browse the complete archive.</p><Link to="?view=all" className="fin-information-link">View All Documents <FiArrowUpRight aria-hidden="true" /></Link></div>
                   <div><h2>Need Assistance?</h2><p>For help with company information or shareholder enquiries, please get in touch with Jagatjit Industries Limited.</p><Link to="/contactus" className="fin-information-link">Contact Us <FiArrowUpRight aria-hidden="true" /></Link></div>
