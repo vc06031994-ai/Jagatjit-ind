@@ -4,15 +4,15 @@ import { buildFinancialCatalog, getCategoryStyle, getReportCategories, resolveFi
 
 const report = (id, file_name, categories = ['Annual Report']) => ({ id, file_name, categories });
 
-test('the default view is an investor directory, not a long list of reports', () => {
+test('the default view opens All Documents and preserves the legacy all-documents link', () => {
   const reports = [report('annual', 'Annual Report 2024-25')];
   const catalog = buildFinancialCatalog(reports);
-  assert.equal(resolveFinancialView(catalog, reports).type, 'directory');
-  assert.deepEqual(resolveFinancialView(catalog, reports).reports, []);
+  assert.deepEqual(resolveFinancialView(catalog, reports), { type: 'documents', label: 'All Documents', reports });
+  assert.deepEqual(resolveFinancialView(catalog, reports, { all: true }), resolveFinancialView(catalog, reports));
   assert.equal(catalog[0].reports[0].id, 'annual');
 });
 
-test('annual reports and MGT-7/MGT-9 have separate cards without editing source records', () => {
+test('annual reports and MGT-7/MGT-9 have separate categories without editing source records', () => {
   const reports = [report('annual', 'Annual Report 2024-25'), report('mgt7', 'Form MGT 7 (2025)'), report('mgt9', 'MGT 9 (2022)')];
   const catalog = buildFinancialCatalog(reports);
   assert.deepEqual(catalog.map((item) => item.label).sort(), ['Annual Report', 'MGT-7', 'MGT-9']);
@@ -30,7 +30,7 @@ test('new, uncategorised and multiple-category records remain accessible', () =>
   assert.equal(resolveFinancialView(catalog, reports, { all: true }).reports.length, 3);
 });
 
-test('duplicate labels and overlapping MGT labels do not duplicate records inside a card', () => {
+test('duplicate labels and overlapping MGT labels do not duplicate records inside a category', () => {
   const catalog = buildFinancialCatalog([
     report('filing', 'MGT-7A for 2025', ['Annual Report', 'MGT 7A']),
     report('policy', 'Policy', ['Policies', ' policies ']),

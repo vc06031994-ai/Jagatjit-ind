@@ -17,15 +17,15 @@ in `api/`. See `api/README.md` for Laravel setup.
 
 ## Investor financial archive
 
-- `/investors/financial` opens the investor category directory.
+- `/investors/financial` opens All Documents directly; category tabs filter the archive.
 - `/investors/financial?category=annual%20report` opens a category directly.
 - `/investors/financial?view=all` opens the complete document archive.
-- Category cards are generated from all Contentful `financialPage` entries, not
-  a fixed list. MGT filings stored under Annual Report get separate MGT cards;
+- Category tabs are generated from all Contentful `financialPage` entries, not
+  a fixed list. MGT filings stored under Annual Report get separate MGT categories;
   the original CMS records are not modified. Uncategorised entries remain
   accessible under Other Documents and in All Documents.
 - Quarterly documents use the April–March financial year. Archive document
   dates are displayed separately from reporting periods; unclear periods are
   retained rather than guessed. Failed or incomplete API loads show Retry,
   never sample financial data.
-- Run `npm run test:financial` for pagination, date, grouping and directory tests.
+- Run `npm run test:financial` for pagination, date, grouping and category-navigation tests.

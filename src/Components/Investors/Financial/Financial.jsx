@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import { client } from '../../../api/contentful.js';
 import { FaRegFileAlt } from 'react-icons/fa';
 import { Link, useSearchParams } from 'react-router-dom';
-import { FiArrowUpRight, FiArrowLeft, FiChevronLeft, FiChevronRight, FiGrid } from 'react-icons/fi';
+import { FiArrowUpRight, FiArrowLeft, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { groupFinancialReports } from './financialPeriods.js';
 import { categoryKey, getDocumentDate, loadFinancialReports } from './financialData.js';
 import { buildFinancialCatalog, resolveFinancialView } from './financialCatalog.js';
@@ -19,11 +19,10 @@ const Financial = () => {
   const [retry, setRetry] = useState(0);
   const [searchParams] = useSearchParams();
   const category = categoryKey(searchParams.get('category') || '');
-  const showAll = searchParams.get('view') === 'all';
   const contentRef = useRef(null);
   const sectionRef = useRef(null);
   const navigationRef = useRef(null);
-  const previousView = useRef('directory');
+  const previousView = useRef(category || 'all');
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
 
@@ -42,11 +41,10 @@ const Financial = () => {
   }, [retry]);
 
   const catalog = useMemo(() => buildFinancialCatalog(reports), [reports]);
-  const view = useMemo(() => resolveFinancialView(catalog, reports, { category, all: showAll }), [catalog, reports, category, showAll]);
+  const view = useMemo(() => resolveFinancialView(catalog, reports, { category }), [catalog, reports, category]);
   const filteredReports = view.reports;
   const groups = useMemo(() => groupFinancialReports(filteredReports), [filteredReports]);
-  const isDirectory = view.type === 'directory';
-  const viewKey = isDirectory ? 'directory' : category || 'all';
+  const viewKey = category || 'all';
 
   useEffect(() => {
     if (loading || error || previousView.current === viewKey) return;
@@ -139,8 +137,7 @@ const Financial = () => {
           <nav className="fin-category-navigation" aria-label="Investor categories">
             <button className="fin-nav-scroll" type="button" aria-label="Previous categories" aria-controls="fin-category-links" disabled={!canScrollLeft} onClick={() => scrollCategories(-1)}><FiChevronLeft aria-hidden="true" /></button>
             <div id="fin-category-links" className="fin-category-links" ref={navigationRef}>
-              <Link to="/investors/financial" className={`fin-category-button ${isDirectory ? 'is-active' : ''}`} aria-current={isDirectory ? 'page' : undefined}><FiGrid aria-hidden="true" /> Investor Home</Link>
-              <Link to="?view=all" className={`fin-category-button ${!category && showAll ? 'is-active' : ''}`} aria-current={!category && showAll ? 'page' : undefined}>All Documents</Link>
+              <Link to="/investors/financial" className={`fin-category-button ${!category ? 'is-active' : ''}`} aria-current={!category ? 'page' : undefined}>All Documents</Link>
               {catalog.map((option) => (
                 <Link key={option.key} to={categoryHref(option.key)} className={`fin-category-button ${category === option.key ? 'is-active' : ''}`} aria-current={category === option.key ? 'page' : undefined}>{option.label}</Link>
               ))}
@@ -150,10 +147,9 @@ const Financial = () => {
         )}
 
         <div ref={contentRef} className="fin-content" tabIndex={-1}>
-          {!isDirectory && <Link to="/investors/financial" className="fin-back-link"><FiArrowLeft aria-hidden="true" /> Back to Categories</Link>}
-          <header className={`fin-page-heading ${isDirectory ? 'fin-directory-heading' : ''}`}>
+          {category && <Link to="/investors/financial" className="fin-back-link"><FiArrowLeft aria-hidden="true" /> Back to All Documents</Link>}
+          <header className="fin-page-heading">
             <h2>{loading || error ? 'Investors' : view.label}</h2>
-            {isDirectory && <p>Select a category from the tabs above to view financial reports and shareholder documents.</p>}
           </header>
           <div id="fin-results" className="fin-results" role="region" aria-label="Financial documents" aria-busy={loading}>
             {loading ? (
@@ -164,16 +160,8 @@ const Financial = () => {
                 <p>Please try again. No sample or incomplete documents are shown.</p>
                 <button type="button" className="fin-category-button" onClick={() => setRetry((value) => value + 1)}>Try Again</button>
               </div>
-            ) : isDirectory ? (
-              <>
-                {catalog.length === 0 && <div className="fin-state"><h2>No documents available</h2><p>Category tabs will appear above when documents are published.</p></div>}
-                <section className="fin-investor-information" aria-label="Investor information">
-                  <div><h2>Financial Information</h2><p>Explore Jagatjit Industries Limited’s financial reports, corporate disclosures and shareholder documents. Select a category above, or browse the complete archive.</p><Link to="?view=all" className="fin-information-link">View All Documents <FiArrowUpRight aria-hidden="true" /></Link></div>
-                  <div><h2>Need Assistance?</h2><p>For help with company information or shareholder enquiries, please get in touch with Jagatjit Industries Limited.</p><Link to="/contactus" className="fin-information-link">Contact Us <FiArrowUpRight aria-hidden="true" /></Link></div>
-                </section>
-              </>
             ) : view.type === 'not-found' ? (
-              <div className="fin-state"><h2>This category is not available</h2><p>Please choose a category from Investor Home to find your documents.</p><Link className="fin-category-button" to="/investors/financial">View Categories</Link></div>
+              <div className="fin-state"><h2>This category is not available</h2><p>Please choose a category from the tabs above, or view all documents.</p><Link className="fin-category-button" to="/investors/financial">View All Documents</Link></div>
             ) : (
               <>
                 <div className="fin-results-heading">
