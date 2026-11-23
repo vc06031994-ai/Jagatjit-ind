@@ -79,9 +79,14 @@ export function buildFinancialCatalog(reports) {
   return [...catalog.values()].sort((a, b) => a.order - b.order || a.label.localeCompare(b.label, 'en', { sensitivity: 'base' }));
 }
 
-export function resolveFinancialView(catalog, reports, { category = '' } = {}) {
-  if (!category) return { type: 'documents', label: 'All Documents', reports };
-  const match = catalog.find((item) => item.key === categoryKey(category));
+export function getDefaultFinancialCategory(catalog) {
+  return catalog.find((item) => /^share\s*holding\s+patterns?$/i.test(item.key))?.key || '';
+}
+
+export function resolveFinancialView(catalog, reports, { category = '', all = false } = {}) {
+  const selectedCategory = category || (!all ? getDefaultFinancialCategory(catalog) : '');
+  if (!selectedCategory) return { type: 'documents', label: 'All Documents', reports };
+  const match = catalog.find((item) => item.key === categoryKey(selectedCategory));
   return match ? { type: 'documents', label: match.label, reports: match.reports }
     : { type: 'not-found', label: 'Category not found', reports: [] };
 }

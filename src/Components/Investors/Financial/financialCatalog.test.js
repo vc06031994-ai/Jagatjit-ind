@@ -4,12 +4,27 @@ import { buildFinancialCatalog, getCategoryStyle, getReportCategories, resolveFi
 
 const report = (id, file_name, categories = ['Annual Report']) => ({ id, file_name, categories });
 
-test('the default view opens All Documents and preserves the legacy all-documents link', () => {
-  const reports = [report('annual', 'Annual Report 2024-25')];
+test('the default view shows only Share Holding Pattern while All Documents remains explicit', () => {
+  const reports = [report('annual', 'Annual Report 2024-25'), report('holding', 'Shareholding June 2025', ['Share Holding Pattern'])];
   const catalog = buildFinancialCatalog(reports);
-  assert.deepEqual(resolveFinancialView(catalog, reports), { type: 'documents', label: 'All Documents', reports });
-  assert.deepEqual(resolveFinancialView(catalog, reports, { all: true }), resolveFinancialView(catalog, reports));
-  assert.equal(catalog[0].reports[0].id, 'annual');
+  assert.deepEqual(resolveFinancialView(catalog, reports), {
+    type: 'documents', label: 'Share Holding Pattern', reports: [reports[1]],
+  });
+  assert.deepEqual(resolveFinancialView(catalog, reports, { all: true }), {
+    type: 'documents', label: 'All Documents', reports,
+  });
+  assert.equal(resolveFinancialView(catalog, reports, { category: 'annual report' }).reports[0].id, 'annual');
+  assert.equal(resolveFinancialView(catalog, reports, { category: 'share holding pattern', all: true }).reports[0].id, 'holding');
+});
+
+test('default Shareholding category handles spacing and does not match unrelated labels', () => {
+  for (const category of ['Shareholding Pattern', 'SHARE HOLDING PATTERN', 'Share Holding Patterns']) {
+    const reports = [report('holding', 'Quarterly shareholding', [category])];
+    assert.equal(resolveFinancialView(buildFinancialCatalog(reports), reports).label, category);
+  }
+  const reports = [report('annual', 'Annual Report 2024-25'), report('info', 'Shareholder information', ['Information for Physical Shareholders'])];
+  assert.equal(resolveFinancialView(buildFinancialCatalog(reports), reports).label, 'All Documents');
+  assert.deepEqual(resolveFinancialView([], []), { type: 'documents', label: 'All Documents', reports: [] });
 });
 
 test('annual reports and MGT-7/MGT-9 have separate categories without editing source records', () => {

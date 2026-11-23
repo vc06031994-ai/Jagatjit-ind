@@ -1,10 +1,11 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { client } from '../../../api/contentful.js';
 import { Link, useSearchParams } from 'react-router-dom';
+import { FaRegFilePdf } from 'react-icons/fa';
 import { FiArrowLeft, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { groupFinancialReports } from './financialPeriods.js';
 import { categoryKey, getDocumentDate, loadFinancialReports } from './financialData.js';
-import { buildFinancialCatalog, resolveFinancialView } from './financialCatalog.js';
+import { buildFinancialCatalog, getDefaultFinancialCategory, resolveFinancialView } from './financialCatalog.js';
 import { openHtmlDocument } from './openHtmlDocument.js';
 import './Financial.css';
 
@@ -18,10 +19,12 @@ const Financial = () => {
   const [retry, setRetry] = useState(0);
   const [searchParams] = useSearchParams();
   const category = categoryKey(searchParams.get('category') || '');
+  const showAll = searchParams.get('view') === 'all';
+  const viewKey = category || (showAll ? 'all' : 'default');
   const contentRef = useRef(null);
   const sectionRef = useRef(null);
   const navigationRef = useRef(null);
-  const previousView = useRef(category || 'all');
+  const previousView = useRef(viewKey);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
 
@@ -40,10 +43,10 @@ const Financial = () => {
   }, [retry]);
 
   const catalog = useMemo(() => buildFinancialCatalog(reports), [reports]);
-  const view = useMemo(() => resolveFinancialView(catalog, reports, { category }), [catalog, reports, category]);
+  const selectedCategory = category || (!showAll ? getDefaultFinancialCategory(catalog) : '');
+  const view = useMemo(() => resolveFinancialView(catalog, reports, { category, all: showAll }), [catalog, reports, category, showAll]);
   const filteredReports = view.reports;
   const groups = useMemo(() => groupFinancialReports(filteredReports), [filteredReports]);
-  const viewKey = category || 'all';
 
   useEffect(() => {
     if (loading || error || previousView.current === viewKey) return;
@@ -86,6 +89,7 @@ const Financial = () => {
     const available = Boolean(report.file_url || report.html_content);
     const date = getDocumentDate(report.file_date);
     const contents = <>
+      <FaRegFilePdf className="fin-pdf-icon" aria-hidden="true" />
       <span className="fin-document-name fin-sr-only">{report.file_name}</span>
       <span className={`fin-document-date${date ? '' : ' fin-date-missing'}`}>
         {date ? <time dateTime={date.dateTime}>{date.label}</time> : 'Date not provided'}
@@ -132,9 +136,9 @@ const Financial = () => {
           <nav className="fin-category-navigation" aria-label="Investor categories">
             <button className="fin-nav-scroll" type="button" aria-label="Previous categories" aria-controls="fin-category-links" disabled={!canScrollLeft} onClick={() => scrollCategories(-1)}><FiChevronLeft aria-hidden="true" /></button>
             <div id="fin-category-links" className="fin-category-links" ref={navigationRef}>
-              <Link to="/investors/financial" className={`fin-category-button ${!category ? 'is-active' : ''}`} aria-current={!category ? 'page' : undefined}>All Documents</Link>
+              <Link to="?view=all" className={`fin-category-button ${!selectedCategory ? 'is-active' : ''}`} aria-current={!selectedCategory ? 'page' : undefined}>All Documents</Link>
               {catalog.map((option) => (
-                <Link key={option.key} to={categoryHref(option.key)} className={`fin-category-button ${category === option.key ? 'is-active' : ''}`} aria-current={category === option.key ? 'page' : undefined}>{option.label}</Link>
+                <Link key={option.key} to={categoryHref(option.key)} className={`fin-category-button ${selectedCategory === option.key ? 'is-active' : ''}`} aria-current={selectedCategory === option.key ? 'page' : undefined}>{option.label}</Link>
               ))}
             </div>
             <button className="fin-nav-scroll" type="button" aria-label="Next categories" aria-controls="fin-category-links" disabled={!canScrollRight} onClick={() => scrollCategories(1)}><FiChevronRight aria-hidden="true" /></button>
@@ -142,7 +146,7 @@ const Financial = () => {
         )}
 
         <div ref={contentRef} className="fin-content" tabIndex={-1}>
-          {category && <Link to="/investors/financial" className="fin-back-link"><FiArrowLeft aria-hidden="true" /> Back to All Documents</Link>}
+          {selectedCategory && <Link to="?view=all" className="fin-back-link"><FiArrowLeft aria-hidden="true" /> Back to All Documents</Link>}
           <header className="fin-page-heading">
             <h2>{loading || error ? 'Investors' : view.label}</h2>
           </header>
@@ -156,7 +160,7 @@ const Financial = () => {
                 <button type="button" className="fin-category-button" onClick={() => setRetry((value) => value + 1)}>Try Again</button>
               </div>
             ) : view.type === 'not-found' ? (
-              <div className="fin-state"><h2>This category is not available</h2><p>Please choose a category from the tabs above, or view all documents.</p><Link className="fin-category-button" to="/investors/financial">View All Documents</Link></div>
+              <div className="fin-state"><h2>This category is not available</h2><p>Please choose a category from the tabs above, or view all documents.</p><Link className="fin-category-button" to="?view=all">View All Documents</Link></div>
             ) : (
               <>
                 <div className="fin-results-heading">
