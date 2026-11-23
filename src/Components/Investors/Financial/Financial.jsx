@@ -1,8 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { client } from '../../../api/contentful.js';
-import { FaRegFileAlt } from 'react-icons/fa';
 import { Link, useSearchParams } from 'react-router-dom';
-import { FiArrowUpRight, FiArrowLeft, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiArrowLeft, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { groupFinancialReports } from './financialPeriods.js';
 import { categoryKey, getDocumentDate, loadFinancialReports } from './financialData.js';
 import { buildFinancialCatalog, resolveFinancialView } from './financialCatalog.js';
@@ -87,15 +86,11 @@ const Financial = () => {
     const available = Boolean(report.file_url || report.html_content);
     const date = getDocumentDate(report.file_date);
     const contents = <>
-      <FaRegFileAlt className="fin-file-icon" aria-hidden="true" />
-      <span className="fin-document-meta">
-        <span className="fin-document-name">{report.file_name}</span>
-        <span className={`fin-document-date${date ? '' : ' fin-date-missing'}`}>
-          {date ? <><span className="fin-date-label">Document date: </span><time dateTime={date.dateTime}>{date.label}</time></> : 'Date not provided'}
-        </span>
+      <span className="fin-document-name fin-sr-only">{report.file_name}</span>
+      <span className={`fin-document-date${date ? '' : ' fin-date-missing'}`}>
+        {date ? <time dateTime={date.dateTime}>{date.label}</time> : 'Date not provided'}
       </span>
-      {available ? <span className="fin-open-label">View <FiArrowUpRight aria-hidden="true" /></span>
-        : <span className="fin-missing-label">File unavailable</span>}
+      {!available && <span className="fin-missing-label">File unavailable</span>}
     </>;
     const label = `Open ${report.file_name}, ${date ? `document date ${date.label}` : 'date not provided'} (new tab)`;
     const key = report.id || `${report.file_name}-${index}`;
