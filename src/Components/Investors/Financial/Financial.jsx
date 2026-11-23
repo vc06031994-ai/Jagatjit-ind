@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { client } from '../../../api/contentful.js';
 import { Link, useSearchParams } from 'react-router-dom';
-import { FaRegFilePdf } from 'react-icons/fa';
 import { FiArrowLeft, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { groupFinancialReports } from './financialPeriods.js';
 import { categoryKey, getDocumentDate, loadFinancialReports } from './financialData.js';
@@ -89,7 +88,11 @@ const Financial = () => {
     const available = Boolean(report.file_url || report.html_content);
     const date = getDocumentDate(report.file_date);
     const contents = <>
-      <FaRegFilePdf className="fin-pdf-icon" aria-hidden="true" />
+      <svg className="fin-pdf-icon" viewBox="0 0 24 32" aria-hidden="true" focusable="false">
+        <path fill="#ed2027" d="M4 0h11l9 9v19a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4Z" />
+        <path fill="#f36a6f" d="M15 0v9h9Z" />
+        <text x="12" y="24" fill="#fff" fontFamily="Arial, sans-serif" fontSize="8.5" fontWeight="700" textAnchor="middle">PDF</text>
+      </svg>
       <span className="fin-document-name fin-sr-only">{report.file_name}</span>
       <span className={`fin-document-date${date ? '' : ' fin-date-missing'}`}>
         {date ? <time dateTime={date.dateTime}>{date.label}</time> : 'Date not provided'}

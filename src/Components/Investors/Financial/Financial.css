@@ -178,7 +178,7 @@ body:has(.financial-page) .mobile-navbar { background-color: #010101; }
   text-decoration: none;
   cursor: pointer;
 }
-.financial-page .fin-pdf-icon { flex: 0 0 auto; color: var(--fin-gold); font-size: 20px; margin-top: 2px; }
+.financial-page .fin-pdf-icon { flex: 0 0 auto; width: 21px; height: 28px; margin-top: -2px; }
 .financial-page .fin-document-date { display: block; color: var(--fin-gold); font-size: 16px; line-height: 1.5; }
 .financial-page .fin-document-date time { white-space: nowrap; text-decoration: underline; text-underline-offset: 4px; }
 .financial-page .fin-date-missing { color: var(--fin-muted); }
