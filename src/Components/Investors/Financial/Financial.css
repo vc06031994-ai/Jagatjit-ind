@@ -153,6 +153,7 @@ body:has(.financial-page) .mobile-navbar { background-color: #010101; }
   background: rgba(236, 165, 51, .06);
   font-size: 18px;
   font-weight: 400;
+  vertical-align: middle;
 }
 .financial-page .fin-table tbody tr:nth-child(even) td { background: rgba(255, 255, 255, .025); }
 .financial-page .fin-quarter-table { min-width: 850px; }
@@ -222,7 +223,7 @@ body:has(.financial-page) .mobile-navbar { background-color: #010101; }
   .financial-page .fin-category-navigation { grid-template-columns: 30px minmax(0, 1fr) 30px; gap: 4px; }
   .financial-page .fin-table th, .financial-page .fin-table td { padding: 14px 12px; }
   .financial-page .fin-year-table th:first-child { width: 106px; }
-  .financial-page .fin-table tbody th { font-size: 18px; vertical-align: middle; }
+  .financial-page .fin-table tbody th { font-size: 18px; }
   .financial-page .fin-document-link { font-size: 16px; flex-wrap: wrap; gap: 8px; }
   .financial-page .fin-state { padding: 40px 0; }
 }
